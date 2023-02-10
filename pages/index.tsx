@@ -8,12 +8,20 @@ type FormData = {
 }
 
 const rdfOptions: RDFOptions = {
-  fields: [{
-    type: 'text',
-    name: 'simple',
-    label: 'A Simple Text Entry',
-    placeholder: 'This is placeholder text'
-  }]
+  fields: [
+    {
+      type: 'text',
+      name: 'simple',
+      label: 'A Simple Text Entry',
+      placeholder: 'This is placeholder text'
+    },
+    {
+      type: 'text',
+      name: 'simple',
+      label: 'A Simple Text Entry',
+      placeholder: 'This is placeholder text'
+    }
+]
 };
 
 
