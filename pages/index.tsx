@@ -20,17 +20,18 @@ const rdfOptions: RDFOptions = {
 export default function Home() {
   const [data, setData] = useState<FormData>(null)
   const demoSubmitHandler= (data: FormData): void => setData(data)
-
+  const description = 'Declaratively render beautiful and customizable forms with radix-ui, plain CSS and react-form-hook'
   return (
     <div className="container">
       <Head>
         <title>Radix Declarative Form</title>
-        <meta name="description" content="A beautiful form with radix-ui, plain CSS and react-form-hook" />
+        <meta name="description" content={description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className="main">
         <h2 className="title">Radix Declarative Form</h2>
+        <p>{description}</p>
         <RDF<FormData>
           options={rdfOptions}
           submitButtonLabel='Send it!'

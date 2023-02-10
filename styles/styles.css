@@ -1,7 +1,7 @@
 /* rds variables */
 :root {
-  --button-color-light: #666;
-  --button-color-hover-light: #222;
+  --button-color-light: #222;
+  --button-color-hover-light: #666;
   --button-text-light: #fff;
 
   --button-color-dark: #eee;
@@ -12,9 +12,9 @@
   --label-color-dark: #fff;
 
   --input-border-light: #888;
-  --input-border-dark: #fff;
+  --input-border-dark: #444;
   --input-focused-shadow-light: #888;
-  --input-focused-shadow-dark: #fff;
+  --input-focused-shadow-dark: #555;
 
   --input-color-light: #333;
   --input-background-light: #fff;
@@ -65,6 +65,7 @@ a {
 
 .container {
   padding: 0 2rem;
+  line-height: 1.8;
 }
 
 .main {

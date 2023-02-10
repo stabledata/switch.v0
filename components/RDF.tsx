@@ -42,12 +42,17 @@ export const RDFTextField = ({ name, label, placeholder, register }: RDFTextFiel
  * @param options
  * @returns The RDF form component based on options configuration
  */
-export function RDF<T>({ options, debug, handleSubmit, submitButtonLabel }: RDFProps<T>) {
+export function RDF<T>({
+  options,
+  debug,
+  handleSubmit,
+  submitButtonLabel
+}: RDFProps<T>) {
   const {
     fields,
     register,
     formState,
-    watch,
+    // watch,
     handleSubmit: rhfSubmitHandler
   } = useRDF(options)
 
@@ -67,8 +72,15 @@ export function RDF<T>({ options, debug, handleSubmit, submitButtonLabel }: RDFP
             )
         }
       })}
-      {debug ? <div className="rhf-debug"><p>Internal RHF State:</p><pre>{JSON.stringify(formState, null, 2)}</pre></div> : null}
       <button type="submit">{submitButtonLabel}</button>
+
+      {debug
+        ? <div className="rhf-debug">
+            <p>Internal RHF State:</p>
+            <pre>{JSON.stringify(formState, null, 2)}</pre>
+          </div>
+        : null
+      }
     </form>
   )
 }

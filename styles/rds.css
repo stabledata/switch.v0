@@ -84,6 +84,7 @@ button:hover, button:focus {
   .input {
     color: var(--input-color-dark, '#fff');
     background-color: var(--input-background-dark);
+    border: 1px solid var(--input-border-dark);
   }
   .input:focus {
     box-shadow: 0 0 2px 2px var(--input-focused-shadow-dark);
