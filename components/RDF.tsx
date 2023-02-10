@@ -1,18 +1,19 @@
 import React from 'react';
 import { useRDF } from './useRDF';
-import type { RDFOptions, RDFTextFieldOptions } from './useRDF';
-import type { FieldValues, UseFormRegister } from 'react-hook-form';
+import type { RDFOptions, RDFFieldOptions } from './useRDF';
+import type { FieldErrors, FieldValues, RegisterOptions, UseFormRegister } from 'react-hook-form';
 import * as Label from '@radix-ui/react-label';
 
 export type RDFProps<T> = {
   options: RDFOptions
   submitButtonLabel: string
-  handleSubmit: (data: T) => void | T
-  debug?: boolean
+  handleSubmit: (data: T, isValid: boolean) => void | T
 }
 
 export type RDFFieldProps = {
   register: UseFormRegister<FieldValues>
+  options: RegisterOptions
+  errors: FieldErrors
 }
 
 export type RDFTextFieldProps = RDFFieldProps & {
@@ -26,38 +27,49 @@ export type RDFTextFieldProps = RDFFieldProps & {
  * @param fields
  * @returns text field with given options
  */
-export const RDFTextField = ({ name, label, placeholder, register }: RDFTextFieldProps) => {
+export const RDFTextField = ({ name, label, placeholder, options, register, errors }: RDFTextFieldProps) => {
+  const labelClasses = ['label', `label-${name}`]
+  const inputClasses = ['input', `input-${name}`]
+  const error = errors[name]
+  if (error) {
+    inputClasses.push('input-has-error')
+    labelClasses.push('label-has-error')
+  }
   return (
     <div className="field text-input">
-      <Label.Root className="label" htmlFor={name}>
+      <Label.Root className={labelClasses.join(' ')} htmlFor={name}>
         {label}
       </Label.Root>
-      <input className="input" type="text" id={name} placeholder={placeholder} {...register(name)} />
+      <input className={inputClasses.join(' ')} type="text" id={name} placeholder={placeholder} {...register(name, options)} />
+      {error && error.message > ''
+        ? <span className="error-message">{error.message as string}</span>
+        : null
+      }
     </div>
   )
 }
 
 /**
  *
- * @param options
+ * @props options for rendering the form declaratively {@link RDFProps}
  * @returns The RDF form component based on options configuration
  */
 export function RDF<T>({
   options,
-  debug,
   handleSubmit,
   submitButtonLabel
 }: RDFProps<T>) {
   const {
     fields,
     register,
-    formState,
+    errors,
+    isValid,
     // watch,
     handleSubmit: rhfSubmitHandler
   } = useRDF(options)
 
   return (
-    <form onSubmit={rhfSubmitHandler(handleSubmit)}>
+    <form onSubmit={rhfSubmitHandler((data: T) => handleSubmit(data, isValid))}>
       {fields.map((field) => {
         switch (field.type) {
           // text field
@@ -68,19 +80,13 @@ export function RDF<T>({
                 label={field.label}
                 placeholder={field.placeholder}
                 register={register}
+                options={field.options}
+                errors={errors}
               />
             )
         }
       })}
       <button type="submit">{submitButtonLabel}</button>
-
-      {debug
-        ? <div className="rhf-debug">
-            <p>Internal RHF State:</p>
-            <pre>{JSON.stringify(formState, null, 2)}</pre>
-          </div>
-        : null
-      }
     </form>
   )
 }

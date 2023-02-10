@@ -17,9 +17,12 @@ const rdfOptions: RDFOptions = {
     },
     {
       type: 'text',
-      name: 'simple',
-      label: 'A Simple Text Entry',
-      placeholder: 'This is placeholder text'
+      name: 'necessary',
+      label: 'A Required Text Field',
+      placeholder: 'you better enter something here',
+      options: {
+        required: 'This field is required, fill it out!'
+      }
     }
 ]
 };
@@ -27,7 +30,13 @@ const rdfOptions: RDFOptions = {
 
 export default function Home() {
   const [data, setData] = useState<FormData>(null)
-  const demoSubmitHandler= (data: FormData): void => setData(data)
+  const demoSubmitHandler= (data: FormData, isValid: boolean): void => {
+    if (!isValid) {
+      setData(null)
+      return
+    }
+    setData(data)
+  }
   const description = 'Declaratively render beautiful and customizable forms with radix-ui, plain CSS and react-form-hook'
   return (
     <div className="container">
@@ -44,7 +53,6 @@ export default function Home() {
           options={rdfOptions}
           submitButtonLabel='Send it!'
           handleSubmit={demoSubmitHandler}
-          debug={true}
         />
         <div className="preview">
           <h2>Submitted data:</h2>

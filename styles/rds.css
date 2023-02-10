@@ -54,6 +54,10 @@ button:hover, button:focus {
   color: var(--label-color-light);
 }
 
+.error-message, .label-has-error {
+  color: var(--error-message);
+}
+
 @media (prefers-color-scheme: dark) {
   .label {
     color: var(--label-color-dark);
@@ -90,7 +94,3 @@ button:hover, button:focus {
     box-shadow: 0 0 2px 2px var(--input-focused-shadow-dark);
   }
 }
-
-@media(pref)
-
-
