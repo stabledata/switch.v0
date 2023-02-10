@@ -11,9 +11,8 @@
   --label-color-light: #555;
   --label-color-dark: #fff;
 
-
-  --input-color-light: #333;
-  --input-color-dark: #fff;
+  --input-text-color-light: #333;
+  --input-text-color-dark: #fff;
   --input-background-light: #fff;
   --input-background-dark: #333;
   --input-border-light: #888;
@@ -23,15 +22,20 @@
   --input-border-error-light: #ff7070;
   --input-border-error-dark: #ff7070;
 
-
-
-
   --checkbox-background-light: #fff;
   --checkbox-background-dark: #111;
   --checkbox-border-light: #888;
   --checkbox-border-dark: #333;
   --checkbox-check-light: #000;
   --checkbox-check-dark: #fff;
+
+  --select-placeholder-color: #777;
+  --select-group-label: #aaa;
+  --select-option-text-color: #777;
+  --select-option-highlight-text: #aaa;
+  --select-option-highlight-background: #aaa;
+  --select-item-highlight: green;
+  --select-item-disabled-color: #ddd;
 
   --link-color:  rgb(72, 202, 238);
   --error-message: #cc0000;
