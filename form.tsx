@@ -1,4 +1,4 @@
-import type { RDFOptions } from '../components/useRDF';
+import type { RDFOptions } from './components/useRDF';
 
 export const options: RDFOptions = {
   fields: [

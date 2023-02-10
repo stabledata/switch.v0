@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "next dev",
-    "build": "tsc ./components",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },

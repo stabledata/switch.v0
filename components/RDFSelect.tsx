@@ -83,9 +83,12 @@ const RadixSelect = ({ field, choices, placeholder, inputClasses }) => {
             <Select.Group>
             {choices.map((choice: string, index: number) => {
               if (choice.indexOf('---') === 0) {
-                return <Select.Label className="select-label">{choice.substring(3)}</Select.Label>
+                return <Select.Label
+                  key={`${choice}-${index}`}
+                  className="select-label">{choice.substring(3)}
+                </Select.Label>
               }
-              return <SelectItem value={choice}>{choice}</SelectItem>
+              return <SelectItem key={`${choice}-${index}`} value={choice}>{choice}</SelectItem>
 
             })}
             </Select.Group>
@@ -103,7 +106,9 @@ type SelectItemProps = {
   children?: ReactNode
   className?: string
   disabled?: boolean
+  displayName?: string
 }
+
 export type Ref = HTMLDivElement;
 
 const SelectItem = React.forwardRef<Ref, SelectItemProps>((props, ref) => {
@@ -117,3 +122,6 @@ const SelectItem = React.forwardRef<Ref, SelectItemProps>((props, ref) => {
     </Select.Item>
   );
 });
+
+// fixes lint error
+SelectItem.displayName = 'SelectItem';

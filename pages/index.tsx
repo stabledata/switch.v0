@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Head from 'next/head';
 import { RDF } from '../components/RDF';
-import { options } from './form';
+import { options } from '../form';
 
 type FormData = {
   simple: string
