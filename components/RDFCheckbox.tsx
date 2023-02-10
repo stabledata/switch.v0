@@ -19,7 +19,6 @@ export const RDFCheckbox = ({
   helper,
   control,
   options,
-  // register,
   errors,
 }: RDFCheckboxProps) => {
   const labelClasses = ['label', `label-${name}`]
@@ -33,7 +32,7 @@ export const RDFCheckbox = ({
   const render = ({ field }) => {
     return (
       <div className={`field field-${name}`}>
-        <RDFHelpText helper={helper} />
+
         <div className="checkbox-wrap">
           <RadixCheckbox field={field} inputClasses={inputClasses} />
           <Label className={labelClasses.join(' ')} htmlFor={name}>
@@ -41,6 +40,7 @@ export const RDFCheckbox = ({
           </Label>
         </div>
         <RDFErrorMessage error={error} />
+        <RDFHelpText helper={helper} />
       </div>
     )
   }

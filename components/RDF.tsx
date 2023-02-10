@@ -4,6 +4,7 @@ import type { RDFOptions } from './useRDF';
 import { RDFTextField } from './RDFTextField';
 import type { UseFormRegister, FieldValues, RegisterOptions, FieldErrors, Control } from "react-hook-form"
 import { RDFCheckbox } from './RDFCheckbox';
+import { RDFSelect } from './RDFSelect';
 
 export type RDFProps<T> = {
   options: RDFOptions
@@ -58,9 +59,9 @@ export function RDF<T>({
                 placeholder={field.placeholder}
                 register={register}
                 options={field.options}
-                errors={errors}
                 multiline={field.type === 'multiline'}
                 helper={field.helpText || field.HelpText}
+                errors={errors}
               />
             )
           case 'checkbox':
@@ -72,9 +73,23 @@ export function RDF<T>({
                 control={control}
                 register={register}
                 options={field.options}
-                errors={errors}
-
                 helper={field.helpText || field.HelpText}
+                errors={errors}
+              />
+            )
+          case 'select':
+            return (
+              <RDFSelect
+                key={`${field.name}-${index}`}
+                name={field.name}
+                label={field.label}
+                control={control}
+                register={register}
+                options={field.options}
+                choices={field.choices}
+                placeholder={field.placeholder}
+                helper={field.helpText || field.HelpText}
+                errors={errors}
               />
             )
         }

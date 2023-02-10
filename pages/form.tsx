@@ -2,11 +2,13 @@ import type { RDFOptions } from '../components/useRDF';
 
 export const options: RDFOptions = {
   fields: [
+
+    // simple as it gets!
     {
       type: 'text',
       name: 'simple',
-      label: 'A Simple Text Entry',
-      placeholder: 'This is placeholder text'
+      label: 'A simple entry',
+      placeholder: 'Whatever you can imagine can go here'
     },
 
     // validation testing from rhf
@@ -14,25 +16,27 @@ export const options: RDFOptions = {
     {
       type: 'text',
       name: 'necessary',
-      label: 'A Required Text Field',
-      placeholder: 'you better enter something here',
+      label: 'A required field',
+      placeholder: 'You must enter something here, or else!',
       options: {
         required: 'This field is required, fill it out!'
       }
     },
+
     // max len
     {
       type: 'text',
       name: 'max',
-      label: 'Short Code',
+      label: 'Short code',
       placeholder: '123',
       options: {
         maxLength : {
           value: 3,
-          message: 'You can only enter 3 characters in this field'
+          message: 'You entered more than 3 characters in this field'
         }
       },
     },
+
     // custom validation
     {
       type: 'text',
@@ -55,6 +59,30 @@ export const options: RDFOptions = {
       placeholder: 'This is a longer input option',
       helpText: 'If you need some inspiration, read this help text'
     },
+
+    // select (radix)
+    {
+      type: 'select',
+      name: 'shipping',
+      label: 'Select shipping',
+      placeholder: 'Select an option...',
+      helpText: 'Ground deliveries can take up to seven weeks.',
+      choices: [
+        '---UPS',
+        'UPS Ground',
+        'UPS Air',
+        '---Fedex',
+        'FedEx Ground',
+        'FedEx Air',
+        '---Canal',
+        'Mule',
+        'Barge'
+      ],
+      options: {
+        required: 'Select a valid shipping option to proceed with order',
+      }
+    },
+
     // checkbox (radix)
     {
       type: 'checkbox',
