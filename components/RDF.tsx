@@ -1,8 +1,9 @@
 import React from 'react';
 import { useRDF } from './useRDF';
-import type { RDFOptions, RDFFieldOptions } from './useRDF';
-import type { FieldErrors, FieldValues, RegisterOptions, UseFormRegister } from 'react-hook-form';
-import * as Label from '@radix-ui/react-label';
+import type { RDFOptions } from './useRDF';
+import { RDFTextField } from './RDFTextField';
+import type { UseFormRegister, FieldValues, RegisterOptions, FieldErrors } from "react-hook-form"
+import { RDFCheckbox } from './RDFCheckbox';
 
 export type RDFProps<T> = {
   options: RDFOptions
@@ -11,64 +12,13 @@ export type RDFProps<T> = {
 }
 
 export type RDFFieldProps = {
+  name: string
+  label?: string
+  helper?: string | (() => JSX.Element)
+  // react hook form
   register: UseFormRegister<FieldValues>
   options: RegisterOptions
   errors: FieldErrors
-}
-
-export type RDFTextFieldProps = RDFFieldProps & {
-  name: string
-  label?: string
-  placeholder?: string
-  multiline?: boolean
-}
-
-/**
- *
- * @props see {@link RDFFieldProps}
- * @returns text field with given options
- */
-export function RDFTextField({
-  name,
-  label,
-  placeholder,
-  options,
-  register,
-  errors,
-  multiline,
-}: RDFTextFieldProps) {
-  const labelClasses = ['label', `label-${name}`]
-  const inputClasses = ['input', `input-${name}`]
-  const error = errors[name]
-  if (error) {
-    inputClasses.push('input-has-error')
-    labelClasses.push('label-has-error')
-  }
-  return (
-    <div className={`field text-input field-${name}`}>
-      <Label.Root className={labelClasses.join(' ')} htmlFor={name}>
-        {label}
-      </Label.Root>
-      {multiline
-        ? <textarea
-            className={['input-multiline', ...inputClasses].join(' ')}
-            id={name}
-            placeholder={placeholder}
-            {...register(name, options)}
-          />
-        : <input
-            className={inputClasses.join(' ')}
-            type="text" id={name}
-            placeholder={placeholder}
-            {...register(name, options)}
-          />
-      }
-      {error && error.message > ''
-        ? <span className="error-message">{error.message as string}</span>
-        : null
-      }
-    </div>
-  )
 }
 
 /**
@@ -91,13 +41,14 @@ export function RDF<T>({
 
   return (
     <form onSubmit={rhfSubmitHandler(handleSubmit)}>
-      {fields.map((field) => {
+      {fields.map((field, index) => {
         switch (field.type) {
           // text field
           case 'text':
           case 'multiline':
             return (
               <RDFTextField
+                key={`${field.name}-${index}`}
                 name={field.name}
                 label={field.label}
                 placeholder={field.placeholder}
@@ -105,11 +56,26 @@ export function RDF<T>({
                 options={field.options}
                 errors={errors}
                 multiline={field.type === 'multiline'}
+                helper={field.helpText || field.HelpText}
+              />
+            )
+          case 'checkbox':
+            return (
+              <RDFCheckbox
+                key={`${field.name}-${index}`}
+                name={field.name}
+                label={field.label}
+
+                register={register}
+                options={field.options}
+                errors={errors}
+
+                helper={field.helpText || field.HelpText}
               />
             )
         }
       })}
-      <button type="submit">{submitButtonLabel}</button>
+      <button type="submit" className="submit">{submitButtonLabel}</button>
     </form>
   )
 }

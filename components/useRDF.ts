@@ -1,13 +1,16 @@
 
+import { ReactElement } from 'react';
 import { FieldErrors, useForm } from 'react-hook-form';
 import type { UseFormReturn, RegisterOptions } from 'react-hook-form';
 
-export type RDFFieldType = 'text' | 'multiline'
+export type RDFFieldType = 'text' | 'multiline' | 'checkbox'
 
 export type RDFFieldOptions = {
   type: RDFFieldType
   name: string
   label?: string
+  helpText?: string
+  HelpText?: () => JSX.Element
   placeholder?: string
   options?: RegisterOptions
 }
@@ -30,5 +33,5 @@ export const useRDF = (options: RDFOptions): UseRDFHookReturn => {
     watch,
     handleSubmit,
     errors
-  }
+  };
 }

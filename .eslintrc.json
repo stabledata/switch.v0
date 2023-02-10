@@ -1,7 +1,6 @@
 {
   "extends": "next/core-web-vitals",
   "rules": {
-    "semi": ["error", "always"],
-    "comma-dangle": ["error", "always"]
+    "semi": ["error", "always"]
   }
 }

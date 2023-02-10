@@ -22,6 +22,19 @@
   --input-color-dark: #fff;
   --input-background-dark: #333;
 
+  --checkbox-background-light: #fff;
+  --checkbox-background-dark: #333;
+
+  --checkbox-border-light: #888;
+  --checkbox-border-dark: #333;
+
+  --checkbox-shadow-light: #888;
+  --checkbox-shadow-dark: #555;
+
+  --checkbox-check-light: #000;
+  --checkbox-check-dark: #fff;
+
+  --link-color:  rgb(72, 202, 238);
   --error-message: #cc0000;
 
 }
@@ -58,6 +71,10 @@ a {
     color: white;
     background: black;
   }
+}
+
+a {
+  color: var(--link-color);
 }
 
 @media (prefers-color-scheme: light) {
@@ -119,6 +136,7 @@ a {
   line-height: .8;
   font-size: 4rem;
   margin-bottom: 10px;
+  padding-right: 30px;
   text-align: left;
 }
 
