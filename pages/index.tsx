@@ -15,6 +15,9 @@ const rdfOptions: RDFOptions = {
       label: 'A Simple Text Entry',
       placeholder: 'This is placeholder text'
     },
+
+    // validation testing from rhf
+    // https://react-hook-form.com/get-started#Applyvalidation
     {
       type: 'text',
       name: 'necessary',
@@ -23,21 +26,49 @@ const rdfOptions: RDFOptions = {
       options: {
         required: 'This field is required, fill it out!'
       }
-    }
+    },
+    // max len
+    {
+      type: 'text',
+      name: 'max',
+      label: 'Short Code',
+      placeholder: '12345',
+      options: {
+        maxLength : {
+          value: 3,
+          message: 'You can only enter 3 characters in this field'
+        }
+      }
+    },
+    // custom validation
+    {
+      type: 'text',
+      name: 'customizing',
+      label: 'Enter anything that contains "ing"',
+      placeholder: 'e.g. Running',
+      options: {
+        validate: ((value) => {
+          if (value.indexOf('ing') < 0) {
+            return 'That input does not contain "ing"'
+          }
+        })
+      }
+    },
+    // multiline input
+    {
+      type: 'multiline',
+      name: 'story',
+      label: 'Tell us your story',
+      placeholder: 'This is a longer input option',
+    },
 ]
 };
 
 
 export default function Home() {
   const [data, setData] = useState<FormData>(null)
-  const demoSubmitHandler= (data: FormData, isValid: boolean): void => {
-    if (!isValid) {
-      setData(null)
-      return
-    }
-    setData(data)
-  }
-  const description = 'Declaratively render beautiful and customizable forms with radix-ui, plain CSS and react-form-hook'
+  const demoSubmitHandler= (data: FormData): void => setData(data)
+  const description = 'Declaratively render beautiful and customizable forms with radix-ui, plain CSS, powered by react-form-hook.'
   return (
     <div className="container">
       <Head>
@@ -47,7 +78,7 @@ export default function Home() {
       </Head>
 
       <main className="main">
-        <h2 className="title">Radix Declarative Form</h2>
+        <h2 className="title">Radix<br />Declarative<br /> Form</h2>
         <p>{description}</p>
         <RDF<FormData>
           options={rdfOptions}

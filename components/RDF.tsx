@@ -7,7 +7,7 @@ import * as Label from '@radix-ui/react-label';
 export type RDFProps<T> = {
   options: RDFOptions
   submitButtonLabel: string
-  handleSubmit: (data: T, isValid: boolean) => void | T
+  handleSubmit: (data: T) => void | T
 }
 
 export type RDFFieldProps = {
@@ -20,14 +20,23 @@ export type RDFTextFieldProps = RDFFieldProps & {
   name: string
   label?: string
   placeholder?: string
+  multiline?: boolean
 }
 
 /**
  *
- * @param fields
+ * @props see {@link RDFFieldProps}
  * @returns text field with given options
  */
-export const RDFTextField = ({ name, label, placeholder, options, register, errors }: RDFTextFieldProps) => {
+export function RDFTextField({
+  name,
+  label,
+  placeholder,
+  options,
+  register,
+  errors,
+  multiline,
+}: RDFTextFieldProps) {
   const labelClasses = ['label', `label-${name}`]
   const inputClasses = ['input', `input-${name}`]
   const error = errors[name]
@@ -36,11 +45,24 @@ export const RDFTextField = ({ name, label, placeholder, options, register, erro
     labelClasses.push('label-has-error')
   }
   return (
-    <div className="field text-input">
+    <div className={`field text-input field-${name}`}>
       <Label.Root className={labelClasses.join(' ')} htmlFor={name}>
         {label}
       </Label.Root>
-      <input className={inputClasses.join(' ')} type="text" id={name} placeholder={placeholder} {...register(name, options)} />
+      {multiline
+        ? <textarea
+            className={['input-multiline', ...inputClasses].join(' ')}
+            id={name}
+            placeholder={placeholder}
+            {...register(name, options)}
+          />
+        : <input
+            className={inputClasses.join(' ')}
+            type="text" id={name}
+            placeholder={placeholder}
+            {...register(name, options)}
+          />
+      }
       {error && error.message > ''
         ? <span className="error-message">{error.message as string}</span>
         : null
@@ -63,17 +85,17 @@ export function RDF<T>({
     fields,
     register,
     errors,
-    isValid,
     // watch,
     handleSubmit: rhfSubmitHandler
   } = useRDF(options)
 
   return (
-    <form onSubmit={rhfSubmitHandler((data: T) => handleSubmit(data, isValid))}>
+    <form onSubmit={rhfSubmitHandler(handleSubmit)}>
       {fields.map((field) => {
         switch (field.type) {
           // text field
           case 'text':
+          case 'multiline':
             return (
               <RDFTextField
                 name={field.name}
@@ -82,6 +104,7 @@ export function RDF<T>({
                 register={register}
                 options={field.options}
                 errors={errors}
+                multiline={field.type === 'multiline'}
               />
             )
         }

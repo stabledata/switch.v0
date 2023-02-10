@@ -26,6 +26,11 @@
 
 }
 
+/* form specific to demo */
+.field-max .input {
+  width: 60px;
+}
+
 
 /* global styles for demo site */
 html,
@@ -109,10 +114,12 @@ a {
 }
 
 .title {
+  width: 100%;
   margin: 0;
   line-height: .8;
   font-size: 4rem;
   margin-bottom: 10px;
+  text-align: left;
 }
 
 .rhf-debug {

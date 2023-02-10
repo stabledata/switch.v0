@@ -2,7 +2,7 @@
 import { FieldErrors, useForm } from 'react-hook-form';
 import type { UseFormReturn, RegisterOptions } from 'react-hook-form';
 
-export type RDFFieldType = 'text'
+export type RDFFieldType = 'text' | 'multiline'
 
 export type RDFFieldOptions = {
   type: RDFFieldType
@@ -20,7 +20,6 @@ export type RDFOptions = {
 
 export type UseRDFHookReturn = RDFOptions & Partial<UseFormReturn> & {
   errors?: FieldErrors
-  isValid: boolean
 }
 
 export const useRDF = (options: RDFOptions): UseRDFHookReturn => {
@@ -30,7 +29,6 @@ export const useRDF = (options: RDFOptions): UseRDFHookReturn => {
     register,
     watch,
     handleSubmit,
-    errors,
-    isValid: Object.keys(errors).length === 0
+    errors
   }
 }
