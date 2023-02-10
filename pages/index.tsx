@@ -10,18 +10,26 @@ type FormData = {
 export default function Home() {
   const [data, setData] = useState<FormData>(null)
   const demoSubmitHandler= (data: FormData): void => setData(data)
-  const description = 'Declaratively render beautiful and customizable forms with radix-ui, plain CSS, powered by react-form-hook.'
+  const description = ''
   return (
     <div className="container">
       <Head>
         <title>Radix Declarative Form</title>
-        <meta name="description" content={description} />
+        <meta name="description" content="Declaratively render form templates with RadixUI, react-hook-from with vanilla CCS" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className="main">
         <h2 className="title">Radix Declarative Form</h2>
-        <p>{description}</p>
+        <p>
+          A React component that&nbsp;
+          <a href="https://github.com/cif/radix-declarative-form/blob/main/form.tsx">declaratively</a>&nbsp;renders beautiful and customizable forms&nbsp;
+          with <a href="https://www.radix-ui.com/docs/primitives/overview/introduction">RadixUI</a>,&nbsp;
+          <a href="https://github.com/cif/radix-declarative-form/blob/main/styles/rds.css">plain CSS</a>, powered by&nbsp;<br />
+          <a href="https://react-hook-form.com/get-started#">react-form-hook</a>.
+        </p>
+
+
         <RDF<FormData>
           options={options}
           submitButtonLabel='Send it!'
