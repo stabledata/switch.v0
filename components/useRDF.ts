@@ -26,11 +26,16 @@ export type UseRDFHookReturn = RDFOptions & Partial<UseFormReturn> & {
 }
 
 export const useRDF = (options: RDFOptions): UseRDFHookReturn => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    control
+  } = useForm()
   return {
     fields: options.fields,
     register,
-    watch,
+    control,
     handleSubmit,
     errors
   };

@@ -1,12 +1,12 @@
 import React from 'react';
+import { Controller } from 'react-hook-form';
 import { Label } from "@radix-ui/react-label";
-import { RDFFieldProps } from "./RDF";
+import { RDFControlledInputProps, RDFFieldProps } from "./RDF";
 import * as Checkbox from '@radix-ui/react-checkbox';
 import { CheckIcon } from '@radix-ui/react-icons';
+import { RDFErrorMessage, RDFHelpText } from './RDFHelpText';
 
-// export type RDFCheckboxProps = RDFFieldProps & {
-
-// }
+export type RDFCheckboxProps = RDFControlledInputProps & {}
 
 /**
  *
@@ -17,10 +17,11 @@ export const RDFCheckbox = ({
   name,
   label,
   helper,
+  control,
   options,
-  register,
+  // register,
   errors,
-}: RDFFieldProps) => {
+}: RDFCheckboxProps) => {
   const labelClasses = ['label', `label-${name}`]
   const inputClasses = ['input', `input-${name}`]
   const error = errors[name]
@@ -29,38 +30,41 @@ export const RDFCheckbox = ({
     labelClasses.push('label-has-error')
   }
 
-  return (
-    <div className={`field field-${name}`}>
-      <div className="checkbox-wrap">
-        <RadixCheckbox />
-        <Label className={labelClasses.join(' ')} htmlFor={name}>
-          {label}
-        </Label>
+  const render = ({ field }) => {
+    return (
+      <div className={`field field-${name}`}>
+        <RDFHelpText helper={helper} />
+        <div className="checkbox-wrap">
+          <RadixCheckbox field={field} inputClasses={inputClasses} />
+          <Label className={labelClasses.join(' ')} htmlFor={name}>
+            {label}
+          </Label>
+        </div>
+        <RDFErrorMessage error={error} />
       </div>
-      <div className="instructions">
-        {error && error.message > ''
-          ? <span className="error-message">{error.message as string}</span>
-          : null
-        }
-        {typeof helper === 'string'
-          ? <span className="field-help-text">{helper}</span>
-          : null
-        }
-        {typeof helper === 'function'
-          ? helper()
-          : null
-        }
-      </div>
-    </div>
-  )
-}
+    )
+  }
 
-const RadixCheckbox = () => {
   return (
-    <Checkbox.Root className="checkbox" defaultChecked id="c1">
+    <Controller
+      name={name}
+      control={control}
+      rules={options}
+      render={render}
+    />
+  )
+};
+
+const RadixCheckbox = ({ field, inputClasses }) => {
+  return (
+    <Checkbox.Root
+      className={['checkbox', ...inputClasses].join(' ')}
+      checked={field.value === true}
+      onCheckedChange={field.onChange}
+    >
       <Checkbox.Indicator className="checkbox-indicator">
         <CheckIcon />
       </Checkbox.Indicator>
     </Checkbox.Root>
   )
-}
+};

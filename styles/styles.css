@@ -11,26 +11,25 @@
   --label-color-light: #555;
   --label-color-dark: #fff;
 
+
+  --input-color-light: #333;
+  --input-color-dark: #fff;
+  --input-background-light: #fff;
+  --input-background-dark: #333;
   --input-border-light: #888;
   --input-border-dark: #444;
   --input-focused-shadow-light: #888;
-  --input-focused-shadow-dark: #555;
+  --input-focused-shadow-dark: #777;
+  --input-border-error-light: #ff7070;
+  --input-border-error-dark: #ff7070;
 
-  --input-color-light: #333;
-  --input-background-light: #fff;
 
-  --input-color-dark: #fff;
-  --input-background-dark: #333;
+
 
   --checkbox-background-light: #fff;
-  --checkbox-background-dark: #333;
-
+  --checkbox-background-dark: #111;
   --checkbox-border-light: #888;
   --checkbox-border-dark: #333;
-
-  --checkbox-shadow-light: #888;
-  --checkbox-shadow-dark: #555;
-
   --checkbox-check-light: #000;
   --checkbox-check-dark: #fff;
 

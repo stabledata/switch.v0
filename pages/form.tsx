@@ -25,7 +25,7 @@ export const options: RDFOptions = {
       type: 'text',
       name: 'max',
       label: 'Short Code',
-      placeholder: '12345',
+      placeholder: '123',
       options: {
         maxLength : {
           value: 3,
@@ -61,6 +61,10 @@ export const options: RDFOptions = {
       name: 'accept-terms',
       label: 'I accept the terms of the agreement',
       HelpText: () => (<div>To continue, you must accept the <a href="#">terms</a></div>),
+      options: {
+        required: 'You must accept the terms!',
+
+      }
     },
   ]
 };

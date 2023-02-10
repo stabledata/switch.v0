@@ -1,5 +1,6 @@
 import { Label } from "@radix-ui/react-label"
 import { RDFFieldProps } from "./RDF"
+import { RDFErrorMessage, RDFHelpText } from "./RDFHelpText"
 
 export type RDFTextFieldProps = RDFFieldProps & {
   placeholder?: string
@@ -48,20 +49,8 @@ export const RDFTextField = ({
             {...register(name, options)}
           />
       }
-      <div className="instructions">
-        {error && error.message > ''
-          ? <span className="error-message">{error.message as string}</span>
-          : null
-        }
-        {typeof helper === 'string'
-          ? <span className="field-help-text">{helper}</span>
-          : null
-        }
-        {typeof helper === 'function'
-          ? helper()
-          : null
-        }
-      </div>
+      <RDFErrorMessage error={error} />
+      <RDFHelpText helper={helper} />
     </div>
   )
 }

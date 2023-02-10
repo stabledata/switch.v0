@@ -2,7 +2,7 @@ import React from 'react';
 import { useRDF } from './useRDF';
 import type { RDFOptions } from './useRDF';
 import { RDFTextField } from './RDFTextField';
-import type { UseFormRegister, FieldValues, RegisterOptions, FieldErrors } from "react-hook-form"
+import type { UseFormRegister, FieldValues, RegisterOptions, FieldErrors, Control } from "react-hook-form"
 import { RDFCheckbox } from './RDFCheckbox';
 
 export type RDFProps<T> = {
@@ -21,6 +21,10 @@ export type RDFFieldProps = {
   errors: FieldErrors
 }
 
+export type RDFControlledInputProps = RDFFieldProps & {
+  control: Control<FieldValues, unknown>
+}
+
 /**
  *
  * @props options for rendering the form declaratively {@link RDFProps}
@@ -35,7 +39,7 @@ export function RDF<T>({
     fields,
     register,
     errors,
-    // watch,
+    control,
     handleSubmit: rhfSubmitHandler
   } = useRDF(options)
 
@@ -65,7 +69,7 @@ export function RDF<T>({
                 key={`${field.name}-${index}`}
                 name={field.name}
                 label={field.label}
-
+                control={control}
                 register={register}
                 options={field.options}
                 errors={errors}
