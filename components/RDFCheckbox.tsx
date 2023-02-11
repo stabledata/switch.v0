@@ -32,7 +32,6 @@ export const RDFCheckbox = ({
   const render = ({ field }) => {
     return (
       <div className={`field field-${name}`}>
-
         <div className="checkbox-wrap">
           <RadixCheckbox
             field={field}

@@ -56,7 +56,7 @@ export const options: RDFOptions = {
       type: 'multiline',
       name: 'story',
       label: 'Tell us your story',
-      placeholder: 'This is a longer input option',
+      placeholder: 'This is a "multiline" input type',
       helpText: 'If you need some inspiration, read this help text'
     },
 
@@ -70,6 +70,7 @@ export const options: RDFOptions = {
       choices: [
         '---UPS',
         { label: 'UPS Ground', value: 'ups-ground-234' },
+        { label: 'UPS Same Day', value: 'ups-sd-234', disabled: true },
         'UPS Air',
         '---Fedex',
         'FedEx Ground',
@@ -83,6 +84,20 @@ export const options: RDFOptions = {
       }
     },
 
+    // radio group (radix)
+    {
+      type: 'radio',
+      name: 'dinner-choice',
+      label: 'Dinner choice',
+      helpText: 'Note, the vegetarian option is vegan.',
+      choices: [
+        { label: 'Chicken', value: 'chicken' },
+        { label: 'Fish', value: 'fish' },
+        { label: 'Filet Mignon w Gold Leaf', value: 'filet-mignon', disabled: true },
+        'Vegetarian'
+      ]
+    },
+
     // checkbox (radix)
     {
       type: 'checkbox',
@@ -91,7 +106,6 @@ export const options: RDFOptions = {
       HelpText: () => (<div>To continue, you must accept the <a href="#">terms</a></div>),
       options: {
         required: 'You must accept the terms!',
-
       }
     },
   ]

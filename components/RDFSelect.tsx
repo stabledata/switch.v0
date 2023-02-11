@@ -82,9 +82,9 @@ const RadixSelect = ({ field, choices, placeholder, inputClasses }) => {
           <Select.Viewport className="select-viewport">
             <Select.Group>
             {choices.map((choice: string, index: number) => {
-              const { label, value } = typeof choice === 'object'
+              const { label, value, disabled } = typeof choice === 'object'
               ? choice
-              : { label: choice, value: choice };
+              : { label: choice, value: choice, disabled: false };
 
               if (value.indexOf('---') === 0) {
                 return <Select.Label
@@ -96,6 +96,7 @@ const RadixSelect = ({ field, choices, placeholder, inputClasses }) => {
               return <SelectItem
                 key={`${value}-${index}`}
                 value={value}
+                disabled={disabled}
               >
                 {label}
               </SelectItem>
