@@ -4,7 +4,7 @@ import { Label } from "@radix-ui/react-label";
 import { RDFControlledInputProps, RDFFieldProps } from "./RDF";
 import * as Checkbox from '@radix-ui/react-checkbox';
 import { CheckIcon } from '@radix-ui/react-icons';
-import { RDFErrorMessage, RDFHelpText } from './RDFHelpText';
+import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
 
 export type RDFCheckboxProps = RDFControlledInputProps & {}
 

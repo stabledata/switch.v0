@@ -157,9 +157,9 @@ form {
   flex-basis: 50px;
   width: 42px;
   height: 25px;
-  background-color: black;
   border-radius: 9999px;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background-color: var(--switch-off-background-light);
+  -webkit-tap-highlight-color: var(--switch-off-background-light);
   border: none;
 }
 
@@ -231,13 +231,23 @@ form {
     border: 1px solid var(--checkbox-border-dark);
   }
   .checkbox:hover, .checkbox:focus, .radio:focus, .radio:hover  {
-    box-shadow: 0 0 5px 0 var(--input-focused-shadow-dark);
+    box-shadow: 0 0 9px 0 var(--input-focused-shadow-dark);
   }
   .checkbox-indicator, .radio-group-indicator {
     color: var(--checkbox-check-dark);
   }
   .radio-group-indicator::after {
     background-color: var(--radio-select-indicator-dark);
+  }
+  .switch {
+    background-color: var(--switch-off-background-dark);
+    -webkit-tap-highlight-color: var(--switch-off-background-dark);
+  }
+  .switch:focus, .switch:hover {
+    box-shadow: 0 0 9px 0 var(--input-focused-shadow-dark);
+  }
+  .switch[data-state='checked'] {
+    background-color: var(--switch-on-background-dark);
   }
 }
 
@@ -279,7 +289,6 @@ form {
   box-shadow: 0px 10px 38px -10px var(--select-content-shadow-light), 0px 10px 20px -15px var(--select-content-shadow-light);
 }
 
-
 .select-viewport {
   padding: 5px;
   padding-bottom: 10px;
@@ -315,7 +324,7 @@ form {
   font-size: 11px;
   line-height: 25px;
   margin-top: 10px;
-  color: var(--select-group-label);
+  color: var(--select-group-label-light);
 }
 
 .item-indicator {

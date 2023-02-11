@@ -4,7 +4,7 @@ import { Label } from "@radix-ui/react-label";
 import { RDFControlledInputProps, RDFFieldProps } from "./RDF";
 import * as Select from '@radix-ui/react-select';
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
-import { RDFErrorMessage, RDFHelpText } from './RDFHelpText';
+import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
 import { RDFTextFieldProps } from './RDFTextField';
 
 export type Choice = string | { label: string, value: string }  // for selects

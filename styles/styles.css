@@ -29,17 +29,21 @@
   --checkbox-check-light: #000;
   --checkbox-check-dark: #fff;
 
-  --switch-on-background-light: green;
+  --switch-on-background-light: rgb(55, 199, 55);
+  --switch-on-background-dark: rgb(55, 199, 55);
+  --switch-off-background-light: rgb(148, 148, 148);
+  --switch-off-background-dark: rgb(125, 125, 125);
+
 
   --radio-select-indicator-light: #555;
   --radio-select-indicator-dark: #bbb;
 
   --select-placeholder-color-light: #777;
   --select-placeholder-color-dark: #777;
-  --select-group-label-light: #aaa;
+  --select-group-label-light: rgb(158, 158, 158);
   --select-group-label-dark: #aaa;
   --select-highlight-text-light: #222;
-  --select-highlight-background-light: #aaa;
+  --select-highlight-background-light: rgb(228, 228, 228);
   --select-highlight-text-dark: rgb(241, 241, 241);
   --select-highlight-background-dark: rgb(89, 89, 89);
 

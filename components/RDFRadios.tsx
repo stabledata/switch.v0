@@ -4,7 +4,7 @@ import { Label } from "@radix-ui/react-label";
 import { RDFControlledInputProps, RDFFieldProps } from "./RDF";
 import * as RadioGroup from '@radix-ui/react-radio-group';
 import { CheckIcon } from '@radix-ui/react-icons';
-import { RDFErrorMessage, RDFHelpText } from './RDFHelpText';
+import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
 import { RDFTextFieldProps } from './RDFTextField';
 
 export type Choice = string | { label: string, value: string }  // for selects
@@ -78,7 +78,7 @@ const RadixRadio = ({ field, id, choices, inputClasses }) => {
           : { label: choice, value: choice, disabled: false };
 
         return (
-          <div className="radio-wrap">
+          <div className="radio-wrap" key={`${label}-${index}`}>
             <RadioGroup.Item
               className="radio"
               value={value}

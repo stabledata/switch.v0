@@ -66,7 +66,7 @@ export const options: RDFOptions = {
       name: 'shipping',
       label: 'Select shipping',
       placeholder: 'Select an option...',
-      helpText: 'Ground deliveries can take up to seven weeks.',
+      helpText: 'Ground deliveries can take up to several millennia.',
       choices: [
         '---UPS',
         { label: 'UPS Ground', value: 'ups-ground-234' },
@@ -75,9 +75,9 @@ export const options: RDFOptions = {
         '---Fedex',
         'FedEx Ground',
         'FedEx Air',
-        '---Canal',
-        'Mule',
-        'Barge'
+        '---Erie Canal',
+        { label: 'Barge +Mule Power', value: 'boat-w-sal' },
+        'Barge Only'
       ],
       options: {
         required: 'Select a valid shipping option to proceed with order',

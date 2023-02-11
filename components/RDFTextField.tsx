@@ -1,6 +1,6 @@
 import { Label } from "@radix-ui/react-label"
 import { RDFFieldProps } from "./RDF"
-import { RDFErrorMessage, RDFHelpText } from "./RDFHelpText"
+import { RDFErrorMessage, RDFHelpText } from "./RDFHelpers"
 
 export type RDFTextFieldProps = RDFFieldProps & {
   placeholder?: string
