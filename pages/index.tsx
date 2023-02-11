@@ -5,11 +5,15 @@ import { options } from '../form';
 
 type FormData = {
   simple: string
+  hero: File
 }
 
 export default function Home() {
   const [data, setData] = useState<FormData>(null)
-  const demoSubmitHandler= (data: FormData): void => setData(data)
+  const demoSubmitHandler= (data: FormData): void => {
+    console.log('got hero?', data.hero)
+    setData(data)
+  }
   const description = ''
   return (
     <div className="container">
@@ -31,7 +35,6 @@ export default function Home() {
 
         <RDF<FormData>
           options={options}
-          submitButtonLabel='Send it!'
           handleSubmit={demoSubmitHandler}
         />
         <div className="preview">

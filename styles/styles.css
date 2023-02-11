@@ -53,6 +53,9 @@
   --select-content-shadow-light: rgba(22, 23, 24, 0.35);
   --select-content-shadow-dark: rgba(190, 190, 190, 0.35);
 
+  --media-target-background-light: #eee;
+  --media-target-icon-color-light: rgb(207, 207, 207);
+
   --link-color:  rgb(72, 202, 238);
   --error-message: #cc0000;
 

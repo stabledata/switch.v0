@@ -380,5 +380,72 @@ form {
     background-color: var(--input-background-dark);
     color: var(--input-text-color-dark);
   }
-
 }
+
+.media-wrap .label {
+  display: block;
+  width: 100%;
+}
+
+.media-target {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 120px;
+  margin: 10px 0;
+  border-radius: 5px;
+  background-color: var(--media-target-background-light);
+}
+
+.media-preview {
+  position: absolute;
+  width: 100%;
+  height: 120px;
+  background-size: cover;
+  background-position: center center;
+  border-radius: 5px;
+}
+
+.media-drop {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.media-drop svg {
+  display: block;
+  width: 35px;
+  margin-top: 25px;
+  flex: 1;
+  color: var(--media-target-icon-color-light);
+}
+
+.media-drop p {
+  font-size: 10px;
+  text-align: center;
+  flex: 1;
+}
+
+.media-input {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.media-info span, .media-info a {
+  display: block;
+  font-size: 12px;
+  line-height: 1;
+  margin: 5px 0;
+}
+
+.media-info a {
+  cursor: pointer;
+}
+

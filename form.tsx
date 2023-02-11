@@ -59,7 +59,19 @@ export const options: RDFOptions = {
       placeholder: 'This is a "multiline" input type',
       helpText: 'If you need some inspiration, read this help text'
     },
-
+    // media input
+    {
+      type: 'media',
+      name: 'hero',
+      label: 'Upload a hero image',
+      HelpText: () => <div>Need ideas? Browse <a href="https://unslpash.com">unslpash</a> for rights free not-ugly images.</div>,
+      options: {
+        validate: ((value) => {
+          console.log('got validation??', value);
+          return value;
+        })
+      }
+    },
     // select (radix)
     {
       type: 'select',

@@ -7,11 +7,12 @@ import { RDFCheckbox } from './RDFCheckbox';
 import { RDFSelect } from './RDFSelect';
 import { RDFRadio } from './RDFRadios';
 import { RDFSwitch } from './RDFSwitch';
+import { RDFMedia } from './RDFMedia';
 
 export type RDFProps<T> = {
   options: RDFOptions
-  submitButtonLabel: string
   handleSubmit: (data: T) => void | T
+  submitButtonLabel?: string
 }
 
 export type RDFFieldProps = {
@@ -19,7 +20,7 @@ export type RDFFieldProps = {
   label?: string
   helper?: string | (() => JSX.Element)
   // react hook form
-  register: UseFormRegister<FieldValues>
+  register?: UseFormRegister<FieldValues>
   options: RegisterOptions
   errors: FieldErrors
 }
@@ -36,7 +37,7 @@ export type RDFControlledInputProps = RDFFieldProps & {
 export function RDF<T>({
   options,
   handleSubmit,
-  submitButtonLabel
+  submitButtonLabel = 'Send it'
 }: RDFProps<T>) {
   const {
     fields,
@@ -62,6 +63,19 @@ export function RDF<T>({
                 register={register}
                 options={field.options}
                 multiline={field.type === 'multiline'}
+                helper={field.helpText || field.HelpText}
+                errors={errors}
+              />
+            )
+          // text field
+          case 'media':
+            return (
+              <RDFMedia
+                key={`${field.name}-${index}`}
+                name={field.name}
+                label={field.label}
+                control={control}
+                options={field.options}
                 helper={field.helpText || field.HelpText}
                 errors={errors}
               />
