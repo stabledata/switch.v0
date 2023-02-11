@@ -34,7 +34,11 @@ export const RDFCheckbox = ({
       <div className={`field field-${name}`}>
 
         <div className="checkbox-wrap">
-          <RadixCheckbox field={field} inputClasses={inputClasses} />
+          <RadixCheckbox
+            field={field}
+            inputClasses={inputClasses}
+            id={name}
+          />
           <Label className={labelClasses.join(' ')} htmlFor={name}>
             {label}
           </Label>
@@ -55,12 +59,13 @@ export const RDFCheckbox = ({
   )
 };
 
-const RadixCheckbox = ({ field, inputClasses }) => {
+const RadixCheckbox = ({ field, id, inputClasses }) => {
   return (
     <Checkbox.Root
       className={['checkbox', ...inputClasses].join(' ')}
       checked={field.value === true}
       onCheckedChange={field.onChange}
+      id={id}
     >
       <Checkbox.Indicator className="checkbox-indicator">
         <CheckIcon />

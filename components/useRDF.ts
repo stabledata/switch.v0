@@ -13,7 +13,7 @@ export type RDFFieldOptions = {
   HelpText?: () => JSX.Element
   placeholder?: string
   options?: RegisterOptions
-  choices?: string[] // for selects
+  choices?: (string | { label: string, value: string })[]  // for selects
 }
 
 export type RDFField = RDFFieldOptions

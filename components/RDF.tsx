@@ -64,6 +64,7 @@ export function RDF<T>({
                 errors={errors}
               />
             )
+          // checkbox
           case 'checkbox':
             return (
               <RDFCheckbox
@@ -77,6 +78,7 @@ export function RDF<T>({
                 errors={errors}
               />
             )
+          // select
           case 'select':
             return (
               <RDFSelect

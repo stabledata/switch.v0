@@ -69,7 +69,7 @@ export const options: RDFOptions = {
       helpText: 'Ground deliveries can take up to seven weeks.',
       choices: [
         '---UPS',
-        'UPS Ground',
+        { label: 'UPS Ground', value: 'ups-ground-234' },
         'UPS Air',
         '---Fedex',
         'FedEx Ground',

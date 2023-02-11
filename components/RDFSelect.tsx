@@ -7,8 +7,9 @@ import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons
 import { RDFErrorMessage, RDFHelpText } from './RDFHelpText';
 import { RDFTextFieldProps } from './RDFTextField';
 
+export type Choice = string | { label: string, value: string }  // for selects
 export type RDFSelectProps = RDFControlledInputProps & RDFTextFieldProps & {
-  choices: string[]
+  choices: Choice[]
 }
 
 /**
@@ -65,7 +66,6 @@ export const RDFSelect = ({
 };
 
 const RadixSelect = ({ field, choices, placeholder, inputClasses }) => {
-  console.log('got choices?', choices)
   return (
     <Select.Root onValueChange={field.onChange} value={field.value}>
       <Select.Trigger className={['select-trigger', ...inputClasses].join(' ')} aria-label="Food">
@@ -82,13 +82,23 @@ const RadixSelect = ({ field, choices, placeholder, inputClasses }) => {
           <Select.Viewport className="select-viewport">
             <Select.Group>
             {choices.map((choice: string, index: number) => {
-              if (choice.indexOf('---') === 0) {
+              const { label, value } = typeof choice === 'object'
+              ? choice
+              : { label: choice, value: choice };
+
+              if (value.indexOf('---') === 0) {
                 return <Select.Label
                   key={`${choice}-${index}`}
                   className="select-label">{choice.substring(3)}
                 </Select.Label>
               }
-              return <SelectItem key={`${choice}-${index}`} value={choice}>{choice}</SelectItem>
+
+              return <SelectItem
+                key={`${value}-${index}`}
+                value={value}
+              >
+                {label}
+              </SelectItem>
 
             })}
             </Select.Group>
