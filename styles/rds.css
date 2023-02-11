@@ -116,7 +116,7 @@ form {
 }
 
 /* checkbox & radios */
-.checkbox-wrap, .radio-wrap {
+.checkbox-wrap, .radio-wrap, .switch-wrap {
   display: flex;
   width: 100%;
   height: 50px;
@@ -124,9 +124,20 @@ form {
 }
 
 .radio-wrap {
-  height: 35px;
+  height: 30px;
   margin-top: 5px;
 }
+.radio-wrap, .checkbox-wrap label {
+  font-size: 14px;
+}
+.switch-wrap {
+  margin-top: 10px;
+  height: 20px;
+}
+.switch-wrap label {
+  width: calc(100% - 50px);
+}
+
 
 .checkbox, .radio {
   width: 25px;
@@ -139,6 +150,17 @@ form {
   background-color: var(--checkbox-background-light);
   border: 1px solid var(--checkbox-border-light);
   transition: all 230ms ease-out;
+}
+
+.switch {
+  position: relative;
+  flex-basis: 50px;
+  width: 42px;
+  height: 25px;
+  background-color: black;
+  border-radius: 9999px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  border: none;
 }
 
 .radio {
@@ -178,6 +200,28 @@ form {
   height: 11px;
   border-radius: 50%;
   background-color: var(--radio-select-indicator-light);
+}
+
+.switch:focus {
+  box-shadow: 0 0 2px 0 var(--input-focused-shadow-light);
+}
+.switch[data-state='checked'] {
+  background-color: var(--switch-on-background-light);
+}
+
+.switch-toggle {
+  display: block;
+  width: 21px;
+  height: 21px;
+  background-color: white;
+  border-radius: 9999px;
+  transition: transform 100ms;
+  transform: translateX(-3px);
+  will-change: transform;
+}
+
+.switch-toggle[data-state='checked'] {
+  transform: translateX(20px);
 }
 
 

@@ -3,7 +3,7 @@ import { ReactElement } from 'react';
 import { FieldErrors, useForm } from 'react-hook-form';
 import type { UseFormReturn, RegisterOptions } from 'react-hook-form';
 
-export type RDFFieldType = 'text' | 'multiline' | 'checkbox' | 'select' | 'radio'
+export type RDFFieldType = 'text' | 'multiline' | 'checkbox' | 'select' | 'radio' | 'switch'
 
 export type RDFFieldOptions = {
   type: RDFFieldType

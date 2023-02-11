@@ -6,6 +6,7 @@ import type { UseFormRegister, FieldValues, RegisterOptions, FieldErrors, Contro
 import { RDFCheckbox } from './RDFCheckbox';
 import { RDFSelect } from './RDFSelect';
 import { RDFRadio } from './RDFRadios';
+import { RDFSwitch } from './RDFSwitch';
 
 export type RDFProps<T> = {
   options: RDFOptions
@@ -69,6 +70,20 @@ export function RDF<T>({
           case 'checkbox':
             return (
               <RDFCheckbox
+                key={`${field.name}-${index}`}
+                name={field.name}
+                label={field.label}
+                control={control}
+                register={register}
+                options={field.options}
+                helper={field.helpText || field.HelpText}
+                errors={errors}
+              />
+            )
+          // switch
+          case 'switch':
+            return (
+              <RDFSwitch
                 key={`${field.name}-${index}`}
                 name={field.name}
                 label={field.label}

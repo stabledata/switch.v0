@@ -97,7 +97,18 @@ export const options: RDFOptions = {
         'Vegetarian'
       ]
     },
-
+    // switch (radix)
+    {
+      type: 'switch',
+      name: 'auto-reply',
+      label: 'Vacation mode (auto-reply to messages)',
+    },
+    {
+      type: 'switch',
+      name: 'data-enabled',
+      label: 'Enable cellular data roaming',
+      helpText: 'Switches are cool 😎, but data roaming is usually not.'
+    },
     // checkbox (radix)
     {
       type: 'checkbox',
