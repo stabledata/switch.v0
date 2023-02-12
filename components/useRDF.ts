@@ -1,3 +1,4 @@
+import { fstat } from 'fs';
 import { FieldErrors, useForm } from 'react-hook-form';
 import type {
   UseFormReturn,
@@ -32,7 +33,6 @@ export type RDFField = RDFFieldOptions
 
 // options for the entire form
 export type RDFOptions = {
-  onSubmit: (fd: FormData) => void
   fields: RDFField[]
 }
 
@@ -42,7 +42,10 @@ export type UseRDFInternalHookReturn<T> =  Partial<UseFormReturn> & {
   handleSubmitWithFormData: (data: T) => FormData,
 }
 
-export const useRDFInternal = <T>(options: RDFOptions): UseRDFInternalHookReturn<T> => {
+export const useRDFInternal = <T>(
+  options: RDFOptions,
+  onSubmit: (fd: FormData, data?: T) => void
+): UseRDFInternalHookReturn<T> => {
   const {
     register,
     handleSubmit,
@@ -50,23 +53,23 @@ export const useRDFInternal = <T>(options: RDFOptions): UseRDFInternalHookReturn
     control
   } = useForm();
 
-
   // transform results into FormData
   const handleSubmitWithFormData = (data: T): FormData => {
     const fd = new FormData();
     // append each field to form data depending on file type
     Object.entries(data)
-      .filter(([key, value]) => !!value) // only send defined fields
+      .filter(([_, value]) => !!value) // only send defined fields
       .forEach(([key, value]) => {
-        const fileName = value && value.name
-          ? value.name
-          : undefined;
-        fd.set(key, value. fileName);
+        if (value instanceof File) {
+          fd.append(key, value, value.name);
+        } else {
+          fd.set(key, value);
+        }
       });
 
     // for now, we can just submit to wrapper
     // since this is being defined
-    options.onSubmit(fd);
+    onSubmit(fd, data);
 
     // TODO:
     // 1 - options to perform the POST, headers etc.

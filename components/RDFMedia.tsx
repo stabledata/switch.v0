@@ -14,7 +14,7 @@ export type RDFMediaProps = RDFControlledInputProps & {
 /**
  *
  * @props see {@link RDFMediaProps}
- * @returns text field with given options
+ * @returns field with given options
  */
 export const RDFMedia = ({
   name,

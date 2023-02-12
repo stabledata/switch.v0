@@ -11,7 +11,7 @@ export type RDFCheckboxProps = RDFControlledInputProps & {}
 /**
  *
  * @props see {@link RDFFieldProps}
- * @returns text field with given options
+ * @returns field with given options
  */
 export const RDFCheckbox = ({
   name,

@@ -15,7 +15,7 @@ export type RDFSelectProps = RDFControlledInputProps & RDFTextFieldProps & {
 /**
  *
  * @props see {@link RDFFieldProps}
- * @returns text field with given options
+ * @returns field with given options
  */
 export const RDFSelect = ({
   name,

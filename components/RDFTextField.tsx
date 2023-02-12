@@ -10,7 +10,7 @@ export type RDFTextFieldProps = RDFFieldProps & {
 /**
  *
  * @props see {@link RDFTextFieldProps}
- * @returns text field with given options
+ * @returns field with given options
  */
 export const RDFTextField = ({
   name,

@@ -1,11 +1,7 @@
-import type { RDFOptions } from './components/useRDFInternal';
+import type { RDFOptions } from './components/useRDF';
 
 export const options: RDFOptions = {
-  onSubmit: (fd: FormData) => {
-    console.log('got the form data in config!', fd);
-  },
   fields: [
-
     // simple as it gets!
     {
       type: 'text',
@@ -49,7 +45,7 @@ export const options: RDFOptions = {
       options: {
         validate: ((value) => {
           if (value.indexOf('ing') < 0) {
-            return 'That input does not contain "ing"'
+            return 'That input does not contain "ing"';
           }
         })
       }
@@ -72,7 +68,7 @@ export const options: RDFOptions = {
       options: {
         validate: ((value) => {
           if (value && value.size > 10_000_000) {
-            return 'Files must be smaller than 10mb'
+            return 'Files must be smaller than 10mb';
           }
           return value;
         })

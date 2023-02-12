@@ -3,18 +3,17 @@ import Head from 'next/head';
 import { RDF } from '../components/RDF';
 import { options } from '../form';
 
-type FormData = {
+type FormState = {
   simple: string
-  hero: File
 }
 
 export default function Home() {
-  const [data, setData] = useState<FormData>(null);
-  const demoSubmitHandler = (data: FormData): void => {
-    console.log('got hero?', data.hero);
-    setData(data);
-  };
-  const description = '';
+  const [data, setData] = useState<any>(null);
+  const demoSubmitHandler = (
+    fd: FormData,  // useful for actually sending info
+    state: FormState
+  ): void => setData(state);
+
   return (
     <div className="container">
       <Head>
@@ -28,14 +27,12 @@ export default function Home() {
         <p>
           A React component that&nbsp;
           <a href="https://github.com/cif/radix-declarative-form/blob/main/form.tsx">declaratively</a> renders beautiful and customizable forms&nbsp;with <a href="https://www.radix-ui.com/docs/primitives/overview/introduction">RadixUI</a>,&nbsp;
-          <a href="https://github.com/cif/radix-declarative-form/blob/main/styles/rds.css">plain CSS</a>, powered by&nbsp;<br />
-          <a href="https://react-hook-form.com/get-started#">react-form-hook</a>.
+          <a href="https://github.com/cif/radix-declarative-form/blob/main/styles/rds.css">plain CSS</a>, powered by<br /><a href="https://react-hook-form.com/get-started#">react-form-hook</a>.
         </p>
 
-
-        <RDF<FormData>
+        <RDF<FormState>
           options={options}
-          handleSubmit={demoSubmitHandler}
+          onSubmit={demoSubmitHandler}
         />
         <div className="preview">
           <h2>Submitted data:</h2>

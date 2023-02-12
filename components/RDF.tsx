@@ -17,7 +17,7 @@ import { RDFMedia } from './RDFMedia';
 
 export type RDFProps<T> = {
   options: RDFOptions
-  handleSubmit: (data: T) => void | T
+  onSubmit: (fd: FormData, data?: T) => void
   submitButtonLabel?: string
 }
 
@@ -42,6 +42,7 @@ export type RDFControlledInputProps = RDFFieldProps & {
  */
 export function RDF<T>({
   options,
+  onSubmit,
   submitButtonLabel = 'Send it'
 }: RDFProps<T>) {
   const {
@@ -51,7 +52,7 @@ export function RDF<T>({
     control,
     handleSubmit: rhfSubmitHandler,
     handleSubmitWithFormData
-  } = useRDFInternal<T>(options);
+  } = useRDFInternal<T>(options, onSubmit);
 
   return (
     <form onSubmit={rhfSubmitHandler(handleSubmitWithFormData)}>
