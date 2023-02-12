@@ -32,7 +32,7 @@ export const RDFTextField = ({
   }
 
   return (
-    <div className={`field text-input field-${name} ${disabled ? 'media-disabled' : ''}s`}>
+    <div className={`field text-input field-${name} ${disabled ? 'text-disabled' : ''}`}>
       <Label className={labelClasses.join(' ')} htmlFor={name}>
         {label}
       </Label>
@@ -42,12 +42,14 @@ export const RDFTextField = ({
             id={name}
             placeholder={placeholder}
             {...register(name, options)}
+            disabled={disabled as boolean}
           />
         : <input
             className={inputClasses.join(' ')}
             type="text" id={name}
             placeholder={placeholder}
             {...register(name, options)}
+            disabled={disabled as boolean}
           />
       }
       <RDFErrorMessage error={error} />

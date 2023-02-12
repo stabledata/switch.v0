@@ -78,6 +78,7 @@ export function RDF<T>({
         // hide hidden fields
         .filter((field: RDFField<T>) => !field.hidden)
         .map((field: RDFField<T>, index) => {
+          console.log(field.name, field.disabled);
           switch (field.type) {
             // text field
             case 'text':
