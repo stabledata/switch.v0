@@ -1,5 +1,3 @@
-import { stringify } from 'querystring';
-import { useState } from 'react';
 import { FieldErrors, useForm } from 'react-hook-form';
 import type {
   UseFormReturn,
@@ -38,20 +36,19 @@ export type RDFOptions = {
   fields: RDFField[]
 }
 
-export type UseRDFHookReturn<T> =  Partial<UseFormReturn> & {
+export type UseRDFInternalHookReturn<T> =  Partial<UseFormReturn> & {
   fields: RDFField[]
   errors?: FieldErrors
   handleSubmitWithFormData: (data: T) => FormData,
 }
 
-export const useRDF = <T>(options: RDFOptions): UseRDFHookReturn<T> => {
-  const [formData, useFormData] = useState<FormData>(null);
+export const useRDFInternal = <T>(options: RDFOptions): UseRDFInternalHookReturn<T> => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     control
-  } = useForm()
+  } = useForm();
 
 
   // transform results into FormData
@@ -64,7 +61,7 @@ export const useRDF = <T>(options: RDFOptions): UseRDFHookReturn<T> => {
         const fileName = value && value.name
           ? value.name
           : undefined;
-        fd.set(key, value. fileName)
+        fd.set(key, value. fileName);
       });
 
     // for now, we can just submit to wrapper
@@ -75,7 +72,7 @@ export const useRDF = <T>(options: RDFOptions): UseRDFHookReturn<T> => {
     // 1 - options to perform the POST, headers etc.
     // 2 - think about how to handle in flight state on consumer end
     return fd;
-  }
+  };
 
   return {
     fields: options.fields,
@@ -85,4 +82,4 @@ export const useRDF = <T>(options: RDFOptions): UseRDFHookReturn<T> => {
     handleSubmitWithFormData,
     errors
   };
-}
+};

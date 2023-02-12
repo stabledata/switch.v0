@@ -1,7 +1,7 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import { Label } from "@radix-ui/react-label";
-import { RDFControlledInputProps, RDFFieldProps } from "./RDF";
+import { Label } from '@radix-ui/react-label';
+import { RDFControlledInputProps, RDFFieldProps } from './RDF';
 import * as RadioGroup from '@radix-ui/react-radio-group';
 import { CheckIcon } from '@radix-ui/react-icons';
 import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
@@ -26,12 +26,12 @@ export const RDFRadio = ({
   options,
   errors,
 }: RDFRadioProps) => {
-  const labelClasses = ['label', `label-${name}`]
-  const inputClasses = ['input', `input-${name}`]
-  const error = errors[name]
+  const labelClasses = ['label', `label-${name}`];
+  const inputClasses = ['input', `input-${name}`];
+  const error = errors[name];
   if (error) {
-    inputClasses.push('input-has-error')
-    labelClasses.push('label-has-error')
+    inputClasses.push('input-has-error');
+    labelClasses.push('label-has-error');
   }
 
   const render = ({ field }) => {
@@ -51,8 +51,8 @@ export const RDFRadio = ({
           />
         </div>
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <Controller
@@ -61,7 +61,7 @@ export const RDFRadio = ({
       rules={options}
       render={render}
     />
-  )
+  );
 };
 
 const RadixRadio = ({ field, id, choices, inputClasses }) => {
@@ -91,8 +91,8 @@ const RadixRadio = ({ field, id, choices, inputClasses }) => {
               {label}
             </label>
           </div>
-        )
+        );
       })}
     </RadioGroup.Root>
-  )
+  );
 };

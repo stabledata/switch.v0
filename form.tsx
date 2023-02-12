@@ -1,4 +1,4 @@
-import type { RDFOptions } from './components/useRDF';
+import type { RDFOptions } from './components/useRDFInternal';
 
 export const options: RDFOptions = {
   onSubmit: (fd: FormData) => {

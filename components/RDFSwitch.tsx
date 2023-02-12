@@ -1,7 +1,7 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import { Label } from "@radix-ui/react-label";
-import { RDFControlledInputProps, RDFFieldProps } from "./RDF";
+import { Label } from '@radix-ui/react-label';
+import { RDFControlledInputProps, RDFFieldProps } from './RDF';
 import * as Switch from '@radix-ui/react-switch';
 import { CheckIcon } from '@radix-ui/react-icons';
 import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
@@ -21,12 +21,12 @@ export const RDFSwitch = ({
   options,
   errors,
 }: RDFSwitchProps) => {
-  const labelClasses = ['label', `label-${name}`]
-  const inputClasses = ['input', `input-${name}`]
-  const error = errors[name]
+  const labelClasses = ['label', `label-${name}`];
+  const inputClasses = ['input', `input-${name}`];
+  const error = errors[name];
   if (error) {
-    inputClasses.push('input-has-error')
-    labelClasses.push('label-has-error')
+    inputClasses.push('input-has-error');
+    labelClasses.push('label-has-error');
   }
 
   const render = ({ field }) => {
@@ -44,8 +44,8 @@ export const RDFSwitch = ({
         <RDFErrorMessage error={error} />
         <RDFHelpText helper={helper} />
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <Controller
@@ -54,7 +54,7 @@ export const RDFSwitch = ({
       rules={options}
       render={render}
     />
-  )
+  );
 };
 
 const RadixSwitch = ({ field, id }) => {
@@ -62,5 +62,5 @@ const RadixSwitch = ({ field, id }) => {
     <Switch.Root className="switch" id={id} onCheckedChange={field.onChange}>
       <Switch.Thumb className="switch-toggle" />
     </Switch.Root>
-  )
+  );
 };

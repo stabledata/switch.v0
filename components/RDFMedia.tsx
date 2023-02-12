@@ -1,11 +1,11 @@
-import { Label } from "@radix-ui/react-label"
+import { Label } from '@radix-ui/react-label';
 import { CameraIcon } from '@radix-ui/react-icons';
-import { RDFControlledInputProps } from "./RDF"
-import { RDFErrorMessage, RDFHelpText } from "./RDFHelpers"
-import { Controller } from "react-hook-form"
+import { RDFControlledInputProps } from './RDF';
+import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
+import { Controller } from 'react-hook-form';
 import prettyBytes from 'pretty-bytes';
-import { useRef, useState } from "react";
-import { MediaPreviewType } from "./useRDF";
+import { useRef, useState } from 'react';
+import { MediaPreviewType } from './useRDF';
 
 export type RDFMediaProps = RDFControlledInputProps & {
   previewType: MediaPreviewType
@@ -28,12 +28,12 @@ export const RDFMedia = ({
   const [previewImageUrl, setPreviewImageUrl] = useState<string>(null);
   const [media, setMedia] = useState<File>(null);
   const fileInputRef = useRef(null);
-  const labelClasses = ['label', `label-${name}`]
-  const inputClasses = ['input', `input-${name}`]
-  const error = errors[name]
+  const labelClasses = ['label', `label-${name}`];
+  const inputClasses = ['input', `input-${name}`];
+  const error = errors[name];
   if (error) {
-    inputClasses.push('input-has-error')
-    labelClasses.push('label-has-error')
+    inputClasses.push('input-has-error');
+    labelClasses.push('label-has-error');
   }
 
   const render = ({ field }) => {
@@ -43,13 +43,13 @@ export const RDFMedia = ({
       setPreviewImageUrl(URL.createObjectURL(file));
       setMedia(file);
       field.onChange(file);
-    }
+    };
 
     const handleRemoveMedia = () => {
       setPreviewImageUrl(null);
-      setMedia(null)
+      setMedia(null);
       field.onChange(null);
-    }
+    };
 
     return (
       <div className={`field field-${name}`}>
@@ -94,8 +94,8 @@ export const RDFMedia = ({
             : null
         }
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <Controller
@@ -104,5 +104,5 @@ export const RDFMedia = ({
       rules={options}
       render={render}
     />
-  )
-}
+  );
+};

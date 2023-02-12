@@ -1,7 +1,7 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import { Label } from "@radix-ui/react-label";
-import { RDFControlledInputProps, RDFFieldProps } from "./RDF";
+import { Label } from '@radix-ui/react-label';
+import { RDFControlledInputProps, RDFFieldProps } from './RDF';
 import * as Checkbox from '@radix-ui/react-checkbox';
 import { CheckIcon } from '@radix-ui/react-icons';
 import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
@@ -21,12 +21,12 @@ export const RDFCheckbox = ({
   options,
   errors,
 }: RDFCheckboxProps) => {
-  const labelClasses = ['label', `label-${name}`]
-  const inputClasses = ['input', `input-${name}`]
-  const error = errors[name]
+  const labelClasses = ['label', `label-${name}`];
+  const inputClasses = ['input', `input-${name}`];
+  const error = errors[name];
   if (error) {
-    inputClasses.push('input-has-error')
-    labelClasses.push('label-has-error')
+    inputClasses.push('input-has-error');
+    labelClasses.push('label-has-error');
   }
 
   const render = ({ field }) => {
@@ -45,8 +45,8 @@ export const RDFCheckbox = ({
         <RDFErrorMessage error={error} />
         <RDFHelpText helper={helper} />
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <Controller
@@ -55,7 +55,7 @@ export const RDFCheckbox = ({
       rules={options}
       render={render}
     />
-  )
+  );
 };
 
 const RadixCheckbox = ({ field, id, inputClasses }) => {
@@ -70,5 +70,5 @@ const RadixCheckbox = ({ field, id, inputClasses }) => {
         <CheckIcon />
       </Checkbox.Indicator>
     </Checkbox.Root>
-  )
+  );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import Head from 'next/head';
 import { RDF } from '../components/RDF';
 import { options } from '../form';
@@ -9,12 +9,12 @@ type FormData = {
 }
 
 export default function Home() {
-  const [data, setData] = useState<FormData>(null)
+  const [data, setData] = useState<FormData>(null);
   const demoSubmitHandler = (data: FormData): void => {
-    console.log('got hero?', data.hero)
-    setData(data)
-  }
-  const description = ''
+    console.log('got hero?', data.hero);
+    setData(data);
+  };
+  const description = '';
   return (
     <div className="container">
       <Head>

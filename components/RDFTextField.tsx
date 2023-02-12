@@ -1,6 +1,6 @@
-import { Label } from "@radix-ui/react-label"
-import { RDFFieldProps } from "./RDF"
-import { RDFErrorMessage, RDFHelpText } from "./RDFHelpers"
+import { Label } from '@radix-ui/react-label';
+import { RDFFieldProps } from './RDF';
+import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
 
 export type RDFTextFieldProps = RDFFieldProps & {
   placeholder?: string
@@ -22,12 +22,12 @@ export const RDFTextField = ({
   errors,
   multiline,
 }: RDFTextFieldProps) => {
-  const labelClasses = ['label', `label-${name}`]
-  const inputClasses = ['input', `input-${name}`]
-  const error = errors[name]
+  const labelClasses = ['label', `label-${name}`];
+  const inputClasses = ['input', `input-${name}`];
+  const error = errors[name];
   if (error) {
-    inputClasses.push('input-has-error')
-    labelClasses.push('label-has-error')
+    inputClasses.push('input-has-error');
+    labelClasses.push('label-has-error');
   }
 
   return (
@@ -52,5 +52,5 @@ export const RDFTextField = ({
       <RDFErrorMessage error={error} />
       <RDFHelpText helper={helper} />
     </div>
-  )
-}
+  );
+};

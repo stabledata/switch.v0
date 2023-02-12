@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Controller } from 'react-hook-form';
-import { Label } from "@radix-ui/react-label";
-import { RDFControlledInputProps, RDFFieldProps } from "./RDF";
+import { Label } from '@radix-ui/react-label';
+import { RDFControlledInputProps, RDFFieldProps } from './RDF';
 import * as Select from '@radix-ui/react-select';
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
@@ -27,12 +27,12 @@ export const RDFSelect = ({
   options,
   errors,
 }: RDFSelectProps) => {
-  const labelClasses = ['label', `label-${name}`]
-  const inputClasses = ['input', `input-${name}`]
-  const error = errors[name]
+  const labelClasses = ['label', `label-${name}`];
+  const inputClasses = ['input', `input-${name}`];
+  const error = errors[name];
   if (error) {
-    inputClasses.push('input-has-error')
-    labelClasses.push('label-has-error')
+    inputClasses.push('input-has-error');
+    labelClasses.push('label-has-error');
   }
 
   const render = ({ field }) => {
@@ -52,8 +52,8 @@ export const RDFSelect = ({
         <RDFHelpText helper={helper} />
         <RDFErrorMessage error={error} />
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <Controller
@@ -62,7 +62,7 @@ export const RDFSelect = ({
       rules={options}
       render={render}
     />
-  )
+  );
 };
 
 const RadixSelect = ({ field, choices, placeholder, inputClasses }) => {
@@ -90,7 +90,7 @@ const RadixSelect = ({ field, choices, placeholder, inputClasses }) => {
                 return <Select.Label
                   key={`${choice}-${index}`}
                   className="select-label">{choice.substring(3)}
-                </Select.Label>
+                </Select.Label>;
               }
 
               return <SelectItem
@@ -99,7 +99,7 @@ const RadixSelect = ({ field, choices, placeholder, inputClasses }) => {
                 disabled={disabled}
               >
                 {label}
-              </SelectItem>
+              </SelectItem>;
 
             })}
             </Select.Group>
@@ -110,7 +110,7 @@ const RadixSelect = ({ field, choices, placeholder, inputClasses }) => {
         </Select.Content>
       </Select.Portal>
   </Select.Root>
-)};
+);};
 
 type SelectItemProps = {
   value: string
@@ -123,7 +123,7 @@ type SelectItemProps = {
 export type Ref = HTMLDivElement;
 
 const SelectItem = React.forwardRef<Ref, SelectItemProps>((props, ref) => {
-  const { children, className = 'select-item', value, ...rest } = props
+  const { children, className = 'select-item', value, ...rest } = props;
   return (
     <Select.Item className={className} value={value} ref={ref} {...rest}>
       <Select.ItemText>{children}</Select.ItemText>

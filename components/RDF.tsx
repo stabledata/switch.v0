@@ -1,8 +1,14 @@
 import React from 'react';
-import { useRDF } from './useRDF';
+import { useRDFInternal } from './useRDF';
 import type { RDFOptions } from './useRDF';
 import { RDFTextField } from './RDFTextField';
-import type { UseFormRegister, FieldValues, RegisterOptions, FieldErrors, Control } from "react-hook-form"
+import type {
+  UseFormRegister,
+  FieldValues,
+  RegisterOptions,
+  FieldErrors,
+  Control
+} from 'react-hook-form';
 import { RDFCheckbox } from './RDFCheckbox';
 import { RDFSelect } from './RDFSelect';
 import { RDFRadio } from './RDFRadios';
@@ -45,7 +51,7 @@ export function RDF<T>({
     control,
     handleSubmit: rhfSubmitHandler,
     handleSubmitWithFormData
-  } = useRDF<T>(options)
+  } = useRDFInternal<T>(options);
 
   return (
     <form onSubmit={rhfSubmitHandler(handleSubmitWithFormData)}>
@@ -66,7 +72,7 @@ export function RDF<T>({
                 helper={field.helpText || field.HelpText}
                 errors={errors}
               />
-            )
+            );
           // text field
           case 'media':
             return (
@@ -80,7 +86,7 @@ export function RDF<T>({
                 previewType={field.previewType}
                 errors={errors}
               />
-            )
+            );
           // checkbox
           case 'checkbox':
             return (
@@ -94,7 +100,7 @@ export function RDF<T>({
                 helper={field.helpText || field.HelpText}
                 errors={errors}
               />
-            )
+            );
           // switch
           case 'switch':
             return (
@@ -108,7 +114,7 @@ export function RDF<T>({
                 helper={field.helpText || field.HelpText}
                 errors={errors}
               />
-            )
+            );
           // select
           case 'select':
             return (
@@ -124,7 +130,7 @@ export function RDF<T>({
                 helper={field.helpText || field.HelpText}
                 errors={errors}
               />
-            )
+            );
           // radio
           case 'radio':
             return (
@@ -140,10 +146,10 @@ export function RDF<T>({
                 helper={field.helpText || field.HelpText}
                 errors={errors}
               />
-            )
+            );
         }
       })}
       <button type="submit" className="submit">{submitButtonLabel}</button>
     </form>
-  )
+  );
 }
