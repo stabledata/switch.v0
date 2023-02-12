@@ -33,12 +33,15 @@ export type RDFFieldOptions<T> = {
   helpText?: string
   HelpText?: (state?: Partial<T>) => JSX.Element
   placeholder?: string
-  options?: RegisterOptions
   choices?: RDFChoiceOption<T>[]  // for selects
   previewType?: MediaPreviewType // for media uploads
   observe?: boolean
   disabled?: boolean | ((state?: Partial<T>) => void)
   hidden?: boolean | ((state?: Partial<T>) => void)
+  // react hook form options
+  // (second argument to register)
+  // https://react-hook-form.com/api/useform/register
+  options?: RegisterOptions
 }
 
 export type RDFField<T> = RDFFieldOptions<T>

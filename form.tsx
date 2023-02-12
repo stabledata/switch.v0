@@ -23,6 +23,8 @@ export const options: RDFOptions<FormState> = {
       name: 'necessary',
       label: 'A required field',
       placeholder: 'You must enter something here, or else!',
+      // options
+      // https://react-hook-form.com/api/useform/register
       options: {
         required: 'This field is required, fill it out!'
       },
