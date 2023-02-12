@@ -212,17 +212,20 @@ form {
 
 .switch-toggle {
   display: block;
+  position: absolute;
+  top: 2px;
+  left: 5px;
   width: 21px;
   height: 21px;
   background-color: white;
   border-radius: 9999px;
-  transition: transform 100ms;
+  transition: transform 130ms ease-out;
   transform: translateX(-3px);
   will-change: transform;
 }
 
 .switch-toggle[data-state='checked'] {
-  transform: translateX(20px);
+  transform: translateX(21px);
 }
 
 
