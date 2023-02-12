@@ -20,7 +20,7 @@ export const options: RDFOptions<FormState> = {
       type: 'text',
       name: 'input-w-default',
       label: 'This entry has a default value',
-      default: 'I made this text just for me'
+      default: 'This *is* a default value, neat.'
     },
 
     // validation testing from rhf

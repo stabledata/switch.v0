@@ -100,19 +100,27 @@ export const useRDFInternal = <T>(
   // transform results into FormData
   const handleSubmitWithFormData = (data: T): FormData => {
     const fd = new FormData();
+    const finalState = {};
     // append each field to form data depending on file type
     Object.entries(data)
       .filter(([_, value]) => !!value) // only send defined fields
       .forEach(([key, value]) => {
         if (value instanceof File) {
           fd.append(key, value, value.name);
+          // make the stateful object friendlier
+          finalState[key] = {
+            name: value.name,
+            type: value.type,
+            size: value.size
+          };
         } else {
           fd.set(key, value);
+          finalState[key] = value;
         }
       });
 
     // for now, we can just submit to wrapper
-    onSubmit(fd, data);
+    onSubmit(fd, finalState as T);
 
     // TODO:
     // 1 - options to perform the POST, headers etc as configuration

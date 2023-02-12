@@ -22,8 +22,7 @@ export default function Home() {
         <h2 className="title">Radix Declarative Form</h2>
         <p>
           A React component that&nbsp;
-          <a href="https://github.com/cif/radix-declarative-form/blob/main/form.tsx">declaratively</a> renders beautiful and customizable forms&nbsp;with <a href="https://www.radix-ui.com/docs/primitives/overview/introduction">RadixUI</a>,&nbsp;
-          <a href="https://github.com/cif/radix-declarative-form/blob/main/styles/rds.css">plain CSS</a>, powered by<br /><a href="https://react-hook-form.com/get-started#">react-form-hook</a>.
+          <a href="https://github.com/cif/radix-declarative-form/blob/main/form.tsx">declaratively</a> renders beautiful and customizable forms using <a href="https://www.radix-ui.com/docs/primitives/overview/introduction">RadixUI</a> with <a href="https://github.com/cif/radix-declarative-form/blob/main/styles/rds.css">plain CSS</a> powered by<br /><a href="https://react-hook-form.com/get-started#">react-form-hook</a>.
         </p>
 
         <RDF<FormState>
