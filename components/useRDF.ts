@@ -30,6 +30,7 @@ export type RDFFieldOptions<T> = {
   type: RDFFieldType
   name: string
   label?: string
+  default?: string
   helpText?: string
   HelpText?: (state?: Partial<T>) => JSX.Element
   placeholder?: string
@@ -62,20 +63,34 @@ export const useRDFInternal = <T>(
   options: RDFOptions<T>,
   onSubmit: (fd: FormData, data?: T) => void
 ): UseRDFInternalHookReturn<T> => {
+
+  // collect default values
+  const defaultValues = Object.values(options.fields)
+    .filter((field: RDFField<T>) => field.default) // only apply defaults
+    .map((field: RDFField<T>) => ({
+      name: field.name,
+      value: field.default
+    }))
+    .reduce((builder, { name, value }) => ({
+      ...builder,
+      [name]: value
+    }), {});
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
     watch
-  } = useForm();
+  } = useForm({ defaultValues });
 
   // observe specified fields
   const changedState = Object.values(options.fields)
     .filter((field: RDFField<T>) => field.observe)
     .map((field: RDFField<T>) => ({
       name: field.name,
-      value: watch(field.name)
+      // FIXME: setting defaults results in TS issue with field name as string
+      value: watch(field.name as never, field.default)
     }))
     .reduce((builder, { name, value }) => ({
       ...builder,

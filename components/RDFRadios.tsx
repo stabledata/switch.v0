@@ -14,7 +14,7 @@ export type RDFRadioProps = RDFControlledInputProps & RDFTextFieldProps & {
 
 /**
  *
- * @props see {@link RDFFieldProps}
+ * @props see {@link RDFFieldProps<T>}
  * @returns field with given options
  */
 export const RDFRadio = ({

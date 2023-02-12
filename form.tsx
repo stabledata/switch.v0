@@ -15,6 +15,13 @@ export const options: RDFOptions<FormState> = {
       label: 'A simple entry',
       placeholder: 'Whatever you can imagine can go here'
     },
+    // specify a default
+    {
+      type: 'text',
+      name: 'input-w-default',
+      label: 'This entry has a default value',
+      default: 'I made this text just for me'
+    },
 
     // validation testing from rhf
     // https://react-hook-form.com/get-started#Applyvalidation
