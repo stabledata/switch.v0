@@ -51,6 +51,7 @@ form {
 }
 .instructions {
   font-size: 13px;
+  margin-top: 5px;
 }
 .error-message {
   display: block;
@@ -127,8 +128,9 @@ form {
   height: 30px;
   margin-top: 5px;
 }
-.radio-wrap, .checkbox-wrap label {
+.radio-wrap label, .checkbox-wrap label, .switch-wrap label {
   font-size: 14px;
+  line-height: 18px;
 }
 .switch-wrap {
   margin-top: 10px;
@@ -137,7 +139,6 @@ form {
 .switch-wrap label {
   width: calc(100% - 50px);
 }
-
 
 .checkbox, .radio {
   width: 25px;
@@ -399,6 +400,12 @@ form {
   background-color: var(--media-target-background-light);
 }
 
+@media (prefers-color-scheme: dark) {
+  .media-target {
+    background-color: var(--media-target-background-dark);
+  }
+}
+
 .media-preview {
   position: absolute;
   width: 100%;
@@ -406,6 +413,15 @@ form {
   background-size: cover;
   background-position: center center;
   border-radius: 5px;
+}
+
+.media-target-thumb {
+  width: 160px;
+}
+
+.media-target-thumb {
+  position: relative;
+  flex: 1;
 }
 
 .media-drop {
@@ -441,6 +457,7 @@ form {
 .media-info span, .media-info a {
   display: block;
   font-size: 12px;
+  font-weight: 300;
   line-height: 1;
   margin: 5px 0;
 }
@@ -448,4 +465,9 @@ form {
 .media-info a {
   cursor: pointer;
 }
+
+.media-info .file-name {
+  font-weight: 500;
+}
+
 

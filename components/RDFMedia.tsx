@@ -5,8 +5,11 @@ import { RDFErrorMessage, RDFHelpText } from "./RDFHelpers"
 import { Controller } from "react-hook-form"
 import prettyBytes from 'pretty-bytes';
 import { useRef, useState } from "react";
+import { MediaPreviewType } from "./useRDF";
 
-export type RDFMediaProps = RDFControlledInputProps & {}
+export type RDFMediaProps = RDFControlledInputProps & {
+  previewType: MediaPreviewType
+}
 
 /**
  *
@@ -17,6 +20,7 @@ export const RDFMedia = ({
   name,
   label,
   helper,
+  previewType,
   options,
   control,
   errors,
@@ -33,7 +37,6 @@ export const RDFMedia = ({
   }
 
   const render = ({ field }) => {
-
     const handleFileInputChange = (e: unknown) => {
       // TODO: a lot more
       const [file] = fileInputRef.current.files;
@@ -54,17 +57,19 @@ export const RDFMedia = ({
           <Label className={labelClasses.join(' ')} htmlFor={name}>
             {label}
           </Label>
-          <RDFErrorMessage error={error} />
           <RDFHelpText helper={helper} />
-          <div className="media-target">
+          <div className={`media-target media-target-${previewType}`}>
             {previewImageUrl
-              ? <div className="media-preview" style={{ backgroundImage: `url(${previewImageUrl})`}} />
+              ? <div
+                  className="media-preview"
+                  style={{ backgroundImage: `url(${previewImageUrl})`}}
+                />
               : null
             }
             {!previewImageUrl
               ? <div className="media-drop">
                   <CameraIcon width={35} height={35} />
-                  <p>Click or drop files to upload</p>
+                  <p>Click or drop files</p>
                 </div>
               : null
             }
@@ -80,6 +85,7 @@ export const RDFMedia = ({
         </div>
         {previewImageUrl
             ? <div className="media-info">
+                <RDFErrorMessage error={error} />
                 <span className="file-name">{media.name}</span>
                 <span className="file-type">{media.type}</span>
                 <span className="file-size">{prettyBytes(media.size)}</span>

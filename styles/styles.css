@@ -54,7 +54,9 @@
   --select-content-shadow-dark: rgba(190, 190, 190, 0.35);
 
   --media-target-background-light: #eee;
+  --media-target-background-dark: rgb(86, 86, 86);
   --media-target-icon-color-light: rgb(207, 207, 207);
+  --media-target-icon-color-dark: rgb(144, 144, 144);
 
   --link-color:  rgb(72, 202, 238);
   --error-message: #cc0000;
@@ -156,14 +158,10 @@ a {
   width: 100%;
   margin: 0;
   line-height: .8;
-  font-size: 4rem;
+  font-size: 3.6rem;
   margin-bottom: 10px;
   padding-right: 30px;
   text-align: left;
-}
-
-.rhf-debug {
-  font-size: 10px;
 }
 
 .preview {

@@ -64,13 +64,23 @@ export const options: RDFOptions = {
       type: 'media',
       name: 'hero',
       label: 'Upload a hero image',
+      previewType: 'hero',
       HelpText: () => <div>Need ideas? Browse <a href="https://unslpash.com">unslpash</a> for rights free not-ugly images.</div>,
       options: {
         validate: ((value) => {
-          console.log('got validation??', value);
+          if (value && value.size > 10_000_000) {
+            return 'Files must be smaller than 10mb'
+          }
           return value;
         })
       }
+    },
+    // media input, thumb type
+    {
+      type: 'media',
+      name: 'thumbnail',
+      label: 'Upload a thumbnail preview',
+      previewType: 'thumb',
     },
     // select (radix)
     {

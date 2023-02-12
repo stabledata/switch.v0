@@ -77,6 +77,7 @@ export function RDF<T>({
                 control={control}
                 options={field.options}
                 helper={field.helpText || field.HelpText}
+                previewType={field.previewType}
                 errors={errors}
               />
             )

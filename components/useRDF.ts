@@ -11,6 +11,10 @@ export type RDFFieldType = 'text' |
   'switch' |
   'media'
 
+export type MediaPreviewType =
+  'hero' |
+  'thumb'
+
 export type RDFFieldOptions = {
   type: RDFFieldType
   name: string
@@ -20,6 +24,7 @@ export type RDFFieldOptions = {
   placeholder?: string
   options?: RegisterOptions
   choices?: (string | { label: string, value: string, disabled?: boolean })[]  // for selects
+  previewType?: MediaPreviewType // for media uploads
 }
 
 export type RDFField = RDFFieldOptions
@@ -29,17 +34,18 @@ export type RDFOptions = {
   fields: RDFField[]
 }
 
-export type UseRDFHookReturn = RDFOptions & Partial<UseFormReturn> & {
+export type UseRDFHookReturn<T> = RDFOptions & Partial<UseFormReturn> & {
   errors?: FieldErrors
 }
 
-export const useRDF = (options: RDFOptions): UseRDFHookReturn => {
+export const useRDF = <T>(options: RDFOptions): UseRDFHookReturn<T> => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     control
   } = useForm()
+
   return {
     fields: options.fields,
     register,
