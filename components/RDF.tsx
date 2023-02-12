@@ -1,6 +1,5 @@
 import React from 'react';
-import { RDFChoiceOption, RDFField, useRDFInternal } from './useRDF';
-import type { RDFOptions } from './useRDF';
+import { RDFChoiceOption, RDFField, RDFForm, useRDFInternal } from './useRDF';
 import { RDFTextField } from './RDFTextField';
 import type {
   UseFormRegister,
@@ -16,8 +15,7 @@ import { RDFSwitch } from './RDFSwitch';
 import { RDFMedia } from './RDFMedia';
 
 export type RDFProps<T> = {
-  options: RDFOptions<T>
-  onSubmit: (fd: FormData, data?: T) => void
+  form: RDFForm<T>
   submitButtonLabel?: string
 }
 
@@ -43,23 +41,21 @@ export type RDFControlledInputProps = RDFFieldProps & {
  * @returns The RDF form component based on options configuration
  */
 export function RDF<T>({
-  options,
-  onSubmit,
+  form,
   submitButtonLabel = 'Send it'
 }: RDFProps<T>) {
   const {
-    fields,
     register,
     errors,
     control,
     changedState,
     handleSubmit: rhfSubmitHandler,
     handleSubmitWithFormData
-  } = useRDFInternal<T>(options, onSubmit);
+  } = useRDFInternal<T>(form);
 
   return (
     <form onSubmit={rhfSubmitHandler(handleSubmitWithFormData)}>
-      {fields
+      {form.fields
         .map((field: RDFField<T>) => {
           // if any of the field entry values are a function,
           // call it to produce the new field
@@ -75,8 +71,6 @@ export function RDF<T>({
             [name]: value
           }), {});
         })
-        // hide hidden fields
-        .filter((field: RDFField<T>) => !field.hidden)
         .map((field: RDFField<T>, index) => {
           switch (field.type) {
             // text field
@@ -136,6 +130,7 @@ export function RDF<T>({
                   options={field.options}
                   helper={field.helpText || field.HelpText}
                   disabled={field.disabled}
+                  hidden={field.hidden}
                   control={control}
                   register={register}
                   errors={errors}

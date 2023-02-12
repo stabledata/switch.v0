@@ -1,4 +1,4 @@
-import type { RDFOptions } from './components/useRDF';
+import type { RDFField } from './components/useRDF';
 
 export type FormState = {
   simple: string
@@ -7,8 +7,7 @@ export type FormState = {
   code: string
 }
 
-export const options: RDFOptions<FormState> = {
-  fields: [
+export const options: RDFField<FormState>[] = [
     // simple as it gets!
     {
       type: 'text',
@@ -54,6 +53,7 @@ export const options: RDFOptions<FormState> = {
       },
       observe: true
     },
+
     // hidden code field (stateful logic)
     {
       type: 'switch',
@@ -125,6 +125,7 @@ export const options: RDFOptions<FormState> = {
       label: 'Select shipping',
       placeholder: 'Select an option...',
       helpText: 'Ground deliveries can take up to several millennia.',
+      default: 'FedEx Ground',
       choices: [
         '---UPS',
         { label: 'UPS Ground', value: 'ups-ground-234' },
@@ -149,15 +150,15 @@ export const options: RDFOptions<FormState> = {
       name: 'dinner-choice',
       label: 'Dinner choice',
       helpText: 'Note, the vegetarian option is vegan.',
-      choices: ({ customizing }: FormState) =>[
+      choices: ({ customizing = '' }: FormState) => [
         { label: 'Chicken', value: 'chicken' },
         { label: 'Fish', value: 'fish' },
+        'Vegetarian',
         {
           label: 'Filet Mignon w Gold Leaf',
           value: 'filet-mignon',
-          disabled: customizing?.toLowerCase() !== 'running'
+          disabled: !(customizing.toLowerCase() === 'running')
         },
-        'Vegetarian'
       ]
     },
     // switch (radix)
@@ -182,5 +183,4 @@ export const options: RDFOptions<FormState> = {
         required: 'You must accept the terms!',
       }
     },
-  ]
-};
+  ];

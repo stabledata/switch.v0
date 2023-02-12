@@ -1,3 +1,4 @@
+import { format } from 'path';
 import { FieldErrors, useForm } from 'react-hook-form';
 import type {
   UseFormReturn,
@@ -24,7 +25,7 @@ export type RDFChoiceOption<T> =
     disabled?: boolean
   }
 
-export type RDFFieldOptions<T> = {
+export type RDFField<T> = {
   type: RDFFieldType
   name: string
   label?: string
@@ -43,27 +44,23 @@ export type RDFFieldOptions<T> = {
   options?: RegisterOptions
 }
 
-export type RDFField<T> = RDFFieldOptions<T>
-
-// options for the entire form
-export type RDFOptions<T> = {
-  fields: RDFField<T>[]
-}
-
 export type UseRDFInternalHookReturn<T> =  Partial<UseFormReturn> & {
-  fields: RDFField<T>[]
   errors?: FieldErrors
   handleSubmitWithFormData: (data: T) => FormData,
   changedState: Partial<T>
 }
 
-export const useRDFInternal = <T>(
-  options: RDFOptions<T>,
-  onSubmit: (fd: FormData, data?: T) => void
-): UseRDFInternalHookReturn<T> => {
+export type RDFForm<T> = UseFormReturn & {
+  onSubmit: (fd: FormData, data?: T) => void,
+  fields: RDFField<T>[]
+}
 
+export const useRDF = <T>(
+  fields: RDFField<T>[],
+  onSubmit: (fd: FormData, data?: T) => void
+): RDFForm<T> => {
   // collect default values
-  const defaultValues = Object.values(options.fields)
+  const defaultValues = Object.values(fields)
     .filter((field: RDFField<T>) => field.default) // only apply defaults
     .map((field: RDFField<T>) => ({
       name: field.name,
@@ -74,21 +71,33 @@ export const useRDFInternal = <T>(
       [name]: value
     }), {});
 
+   const form = useForm({ defaultValues });
+
+   return {
+    ...form,
+    fields,
+    onSubmit
+   };
+};
+
+export const useRDFInternal = <T>(
+  form: RDFForm<T>
+): UseRDFInternalHookReturn<T> => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
-    watch
-  } = useForm({ defaultValues });
+    watch,
+    onSubmit,
+  } = form;
 
   // observe specified fields
-  const changedState = Object.values(options.fields)
+  const changedState = Object.values(form.fields)
     .filter((field: RDFField<T>) => field.observe)
     .map((field: RDFField<T>) => ({
       name: field.name,
-      // FIXME: setting defaults results in TS issue with field name as string
-      value: watch(field.name as never, field.default)
+      value: watch(field.name)
     }))
     .reduce((builder, { name, value }) => ({
       ...builder,
@@ -127,7 +136,6 @@ export const useRDFInternal = <T>(
   };
 
   return {
-    fields: options.fields,
     register,
     control,
     changedState,

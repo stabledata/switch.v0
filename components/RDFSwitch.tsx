@@ -20,7 +20,8 @@ export const RDFSwitch = ({
   control,
   options,
   errors,
-  disabled
+  disabled,
+  hidden
 }: RDFSwitchProps) => {
   const labelClasses = ['label', `label-${name}`];
   const inputClasses = ['input', `input-${name}`];
@@ -32,7 +33,7 @@ export const RDFSwitch = ({
 
   const render = ({ field }) => {
     return (
-      <div className={`field field-${name} ${disabled ? 'switch-disabled' : ''}`}>
+      <div className={`field field-${name} ${disabled ? 'switch-disabled' : ''} ${hidden ? 'switch-hidden' : ''}`}>
         <div className="switch-wrap">
         <Label className={labelClasses.join(' ')} htmlFor={name}>
             {label}

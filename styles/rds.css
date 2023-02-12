@@ -14,7 +14,7 @@ form {
   margin: 20px auto;
 }
 
-/* disabled fields */
+/* disabled & hidden fields */
 .radio-disabled,
 .checkbox-disabled,
 .media-disabled,
@@ -24,6 +24,17 @@ form {
 .text-disabled
 {
   opacity: 0.3;
+}
+
+.radio-hidden,
+.checkbox-hidden,
+.media-hidden,
+.radio-group-hidden,
+.select-hidden,
+.switch-hidden,
+.text-hidden
+{
+  display: none;
 }
 
 /* buttons */
