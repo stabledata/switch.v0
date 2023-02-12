@@ -25,6 +25,7 @@ export const RDFRadio = ({
   control,
   options,
   errors,
+  disabled
 }: RDFRadioProps) => {
   const labelClasses = ['label', `label-${name}`];
   const inputClasses = ['input', `input-${name}`];
@@ -36,18 +37,19 @@ export const RDFRadio = ({
 
   const render = ({ field }) => {
     return (
-      <div className={`field field-${name}`}>
+      <div className={`field field-${name} ${disabled ? 'radio-group-disabled' : ''}`}>
         <div className="radio-group-wrap">
           <Label className={labelClasses.join(' ')} htmlFor={name}>
             {label}
           </Label>
           <RDFErrorMessage error={error} />
           <RDFHelpText helper={helper} />
-          <RadixRadio
+          <RadixRadioGroup
             field={field}
             inputClasses={inputClasses}
             id={name}
             choices={choices}
+            allDisabled={disabled as boolean}
           />
         </div>
       </div>
@@ -64,7 +66,7 @@ export const RDFRadio = ({
   );
 };
 
-const RadixRadio = ({ field, id, choices, inputClasses }) => {
+const RadixRadioGroup = ({ field, id, choices, allDisabled = false, inputClasses }) => {
   return (
     <RadioGroup.Root
       defaultValue="default"
@@ -73,9 +75,9 @@ const RadixRadio = ({ field, id, choices, inputClasses }) => {
       id={id}
     >
       {choices.map((choice: string, index: number) => {
-        const { label, value, disabled } = typeof choice === 'object'
+        const { label, value, disabled = allDisabled } = typeof choice === 'object'
           ? choice
-          : { label: choice, value: choice, disabled: false };
+          : { label: choice, value: choice, disabled: allDisabled };
 
         return (
           <div className={`radio-wrap ${disabled ? 'radio-disabled' : ''}`} key={`${label}-${index}`}>

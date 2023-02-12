@@ -26,6 +26,7 @@ export const RDFSelect = ({
   control,
   options,
   errors,
+  disabled
 }: RDFSelectProps) => {
   const labelClasses = ['label', `label-${name}`];
   const inputClasses = ['input', `input-${name}`];
@@ -37,7 +38,7 @@ export const RDFSelect = ({
 
   const render = ({ field }) => {
     return (
-      <div className={`field field-${name}`}>
+      <div className={`field field-${name} ${disabled ? 'select-disabled' : ''}`}>
         <div className="select-wrap">
           <Label className={labelClasses.join(' ')} htmlFor={name}>
             {label}
@@ -47,10 +48,11 @@ export const RDFSelect = ({
             choices={choices}
             placeholder={placeholder}
             inputClasses={inputClasses}
+            disabled={disabled}
           />
+          <RDFHelpText helper={helper} />
+          <RDFErrorMessage error={error} />
         </div>
-        <RDFHelpText helper={helper} />
-        <RDFErrorMessage error={error} />
       </div>
     );
   };
@@ -65,9 +67,9 @@ export const RDFSelect = ({
   );
 };
 
-const RadixSelect = ({ field, choices, placeholder, inputClasses }) => {
+const RadixSelect = ({ field, choices, placeholder, disabled, inputClasses }) => {
   return (
-    <Select.Root onValueChange={field.onChange} value={field.value}>
+    <Select.Root onValueChange={field.onChange} value={field.value} disabled={disabled}>
       <Select.Trigger className={['select-trigger', ...inputClasses].join(' ')} aria-label="Food">
         <Select.Value placeholder={placeholder} />
         <Select.Icon className="select-icon">

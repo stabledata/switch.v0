@@ -13,6 +13,17 @@ form {
   margin: 20px auto;
 }
 
+.radio-disabled,
+.checkbox-disabled,
+.media-disabled,
+.radio-group-disabled,
+.select-disabled,
+.switch-disabled,
+.text-disabled
+{
+  opacity: 0.3;
+}
+
 /**** styles */
 /* buttons */
 .submit {
@@ -138,10 +149,6 @@ form {
 }
 .switch-wrap label {
   width: calc(100% - 50px);
-}
-
-.radio-disabled {
-  opacity: 0.3;
 }
 
 .checkbox, .radio {

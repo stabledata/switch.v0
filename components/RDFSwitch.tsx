@@ -20,6 +20,7 @@ export const RDFSwitch = ({
   control,
   options,
   errors,
+  disabled
 }: RDFSwitchProps) => {
   const labelClasses = ['label', `label-${name}`];
   const inputClasses = ['input', `input-${name}`];
@@ -31,7 +32,7 @@ export const RDFSwitch = ({
 
   const render = ({ field }) => {
     return (
-      <div className={`field field-${name}`}>
+      <div className={`field field-${name} ${disabled ? 'switch-disabled' : ''}`}>
         <div className="switch-wrap">
         <Label className={labelClasses.join(' ')} htmlFor={name}>
             {label}
@@ -39,6 +40,7 @@ export const RDFSwitch = ({
           <RadixSwitch
             field={field}
             id={name}
+            disabled={disabled}
           />
         </div>
         <RDFErrorMessage error={error} />
@@ -57,9 +59,14 @@ export const RDFSwitch = ({
   );
 };
 
-const RadixSwitch = ({ field, id }) => {
+const RadixSwitch = ({ field, id, disabled }) => {
   return (
-    <Switch.Root className="switch" id={id} onCheckedChange={field.onChange}>
+    <Switch.Root
+      className="switch"
+      id={id}
+      onCheckedChange={field.onChange}
+      disabled={disabled}
+    >
       <Switch.Thumb className="switch-toggle" />
     </Switch.Root>
   );

@@ -21,6 +21,7 @@ export const RDFTextField = ({
   register,
   errors,
   multiline,
+  disabled
 }: RDFTextFieldProps) => {
   const labelClasses = ['label', `label-${name}`];
   const inputClasses = ['input', `input-${name}`];
@@ -31,7 +32,7 @@ export const RDFTextField = ({
   }
 
   return (
-    <div className={`field text-input field-${name}`}>
+    <div className={`field text-input field-${name} ${disabled ? 'media-disabled' : ''}s`}>
       <Label className={labelClasses.join(' ')} htmlFor={name}>
         {label}
       </Label>

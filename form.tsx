@@ -15,6 +15,7 @@ export const options: RDFOptions<FormState> = {
       label: 'A simple entry',
       placeholder: 'Whatever you can imagine can go here'
     },
+
     // specify a default
     {
       type: 'text',
@@ -60,6 +61,14 @@ export const options: RDFOptions<FormState> = {
       hidden: (observableState: Partial<FormState>) => {
         return observableState.code !== '123';
       }
+    },
+
+    // disabled
+    {
+      type: 'text',
+      name: 'disabled',
+      label: 'You cannot enter anything here',
+      disabled: true
     },
 
     // custom validation

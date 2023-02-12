@@ -25,8 +25,8 @@ export type RDFFieldProps = {
   name: string
   label?: string
   helper?: string | ((state?: any) => JSX.Element)
-  hidden?: boolean
-  disabled?: boolean
+  disabled?: boolean | ((state?: any) => boolean)
+  hidden?: boolean | ((state?: any) => boolean)
   // react hook form
   register?: UseFormRegister<FieldValues>
   options: RegisterOptions
@@ -88,10 +88,11 @@ export function RDF<T>({
                   name={field.name}
                   label={field.label}
                   placeholder={field.placeholder}
-                  register={register}
                   options={field.options}
                   multiline={field.type === 'multiline'}
                   helper={field.helpText || field.HelpText}
+                  disabled={field.disabled}
+                  register={register}
                   errors={errors}
                 />
               );
@@ -102,10 +103,11 @@ export function RDF<T>({
                   key={`${field.name}-${index}`}
                   name={field.name}
                   label={field.label}
-                  control={control}
                   options={field.options}
                   helper={field.helpText || field.HelpText}
                   previewType={field.previewType}
+                  disabled={field.disabled}
+                  control={control}
                   errors={errors}
                 />
               );
@@ -116,10 +118,11 @@ export function RDF<T>({
                   key={`${field.name}-${index}`}
                   name={field.name}
                   label={field.label}
+                  options={field.options}
+                  disabled={field.disabled}
+                  helper={field.helpText || field.HelpText}
                   control={control}
                   register={register}
-                  options={field.options}
-                  helper={field.helpText || field.HelpText}
                   errors={errors}
                 />
               );
@@ -130,10 +133,11 @@ export function RDF<T>({
                   key={`${field.name}-${index}`}
                   name={field.name}
                   label={field.label}
-                  control={control}
-                  register={register}
                   options={field.options}
                   helper={field.helpText || field.HelpText}
+                  disabled={field.disabled}
+                  control={control}
+                  register={register}
                   errors={errors}
                 />
               );
@@ -144,12 +148,13 @@ export function RDF<T>({
                   key={`${field.name}-${index}`}
                   name={field.name}
                   label={field.label}
-                  control={control}
-                  register={register}
                   options={field.options}
                   choices={field.choices}
                   placeholder={field.placeholder}
                   helper={field.helpText || field.HelpText}
+                  disabled={field.disabled}
+                  control={control}
+                  register={register}
                   errors={errors}
                 />
               );
@@ -160,12 +165,13 @@ export function RDF<T>({
                   key={`${field.name}-${index}`}
                   name={field.name}
                   label={field.label}
-                  control={control}
-                  register={register}
                   options={field.options}
                   choices={field.choices}
                   placeholder={field.placeholder}
                   helper={field.helpText || field.HelpText}
+                  disabled={field.disabled}
+                  control={control}
+                  register={register}
                   errors={errors}
                 />
               );

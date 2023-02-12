@@ -1,10 +1,8 @@
-import { fstat } from 'fs';
 import { FieldErrors, useForm } from 'react-hook-form';
 import type {
   UseFormReturn,
   RegisterOptions
 } from 'react-hook-form';
-import { RDFSwitchProps } from './RDFSwitch';
 
 export type RDFFieldType = 'text' |
   'multiline' |
@@ -37,8 +35,8 @@ export type RDFFieldOptions<T> = {
   choices?: RDFChoiceOption<T>[]  // for selects
   previewType?: MediaPreviewType // for media uploads
   observe?: boolean
-  disabled?: boolean | ((state?: Partial<T>) => void)
-  hidden?: boolean | ((state?: Partial<T>) => void)
+  disabled?: boolean | ((state?: Partial<T>) => boolean)
+  hidden?: boolean | ((state?: Partial<T>) => boolean)
   // react hook form options
   // (second argument to register)
   // https://react-hook-form.com/api/useform/register

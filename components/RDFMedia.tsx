@@ -24,6 +24,7 @@ export const RDFMedia = ({
   options,
   control,
   errors,
+  disabled
 }: RDFMediaProps) => {
   const [previewImageUrl, setPreviewImageUrl] = useState<string>(null);
   const [media, setMedia] = useState<File>(null);
@@ -52,7 +53,7 @@ export const RDFMedia = ({
     };
 
     return (
-      <div className={`field field-${name}`}>
+      <div className={`field field-${name} ${disabled ? 'media-disabled' : ''}`}>
         <div className="media-wrap">
           <Label className={labelClasses.join(' ')} htmlFor={name}>
             {label}
@@ -80,6 +81,7 @@ export const RDFMedia = ({
               className="media-input"
               onChange={handleFileInputChange}
               ref={fileInputRef}
+              disabled={disabled as boolean}
             />
           </div>
         </div>
