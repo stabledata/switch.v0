@@ -140,6 +140,10 @@ form {
   width: calc(100% - 50px);
 }
 
+.radio-disabled {
+  opacity: 0.3;
+}
+
 .checkbox, .radio {
   width: 25px;
   height: 25px;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRDFInternal } from './useRDF';
+import { RDFField, useRDFInternal } from './useRDF';
 import type { RDFOptions } from './useRDF';
 import { RDFTextField } from './RDFTextField';
 import type {
@@ -16,7 +16,7 @@ import { RDFSwitch } from './RDFSwitch';
 import { RDFMedia } from './RDFMedia';
 
 export type RDFProps<T> = {
-  options: RDFOptions
+  options: RDFOptions<T>
   onSubmit: (fd: FormData, data?: T) => void
   submitButtonLabel?: string
 }
@@ -24,7 +24,9 @@ export type RDFProps<T> = {
 export type RDFFieldProps = {
   name: string
   label?: string
-  helper?: string | (() => JSX.Element)
+  helper?: string | ((state?: any) => JSX.Element)
+  hidden?: boolean
+  disabled?: boolean
   // react hook form
   register?: UseFormRegister<FieldValues>
   options: RegisterOptions
@@ -50,104 +52,123 @@ export function RDF<T>({
     register,
     errors,
     control,
+    changedState,
     handleSubmit: rhfSubmitHandler,
     handleSubmitWithFormData
   } = useRDFInternal<T>(options, onSubmit);
 
   return (
     <form onSubmit={rhfSubmitHandler(handleSubmitWithFormData)}>
-      {fields.map((field, index) => {
-        switch (field.type) {
-          // text field
-          case 'text':
-          case 'multiline':
-            return (
-              <RDFTextField
-                key={`${field.name}-${index}`}
-                name={field.name}
-                label={field.label}
-                placeholder={field.placeholder}
-                register={register}
-                options={field.options}
-                multiline={field.type === 'multiline'}
-                helper={field.helpText || field.HelpText}
-                errors={errors}
-              />
-            );
-          // text field
-          case 'media':
-            return (
-              <RDFMedia
-                key={`${field.name}-${index}`}
-                name={field.name}
-                label={field.label}
-                control={control}
-                options={field.options}
-                helper={field.helpText || field.HelpText}
-                previewType={field.previewType}
-                errors={errors}
-              />
-            );
-          // checkbox
-          case 'checkbox':
-            return (
-              <RDFCheckbox
-                key={`${field.name}-${index}`}
-                name={field.name}
-                label={field.label}
-                control={control}
-                register={register}
-                options={field.options}
-                helper={field.helpText || field.HelpText}
-                errors={errors}
-              />
-            );
-          // switch
-          case 'switch':
-            return (
-              <RDFSwitch
-                key={`${field.name}-${index}`}
-                name={field.name}
-                label={field.label}
-                control={control}
-                register={register}
-                options={field.options}
-                helper={field.helpText || field.HelpText}
-                errors={errors}
-              />
-            );
-          // select
-          case 'select':
-            return (
-              <RDFSelect
-                key={`${field.name}-${index}`}
-                name={field.name}
-                label={field.label}
-                control={control}
-                register={register}
-                options={field.options}
-                choices={field.choices}
-                placeholder={field.placeholder}
-                helper={field.helpText || field.HelpText}
-                errors={errors}
-              />
-            );
-          // radio
-          case 'radio':
-            return (
-              <RDFRadio
-                key={`${field.name}-${index}`}
-                name={field.name}
-                label={field.label}
-                control={control}
-                register={register}
-                options={field.options}
-                choices={field.choices}
-                placeholder={field.placeholder}
-                helper={field.helpText || field.HelpText}
-                errors={errors}
-              />
-            );
+      {fields
+        .map((field: RDFField<T>) => {
+          // if any of the field entry values are a function,
+          // call it to produce the new field
+          return Object.entries(field).map(([key, value]) => {
+            return {
+              name: key,
+              value: typeof value === 'function'
+                ? value(changedState)
+                : value
+            };
+          }).reduce((builder, { name, value }) => ({
+            ...builder,
+            [name]: value
+          }), {});
+        })
+        // hide hidden fields
+        .filter((field: RDFField<T>) => !field.hidden)
+        .map((field: RDFField<T>, index) => {
+          switch (field.type) {
+            // text field
+            case 'text':
+            case 'multiline':
+              return (
+                <RDFTextField
+                  key={`${field.name}-${index}`}
+                  name={field.name}
+                  label={field.label}
+                  placeholder={field.placeholder}
+                  register={register}
+                  options={field.options}
+                  multiline={field.type === 'multiline'}
+                  helper={field.helpText || field.HelpText}
+                  errors={errors}
+                />
+              );
+            // text field
+            case 'media':
+              return (
+                <RDFMedia
+                  key={`${field.name}-${index}`}
+                  name={field.name}
+                  label={field.label}
+                  control={control}
+                  options={field.options}
+                  helper={field.helpText || field.HelpText}
+                  previewType={field.previewType}
+                  errors={errors}
+                />
+              );
+            // checkbox
+            case 'checkbox':
+              return (
+                <RDFCheckbox
+                  key={`${field.name}-${index}`}
+                  name={field.name}
+                  label={field.label}
+                  control={control}
+                  register={register}
+                  options={field.options}
+                  helper={field.helpText || field.HelpText}
+                  errors={errors}
+                />
+              );
+            // switch
+            case 'switch':
+              return (
+                <RDFSwitch
+                  key={`${field.name}-${index}`}
+                  name={field.name}
+                  label={field.label}
+                  control={control}
+                  register={register}
+                  options={field.options}
+                  helper={field.helpText || field.HelpText}
+                  errors={errors}
+                />
+              );
+            // select
+            case 'select':
+              return (
+                <RDFSelect
+                  key={`${field.name}-${index}`}
+                  name={field.name}
+                  label={field.label}
+                  control={control}
+                  register={register}
+                  options={field.options}
+                  choices={field.choices}
+                  placeholder={field.placeholder}
+                  helper={field.helpText || field.HelpText}
+                  errors={errors}
+                />
+              );
+            // radio
+            case 'radio':
+              return (
+                <RDFRadio
+                  key={`${field.name}-${index}`}
+                  name={field.name}
+                  label={field.label}
+                  control={control}
+                  register={register}
+                  options={field.options}
+                  choices={field.choices}
+                  placeholder={field.placeholder}
+                  helper={field.helpText || field.HelpText}
+                  errors={errors}
+                />
+              );
         }
       })}
       <button type="submit" className="submit">{submitButtonLabel}</button>

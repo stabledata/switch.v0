@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import { RDF } from '../components/RDF';
-import { options } from '../form';
-
-type FormState = {
-  simple: string
-}
+import { options, FormState } from '../form';
 
 export default function Home() {
   const [data, setData] = useState<any>(null);

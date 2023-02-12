@@ -78,7 +78,7 @@ const RadixRadio = ({ field, id, choices, inputClasses }) => {
           : { label: choice, value: choice, disabled: false };
 
         return (
-          <div className="radio-wrap" key={`${label}-${index}`}>
+          <div className={`radio-wrap ${disabled ? 'radio-disabled' : ''}`} key={`${label}-${index}`}>
             <RadioGroup.Item
               className="radio"
               value={value}

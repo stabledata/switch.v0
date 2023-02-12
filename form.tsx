@@ -1,6 +1,12 @@
 import type { RDFOptions } from './components/useRDF';
 
-export const options: RDFOptions = {
+export type FormState = {
+  simple: string
+  necessary: string
+  code: string
+}
+
+export const options: RDFOptions<FormState> = {
   fields: [
     // simple as it gets!
     {
@@ -19,13 +25,14 @@ export const options: RDFOptions = {
       placeholder: 'You must enter something here, or else!',
       options: {
         required: 'This field is required, fill it out!'
-      }
+      },
+      observe: true
     },
 
-    // max len
+    // max len, code validation
     {
       type: 'text',
-      name: 'max',
+      name: 'code',
       label: 'Short code',
       placeholder: '123',
       options: {
@@ -34,6 +41,16 @@ export const options: RDFOptions = {
           message: 'You entered more than 3 characters in this field'
         }
       },
+      observe: true
+    },
+    // hidden code field (stateful logic)
+    {
+      type: 'switch',
+      name: 'secret-switch',
+      label: 'Activate super secret code',
+      hidden: (observableState: Partial<FormState>) => {
+        return observableState.code !== '123';
+      }
     },
 
     // custom validation
@@ -43,7 +60,7 @@ export const options: RDFOptions = {
       label: 'Enter anything that contains "ing"',
       placeholder: 'e.g. Running',
       options: {
-        validate: ((value) => {
+        validate: ((value: string | string[]) => {
           if (value.indexOf('ing') < 0) {
             return 'That input does not contain "ing"';
           }
@@ -102,7 +119,8 @@ export const options: RDFOptions = {
       ],
       options: {
         required: 'Select a valid shipping option to proceed with order',
-      }
+      },
+      observe: true
     },
 
     // radio group (radix)

@@ -4,6 +4,7 @@ import type {
   UseFormReturn,
   RegisterOptions
 } from 'react-hook-form';
+import { RDFSwitchProps } from './RDFSwitch';
 
 export type RDFFieldType = 'text' |
   'multiline' |
@@ -17,41 +18,66 @@ export type MediaPreviewType =
   'hero' |
   'thumb'
 
-export type RDFFieldOptions = {
+export type RDFChoiceOption<T> =
+  string |
+  {
+    label: string
+    value: string
+    disabled?: boolean
+  }
+
+export type RDFFieldOptions<T> = {
   type: RDFFieldType
   name: string
   label?: string
   helpText?: string
-  HelpText?: () => JSX.Element
+  HelpText?: (state?: Partial<T>) => JSX.Element
   placeholder?: string
   options?: RegisterOptions
-  choices?: (string | { label: string, value: string, disabled?: boolean })[]  // for selects
+  choices?: RDFChoiceOption<T>[]  // for selects
   previewType?: MediaPreviewType // for media uploads
+  observe?: boolean
+  disabled?: boolean | ((state?: Partial<T>) => void)
+  hidden?: boolean | ((state?: Partial<T>) => void)
 }
 
-export type RDFField = RDFFieldOptions
+export type RDFField<T> = RDFFieldOptions<T>
 
 // options for the entire form
-export type RDFOptions = {
-  fields: RDFField[]
+export type RDFOptions<T> = {
+  fields: RDFField<T>[]
 }
 
 export type UseRDFInternalHookReturn<T> =  Partial<UseFormReturn> & {
-  fields: RDFField[]
+  fields: RDFField<T>[]
   errors?: FieldErrors
   handleSubmitWithFormData: (data: T) => FormData,
+  changedState: Partial<T>
 }
 
 export const useRDFInternal = <T>(
-  options: RDFOptions,
+  options: RDFOptions<T>,
   onSubmit: (fd: FormData, data?: T) => void
 ): UseRDFInternalHookReturn<T> => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    control
+    control,
+    watch
   } = useForm();
+
+  // observe specified fields
+  const changedState = Object.values(options.fields)
+    .filter((field: RDFField<T>) => field.observe)
+    .map((field: RDFField<T>) => ({
+      name: field.name,
+      value: watch(field.name)
+    }))
+    .reduce((builder, { name, value }) => ({
+      ...builder,
+      [name]: value
+    }), {});
 
   // transform results into FormData
   const handleSubmitWithFormData = (data: T): FormData => {
@@ -68,12 +94,11 @@ export const useRDFInternal = <T>(
       });
 
     // for now, we can just submit to wrapper
-    // since this is being defined
     onSubmit(fd, data);
 
     // TODO:
-    // 1 - options to perform the POST, headers etc.
-    // 2 - think about how to handle in flight state on consumer end
+    // 1 - options to perform the POST, headers etc as configuration
+    // 2 - think about how to handle in flight state on consumer end etc.
     return fd;
   };
 
@@ -81,6 +106,7 @@ export const useRDFInternal = <T>(
     fields: options.fields,
     register,
     control,
+    changedState,
     handleSubmit,
     handleSubmitWithFormData,
     errors
