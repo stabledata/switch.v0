@@ -5,7 +5,8 @@ import type {
   RegisterOptions
 } from 'react-hook-form';
 
-export type RDFFieldType = 'text' |
+export type RDFFieldType =
+  'text' |
   'multiline' |
   'checkbox' |
   'select' |
@@ -29,7 +30,7 @@ export type RDFField<T> = {
   type: RDFFieldType
   name: string
   label?: string
-  default?: string
+  default?: string | boolean
   helpText?: string
   placeholder?: string
   previewType?: MediaPreviewType // for media uploads
@@ -38,8 +39,7 @@ export type RDFField<T> = {
   choices?: RDFChoiceOption<T>[]  | ((state?: Partial<T>) => RDFChoiceOption<T>[])
   disabled?: boolean | ((state?: Partial<T>) => boolean)
   hidden?: boolean | ((state?: Partial<T>) => boolean)
-  // react hook form options
-  // (second argument to register)
+  // react hook form options (second argument to register)
   // https://react-hook-form.com/api/useform/register
   options?: RegisterOptions
 }

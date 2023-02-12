@@ -166,6 +166,7 @@ export const options: RDFField<FormState>[] = [
       type: 'switch',
       name: 'auto-reply',
       label: 'Vacation mode (auto-reply to messages)',
+      default: true
     },
     {
       type: 'switch',

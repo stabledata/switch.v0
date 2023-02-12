@@ -86,6 +86,7 @@ export function RDF<T>({
                   multiline={field.type === 'multiline'}
                   helper={field.helpText || field.HelpText}
                   disabled={field.disabled}
+                  hidden={field.hidden}
                   register={register}
                   errors={errors}
                 />
@@ -101,6 +102,7 @@ export function RDF<T>({
                   helper={field.helpText || field.HelpText}
                   previewType={field.previewType}
                   disabled={field.disabled}
+                  hidden={field.hidden}
                   control={control}
                   errors={errors}
                 />
@@ -114,6 +116,7 @@ export function RDF<T>({
                   label={field.label}
                   options={field.options}
                   disabled={field.disabled}
+                  hidden={field.hidden}
                   helper={field.helpText || field.HelpText}
                   control={control}
                   register={register}
@@ -131,6 +134,7 @@ export function RDF<T>({
                   helper={field.helpText || field.HelpText}
                   disabled={field.disabled}
                   hidden={field.hidden}
+                  defaultValue={field.default as boolean}
                   control={control}
                   register={register}
                   errors={errors}
@@ -148,6 +152,7 @@ export function RDF<T>({
                   placeholder={field.placeholder}
                   helper={field.helpText || field.HelpText}
                   disabled={field.disabled}
+                  hidden={field.hidden}
                   control={control}
                   register={register}
                   errors={errors}
@@ -165,6 +170,7 @@ export function RDF<T>({
                   placeholder={field.placeholder}
                   helper={field.helpText || field.HelpText}
                   disabled={field.disabled}
+                  hidden={field.hidden}
                   control={control}
                   register={register}
                   errors={errors}

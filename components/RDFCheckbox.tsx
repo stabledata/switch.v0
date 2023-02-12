@@ -20,7 +20,8 @@ export const RDFCheckbox = ({
   control,
   options,
   errors,
-  disabled
+  disabled,
+  hidden
 }: RDFCheckboxProps) => {
   const labelClasses = ['label', `label-${name}`];
   const inputClasses = ['input', `input-${name}`];
@@ -32,7 +33,7 @@ export const RDFCheckbox = ({
 
   const render = ({ field }) => {
     return (
-      <div className={`field field-${name} ${disabled ? 'checkbox-disabled' : ''}`}>
+      <div className={`field field-${name} ${disabled ? 'checkbox-disabled' : ''} ${hidden ? 'checkbox-hidden' : ''}`}>
         <div className="checkbox-wrap">
           <RadixCheckbox
             field={field}

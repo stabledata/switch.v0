@@ -25,7 +25,8 @@ export const RDFRadio = ({
   control,
   options,
   errors,
-  disabled
+  disabled,
+  hidden
 }: RDFRadioProps) => {
   const labelClasses = ['label', `label-${name}`];
   const inputClasses = ['input', `input-${name}`];
@@ -37,7 +38,7 @@ export const RDFRadio = ({
 
   const render = ({ field }) => {
     return (
-      <div className={`field field-${name} ${disabled ? 'radio-group-disabled' : ''}`}>
+      <div className={`field field-${name} ${disabled ? 'radio-group-disabled' : ''} ${hidden ? 'radio-group-hidden' : ''}`}>
         <div className="radio-group-wrap">
           <Label className={labelClasses.join(' ')} htmlFor={name}>
             {label}

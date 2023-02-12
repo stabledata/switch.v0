@@ -6,7 +6,9 @@ import * as Switch from '@radix-ui/react-switch';
 import { CheckIcon } from '@radix-ui/react-icons';
 import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
 
-export type RDFSwitchProps = RDFControlledInputProps & {}
+export type RDFSwitchProps = RDFControlledInputProps & {
+  defaultValue: boolean
+}
 
 /**
  *
@@ -21,7 +23,8 @@ export const RDFSwitch = ({
   options,
   errors,
   disabled,
-  hidden
+  hidden,
+  defaultValue
 }: RDFSwitchProps) => {
   const labelClasses = ['label', `label-${name}`];
   const inputClasses = ['input', `input-${name}`];
@@ -42,6 +45,7 @@ export const RDFSwitch = ({
             field={field}
             id={name}
             disabled={disabled}
+            defaultValue={defaultValue}
           />
         </div>
         <RDFErrorMessage error={error} />
@@ -60,13 +64,14 @@ export const RDFSwitch = ({
   );
 };
 
-const RadixSwitch = ({ field, id, disabled }) => {
+const RadixSwitch = ({ field, id, disabled, defaultValue }) => {
   return (
     <Switch.Root
       className="switch"
       id={id}
       onCheckedChange={field.onChange}
       disabled={disabled}
+      defaultChecked={defaultValue}
     >
       <Switch.Thumb className="switch-toggle" />
     </Switch.Root>

@@ -26,7 +26,8 @@ export const RDFSelect = ({
   control,
   options,
   errors,
-  disabled
+  disabled,
+  hidden
 }: RDFSelectProps) => {
   const labelClasses = ['label', `label-${name}`];
   const inputClasses = ['input', `input-${name}`];
@@ -38,7 +39,7 @@ export const RDFSelect = ({
 
   const render = ({ field }) => {
     return (
-      <div className={`field field-${name} ${disabled ? 'select-disabled' : ''}`}>
+      <div className={`field field-${name} ${disabled ? 'select-disabled' : ''} ${hidden ? 'select-hidden' : ''}`}>
         <div className="select-wrap">
           <Label className={labelClasses.join(' ')} htmlFor={name}>
             {label}
