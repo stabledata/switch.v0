@@ -36,7 +36,6 @@ export type RDFControlledInputProps = RDFFieldProps & {
  */
 export function RDF<T>({
   options,
-  handleSubmit,
   submitButtonLabel = 'Send it'
 }: RDFProps<T>) {
   const {
@@ -44,11 +43,12 @@ export function RDF<T>({
     register,
     errors,
     control,
-    handleSubmit: rhfSubmitHandler
-  } = useRDF(options)
+    handleSubmit: rhfSubmitHandler,
+    handleSubmitWithFormData
+  } = useRDF<T>(options)
 
   return (
-    <form onSubmit={rhfSubmitHandler(handleSubmit)}>
+    <form onSubmit={rhfSubmitHandler(handleSubmitWithFormData)}>
       {fields.map((field, index) => {
         switch (field.type) {
           // text field

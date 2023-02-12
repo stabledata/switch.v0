@@ -10,7 +10,7 @@ type FormData = {
 
 export default function Home() {
   const [data, setData] = useState<FormData>(null)
-  const demoSubmitHandler= (data: FormData): void => {
+  const demoSubmitHandler = (data: FormData): void => {
     console.log('got hero?', data.hero)
     setData(data)
   }

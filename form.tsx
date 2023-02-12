@@ -1,6 +1,9 @@
 import type { RDFOptions } from './components/useRDF';
 
 export const options: RDFOptions = {
+  onSubmit: (fd: FormData) => {
+    console.log('got the form data in config!', fd);
+  },
   fields: [
 
     // simple as it gets!
