@@ -155,7 +155,7 @@ export const options: RDFOptions<FormState> = {
         {
           label: 'Filet Mignon w Gold Leaf',
           value: 'filet-mignon',
-          disabled: customizing.toLowerCase() !== 'running'
+          disabled: customizing?.toLowerCase() !== 'running'
         },
         'Vegetarian'
       ]
