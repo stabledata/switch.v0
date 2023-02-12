@@ -1,5 +1,5 @@
 import React from 'react';
-import { RDFField, useRDFInternal } from './useRDF';
+import { RDFChoiceOption, RDFField, useRDFInternal } from './useRDF';
 import type { RDFOptions } from './useRDF';
 import { RDFTextField } from './RDFTextField';
 import type {
@@ -149,7 +149,7 @@ export function RDF<T>({
                   name={field.name}
                   label={field.label}
                   options={field.options}
-                  choices={field.choices}
+                  choices={field.choices as RDFChoiceOption<T>[]}
                   placeholder={field.placeholder}
                   helper={field.helpText || field.HelpText}
                   disabled={field.disabled}
@@ -166,7 +166,7 @@ export function RDF<T>({
                   name={field.name}
                   label={field.label}
                   options={field.options}
-                  choices={field.choices}
+                  choices={field.choices as RDFChoiceOption<T>[]}
                   placeholder={field.placeholder}
                   helper={field.helpText || field.HelpText}
                   disabled={field.disabled}

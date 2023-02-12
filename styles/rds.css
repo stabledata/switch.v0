@@ -7,12 +7,14 @@ form {
   width: 100%;
 }
 
+/**** styles */
 /* field wrapper */
 .field {
   width: 100%;
   margin: 20px auto;
 }
 
+/* disabled fields */
 .radio-disabled,
 .checkbox-disabled,
 .media-disabled,
@@ -24,7 +26,6 @@ form {
   opacity: 0.3;
 }
 
-/**** styles */
 /* buttons */
 .submit {
   font-size: 20px;
@@ -239,7 +240,6 @@ form {
   transform: translateX(21px);
 }
 
-
 @media (prefers-color-scheme: dark) {
   .checkbox, .radio {
     background-color: var(--checkbox-background-dark);
@@ -360,7 +360,6 @@ form {
   background-color: var(--input-background-light);
   color: var(--input-text-color-light);
 }
-
 
 @media (prefers-color-scheme: dark) {
   .select-trigger {
@@ -483,5 +482,3 @@ form {
 .media-info .file-name {
   font-weight: 500;
 }
-
-

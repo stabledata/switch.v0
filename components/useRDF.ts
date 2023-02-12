@@ -30,11 +30,11 @@ export type RDFFieldOptions<T> = {
   label?: string
   default?: string
   helpText?: string
-  HelpText?: (state?: Partial<T>) => JSX.Element
   placeholder?: string
-  choices?: RDFChoiceOption<T>[]  // for selects
   previewType?: MediaPreviewType // for media uploads
   observe?: boolean
+  HelpText?: (state?: Partial<T>) => JSX.Element
+  choices?: RDFChoiceOption<T>[]  | ((state?: Partial<T>) => RDFChoiceOption<T>[])
   disabled?: boolean | ((state?: Partial<T>) => boolean)
   hidden?: boolean | ((state?: Partial<T>) => boolean)
   // react hook form options

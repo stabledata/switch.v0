@@ -3,6 +3,7 @@ import type { RDFOptions } from './components/useRDF';
 export type FormState = {
   simple: string
   necessary: string
+  customizing: string
   code: string
 }
 
@@ -77,6 +78,7 @@ export const options: RDFOptions<FormState> = {
       name: 'customizing',
       label: 'Enter anything that contains "ing"',
       placeholder: 'e.g. Running',
+      observe: true,
       options: {
         validate: ((value: string | string[]) => {
           if (value.indexOf('ing') < 0) {
@@ -147,10 +149,14 @@ export const options: RDFOptions<FormState> = {
       name: 'dinner-choice',
       label: 'Dinner choice',
       helpText: 'Note, the vegetarian option is vegan.',
-      choices: [
+      choices: ({ customizing }: FormState) =>[
         { label: 'Chicken', value: 'chicken' },
         { label: 'Fish', value: 'fish' },
-        { label: 'Filet Mignon w Gold Leaf', value: 'filet-mignon', disabled: true },
+        {
+          label: 'Filet Mignon w Gold Leaf',
+          value: 'filet-mignon',
+          disabled: customizing.toLowerCase() !== 'running'
+        },
         'Vegetarian'
       ]
     },
