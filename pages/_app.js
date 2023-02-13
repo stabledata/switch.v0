@@ -1,4 +1,4 @@
-import '../styles/rds.css';
+import '../rdf/rdf.css';
 import '../styles/styles.css';
 
 function MyApp({ Component, pageProps }) {

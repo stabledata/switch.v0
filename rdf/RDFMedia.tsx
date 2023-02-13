@@ -1,3 +1,4 @@
+import React from 'react';
 import { Label } from '@radix-ui/react-label';
 import { CameraIcon } from '@radix-ui/react-icons';
 import { RDFControlledInputProps } from './RDF';

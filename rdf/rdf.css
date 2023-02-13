@@ -42,26 +42,26 @@ form {
   font-size: 20px;
   padding: 10px 15px;
   transition: all 230ms ease-out;
-  background-color: var(--button-color-light);
-  color: var(--button-text-light);
+  background-color: var(--button-color-light, #222);
+  color: var(--button-text-light, #fff);
   border-radius: 5px;
   border: none;
 }
 
 .submit :hover, .submit :focus {
-  background-color: var(--button-color-hover-light);
-  box-shadow: 0 0 5px 0px var(--input-focused-shadow-light);
+  background-color: var(--button-color-hover-light, #666);
+  box-shadow: 0 0 5px 0px var(--input-focused-shadow-light, #888);
   outline: none;
 }
 
 @media (prefers-color-scheme: dark) {
   .submit  {
-    background-color: var(--button-color-dark);
+    background-color: var(--button-color-dark, #eee);
     color: var(--button-text-dark);
   }
   .submit :hover, .submit :focus {
-    background-color: var(--button-color-hover-dark);
-    box-shadow: 0 0 5px 0px var(--input-focused-shadow-dark);
+    background-color: var(--button-color-hover-dark, #fff);
+    box-shadow: 0 0 5px 0px var(--input-focused-shadow-dark, #999);
   }
 }
 
@@ -70,7 +70,7 @@ form {
   font-size: 15px;
   font-weight: 500;
   line-height: 35px;
-  color: var(--label-color-light);
+  color: var(--label-color-light, #555);
 }
 .instructions {
   font-size: 13px;
@@ -81,12 +81,12 @@ form {
   width: 100%;
 }
 .error-message, .label-has-error {
-  color: var(--error-message);
+  color: var(--error-message, #c00);
 }
 
 @media (prefers-color-scheme: dark) {
   .label {
-    color: var(--label-color-dark);
+    color: var(--label-color-dark, #fff);
   }
 }
 
@@ -98,13 +98,13 @@ form {
   line-height: 1;
   height: 35px;
   font-size: 15px;
-  color: var(--input-text-color-light);
-  border: 1px solid var(--input-border-light);
-  background-color: var(--input-background-light);
+  color: var(--input-text-color-light, #333);
+  border: 1px solid var(--input-border-light, #888);
+  background-color: var(--input-background-light, #fff);
   transition: all 230ms ease-out;
 }
 .input:focus, .input-multiline:focus {
-  box-shadow: 0 0 3px 0px var(--input-focused-shadow-light);
+  box-shadow: 0 0 2px 0px var(--input-focused-shadow-light, #888);
   outline: none;
 }
 .input-multiline {
@@ -122,20 +122,20 @@ form {
 }
 
 .input-has-error {
-  border: 1px solid var(--input-border-error-light) !important;
+  border: 1px solid var(--input-border-error-light, #ff7070) !important;
 }
 
 @media (prefers-color-scheme: dark) {
   .input, .input-multiline {
     color: var(--input-text-color-dark, '#fff');
-    background-color: var(--input-background-dark);
-    border: 1px solid var(--input-border-dark);
+    background-color: var(--input-background-dark, #333);
+    border: 1px solid var(--input-border-dark, #444);
   }
   .input:focus, .input-multiline:focus {
-    box-shadow: 0 0 2px 2px var(--input-focused-shadow-dark);
+    box-shadow: 0 0 2px 2px var(--input-focused-shadow-dark, #999);
   }
   .input-has-error {
-    border: 1px solid var(--input-border-error-dark) !important;
+    border: 1px solid var(--input-border-error-dark, #ff7070) !important;
   }
 }
 
@@ -171,8 +171,8 @@ form {
   margin-right: 10px;
   margin-left: 5px;
   padding: 4px;
-  background-color: var(--checkbox-background-light);
-  border: 1px solid var(--checkbox-border-light);
+  background-color: var(--checkbox-background-light, #fff);
+  border: 1px solid var(--checkbox-border-light, #888);
   transition: all 230ms ease-out;
 }
 
@@ -182,8 +182,8 @@ form {
   width: 42px;
   height: 25px;
   border-radius: 9999px;
-  background-color: var(--switch-off-background-light);
-  -webkit-tap-highlight-color: var(--switch-off-background-light);
+  background-color: var(--switch-off-background-light, rgb(148, 148, 148));
+  -webkit-tap-highlight-color: var(--switch-off-background-light, rgb(148, 148, 148));
   border: none;
 }
 
@@ -200,12 +200,12 @@ form {
 }
 
 .checkbox:hover, .checkbox:focus, .radio:focus, .radio:hover {
-  box-shadow: 0 0 3px 0 var(--input-focused-shadow-light);
+  box-shadow: 0 0 3px 0 var(--input-focused-shadow-light, #888);
   outline: none;
 }
 
 .checkbox-indicator, .radio-group-indicator {
-  color: var(--checkbox-check-light);
+  color: var(--checkbox-check-light, #000);
 }
 
 .radio-group-indicator {
@@ -223,14 +223,14 @@ form {
   width: 11px;
   height: 11px;
   border-radius: 50%;
-  background-color: var(--radio-select-indicator-light);
+  background-color: var(--radio-select-indicator-light, #555);
 }
 
 .switch:focus {
-  box-shadow: 0 0 2px 0 var(--input-focused-shadow-light);
+  box-shadow: 0 0 2px 0 var(--input-focused-shadow-light, #888);
 }
 .switch[data-state='checked'] {
-  background-color: var(--switch-on-background-light);
+  background-color: var(--switch-on-background-light, rgb(55, 199, 55));
 }
 
 .switch-toggle {
@@ -253,27 +253,27 @@ form {
 
 @media (prefers-color-scheme: dark) {
   .checkbox, .radio {
-    background-color: var(--checkbox-background-dark);
-    border: 1px solid var(--checkbox-border-dark);
+    background-color: var(--checkbox-background-dark, #111);
+    border: 1px solid var(--checkbox-border-dark, #bbb);
   }
   .checkbox:hover, .checkbox:focus, .radio:focus, .radio:hover  {
-    box-shadow: 0 0 9px 0 var(--input-focused-shadow-dark);
+    box-shadow: 0 0 9px 0 var(--input-focused-shadow-dark, #999);
   }
   .checkbox-indicator, .radio-group-indicator {
-    color: var(--checkbox-check-dark);
+    color: var(--checkbox-check-dark, #fff);
   }
   .radio-group-indicator::after {
-    background-color: var(--radio-select-indicator-dark);
+    background-color: var(--radio-select-indicator-dark, #bbb);
   }
   .switch {
-    background-color: var(--switch-off-background-dark);
-    -webkit-tap-highlight-color: var(--switch-off-background-dark);
+    background-color: var(--switch-off-background-dark, rgb(125, 125, 125));
+    -webkit-tap-highlight-color: var(--switch-off-background-dark, rgb(125, 125, 125));
   }
   .switch:focus, .switch:hover {
-    box-shadow: 0 0 9px 0 var(--input-focused-shadow-dark);
+    box-shadow: 0 0 9px 0 var(--input-focused-shadow-dark, #999);
   }
   .switch[data-state='checked'] {
-    background-color: var(--switch-on-background-dark);
+    background-color: var(--switch-on-background-dark, rgb(55, 199, 55));
   }
 }
 
@@ -294,25 +294,25 @@ form {
   line-height: 1;
   height: 35px;
   gap: 5px;
-  background-color: var(--input-background-light);
-  color: var(--input-text-color-light);
-  border: 1px solid var(--input-border-light);
+  background-color: var(--input-background-light, #fff);
+  color: var(--input-text-color-light, #333);
+  border: 1px solid var(--input-border-light, #888);
 }
 
 .select-trigger:hover, .select-trigger:focus  {
-  box-shadow: 0 0 2px 0 var(--input-focused-shadow-light);
+  box-shadow: 0 0 2px 0 var(--input-focused-shadow-light, #888);
   outline: none;
 }
 
 .select-trigger[data-placeholder], .select-icon {
-  color: var(--select-placeholder-color-light);
+  color: var(--select-placeholder-color-light, #777);
 }
 
 .select-content {
   overflow: hidden;
   border-radius: 6px;
-  background-color: var(--input-background-light);
-  box-shadow: 0px 10px 38px -10px var(--select-content-shadow-light), 0px 10px 20px -15px var(--select-content-shadow-light);
+  background-color: var(--input-background-light, #fff);
+  box-shadow: 0px 10px 38px -10px var(--select-content-shadow-light, rgba(22, 23, 24, 0.35)), 0px 10px 20px -15px var(--select-content-shadow-light, rgba(22, 23, 24, 0.35));
 }
 
 .select-viewport {
@@ -330,18 +330,18 @@ form {
   padding: 0 35px 0 25px;
   position: relative;
   user-select: none;
-  color: var(--input-text-color-light);
+  color: var(--input-text-color-light, #333);
 }
 
 .select-item[data-disabled] {
-  color: var(--select-item-disabled-light);
+  color: var(--select-item-disabled-light, #ddd);
   pointer-events: none;
 }
 
 .select-item[data-highlighted] {
   outline: none;
-  background-color: var(--select-highlight-background-light);
-  color: var(--select-highlight-text-light);
+  background-color: var(--select-highlight-background-light, rgb(228, 228, 228));
+  color: var(--select-highlight-text-light, #222);
   border: none;
 }
 
@@ -350,7 +350,7 @@ form {
   font-size: 11px;
   line-height: 25px;
   margin-top: 10px;
-  color: var(--select-group-label-light);
+  color: var(--select-group-label-light, rgb(158, 158, 158));
 }
 
 .item-indicator {
@@ -368,42 +368,42 @@ form {
   justify-content: center;
   height: 25px;
   cursor: default;
-  background-color: var(--input-background-light);
-  color: var(--input-text-color-light);
+  background-color: var(--input-background-light, #fff);
+  color: var(--input-text-color-light, #333);
 }
 
 @media (prefers-color-scheme: dark) {
   .select-trigger {
-    background-color: var(--input-background-dark);
-    color: var(--input-text-color-dark);
-    border: 1px solid var(--input-border-dark);
+    background-color: var(--input-background-dark, #333);
+    color: var(--input-text-color-dark, #fff);
+    border: 1px solid var(--input-border-dark, #444);
   }
 
   .select-trigger:hover, .select-trigger:focus  {
-    box-shadow: 0 0 4px 0 var(--input-focused-shadow-dark);
+    box-shadow: 0 0 4px 0 var(--input-focused-shadow-dark, #999);
   }
   .select-trigger[data-placeholder], .select-icon {
-    color: var(--select-placeholder-color-dark);
+    color: var(--select-placeholder-color-dark, #777);
   }
   .select-content {
-    background-color: var(--input-background-dark);
-    box-shadow: 0px 10px 38px -10px var(--select-content-shadow-dark), 0px 10px 20px -15px var(--select-content-shadow-dark);
+    background-color: var(--input-background-dark, #333);
+    box-shadow: 0px 10px 38px -10px var(--select-content-shadow-dark, rgba(190, 190, 190, 0.35)), 0px 10px 20px -15px var(--select-content-shadow-dark, rgba(190, 190, 190, 0.35));
   }
   .select-item {
-    color: var(--input-text-color-dark);
+    color: var(--input-text-color-dark, #fff);
   }
   .select-item[data-highlighted] {
     outline: none;
-    background-color: var(--select-highlight-background-dark);
-    color: var(--select-highlight-text-dark);
+    background-color: var(--select-highlight-background-dark, rgb(89, 89, 89));
+    color: var(--select-highlight-text-dark, rgb(241, 241, 241));
     border: none;
   }
   .select-item[data-disabled] {
-    color: var(--select-item-disabled-dark);
+    color: var(--select-item-disabled-dark, #555);
   }
   .select-scroll-button {
-    background-color: var(--input-background-dark);
-    color: var(--input-text-color-dark);
+    background-color: var(--input-background-dark, #333);
+    color: var(--input-text-color-dark, #fff);
   }
 }
 
@@ -421,20 +421,11 @@ form {
   height: 120px;
   margin: 10px 0;
   border-radius: 5px;
-  background-color: var(--media-target-background-light);
+  background-color: var(--media-target-background-light, #eee);
 }
 
 .media-target:has(.media-input:focus) {
-  box-shadow: 0 0 4px 0px var(--input-focused-shadow-light);
-}
-
-@media (prefers-color-scheme: dark) {
-  .media-target {
-    background-color: var(--media-target-background-dark);
-  }
-  .media-target:has(.media-input:focus) {
-    box-shadow: 0 0 4px 0px var(--input-focused-shadow-dark);
-  }
+  box-shadow: 0 0 4px 0px var(--input-focused-shadow-light, #888);
 }
 
 .media-preview {
@@ -467,7 +458,7 @@ form {
   width: 35px;
   margin-top: 25px;
   flex: 1;
-  color: var(--media-target-icon-color-light);
+  color: var(--media-target-icon-color-light, rgb(207, 207, 207));
 }
 
 .media-drop p {
@@ -499,4 +490,16 @@ form {
 
 .media-info .file-name {
   font-weight: 500;
+}
+
+@media (prefers-color-scheme: dark) {
+  .media-target {
+    background-color: var(--media-target-background-dark, rgb(86, 86, 86));
+  }
+  .media-target:has(.media-input:focus) {
+    box-shadow: 0 0 4px 0px var(--input-focused-shadow-dark, #999);
+  }
+  .media-drop svg {
+    color: var(--media-target-icon-color-light, rgb(144, 144, 144));
+  }
 }

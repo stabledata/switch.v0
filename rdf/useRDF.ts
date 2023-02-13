@@ -5,8 +5,11 @@ import type {
   RegisterOptions
 } from 'react-hook-form';
 
+
+export type SubmitHandler<T> = (fd: FormData, state: T) => void | Promise<void>
+
 export type RDFForm<T> = UseFormReturn & {
-  onSubmit: (fd: FormData, data?: T) => void,
+  onSubmit: SubmitHandler<T>,
   fields: RDFField<T>[]
 }
 
@@ -51,7 +54,7 @@ export type RDFField<T> = {
 
 export const useRDF = <T>(
   fields: RDFField<T>[],
-  onSubmit: (fd: FormData, data?: T) => void
+  onSubmit: SubmitHandler<T>,
 ): RDFForm<T> => {
   // collect default values
   const defaultValues = Object.values(fields)
@@ -130,7 +133,8 @@ export const useRDFInternal = <T>(
     // TODO:
     // 1 - options to perform the POST, headers etc as configuration
     // 2 - think about how to handle in flight state on consumer end etc.
-    onSubmit(fd, finalState as T);
+    // this might be async.
+    void onSubmit(fd, finalState as T);
 
     return fd;
   };

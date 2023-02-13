@@ -1,16 +1,17 @@
 {
   "name": "radix-declarative-form",
-  "version": "0.0.1",
+  "version": "0.0.2-rc.3",
   "description": "A declarative form built react-hook-from and radix-ui components",
-  "main": "lib/RDF.js",
-  "types": "lib/RDF.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc"
   },
   "files": [
+    "lib/",
+    "rdf.css",
     "package.json",
-    "*.js",
-    "*.jsx"
+    "README.md"
   ],
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.0.1",
