@@ -47,7 +47,8 @@ export const RDFMedia = ({
       field.onChange(file);
     };
 
-    const handleRemoveMedia = () => {
+    const handleRemoveMedia = (e: any) => {
+      e.preventDefault();
       setPreviewImageUrl(null);
       setMedia(null);
       field.onChange(null);
@@ -92,7 +93,7 @@ export const RDFMedia = ({
                 <span className="file-name">{media.name}</span>
                 <span className="file-type">{media.type}</span>
                 <span className="file-size">{prettyBytes(media.size)}</span>
-                <a href="javascript:void(0)" className="remove-media" onClick={handleRemoveMedia}>Remove media</a>
+                <a href="#" className="remove-media" onClick={handleRemoveMedia}>Remove media</a>
               </div>
             : null
         }

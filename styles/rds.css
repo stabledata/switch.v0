@@ -424,7 +424,7 @@ form {
   background-color: var(--media-target-background-light);
 }
 
-.media-target:has(> .media-input:focus) {
+.media-target:has(.media-input:focus) {
   box-shadow: 0 0 4px 0px var(--input-focused-shadow-light);
 }
 
@@ -432,7 +432,7 @@ form {
   .media-target {
     background-color: var(--media-target-background-dark);
   }
-  .media-target:has(> .media-input:focus) {
+  .media-target:has(.media-input:focus) {
     box-shadow: 0 0 4px 0px var(--input-focused-shadow-dark);
   }
 }
@@ -493,7 +493,7 @@ form {
   margin: 5px 0;
 }
 
-.media-info a {
+.media-info .remove-media {
   cursor: pointer;
 }
 

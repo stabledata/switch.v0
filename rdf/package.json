@@ -1,7 +1,7 @@
 {
   "name": "radix-declarative-form",
   "version": "0.0.1",
-  "description": "Query wrappers for  Mintbase JS SDK",
+  "description": "A declarative form built react-hook-from and radix-ui components",
   "main": "lib/RDF.js",
   "types": "lib/RDF.d.ts",
   "scripts": {
