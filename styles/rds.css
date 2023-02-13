@@ -424,9 +424,16 @@ form {
   background-color: var(--media-target-background-light);
 }
 
+.media-target:has(> .media-input:focus) {
+  box-shadow: 0 0 4px 0px var(--input-focused-shadow-light);
+}
+
 @media (prefers-color-scheme: dark) {
   .media-target {
     background-color: var(--media-target-background-dark);
+  }
+  .media-target:has(> .media-input:focus) {
+    box-shadow: 0 0 4px 0px var(--input-focused-shadow-dark);
   }
 }
 
