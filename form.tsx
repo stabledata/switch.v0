@@ -21,7 +21,8 @@ export const options: RDFField<FormState>[] = [
       type: 'text',
       name: 'input-w-default',
       label: 'This entry has a default value',
-      default: 'This *is* a default value, neat.'
+      default: 'This *is* a default value, neat.',
+      HelpText: () => <span>wtf</span>
     },
 
     // validation testing from rhf

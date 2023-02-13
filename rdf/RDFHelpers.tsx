@@ -2,8 +2,8 @@ import React from 'react';
 
 export const RDFHelpText = ({ helper }) => (
   <div className="instructions">
-    {typeof helper === 'string'
-        ? <span className="field-help-text">{helper}</span>
+    {typeof helper === 'object'
+        ? helper
         : null
       }
       {typeof helper === 'function'
