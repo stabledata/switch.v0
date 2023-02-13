@@ -17,6 +17,8 @@ import { RDFMedia } from './RDFMedia';
 export type RDFProps<T> = {
   form: RDFForm<T>
   submitButtonLabel?: string
+  submitButtonLabelInFlight?: string
+  isInFlight?: boolean
 }
 
 export type RDFFieldProps = {
@@ -42,7 +44,9 @@ export type RDFControlledInputProps = RDFFieldProps & {
  */
 export function RDF<T>({
   form,
-  submitButtonLabel = 'Send it'
+  submitButtonLabel = 'Send it',
+  submitButtonLabelInFlight = 'Sending...',
+  isInFlight = false,
 }: RDFProps<T>) {
   const {
     register,
@@ -178,7 +182,9 @@ export function RDF<T>({
               );
         }
       })}
-      <button type="submit" className="submit">{submitButtonLabel}</button>
+      <button type="submit" className="submit" disabled={isInFlight}>
+        {isInFlight ? submitButtonLabelInFlight : submitButtonLabel}
+      </button>
     </form>
   );
 }

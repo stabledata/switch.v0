@@ -5,6 +5,11 @@ import type {
   RegisterOptions
 } from 'react-hook-form';
 
+export type RDFForm<T> = UseFormReturn & {
+  onSubmit: (fd: FormData, data?: T) => void,
+  fields: RDFField<T>[]
+}
+
 export type RDFFieldType =
   'text' |
   'multiline' |
@@ -42,11 +47,6 @@ export type RDFField<T> = {
   // react hook form options (second argument to register)
   // https://react-hook-form.com/api/useform/register
   options?: RegisterOptions
-}
-
-export type RDFForm<T> = UseFormReturn & {
-  onSubmit: (fd: FormData, data?: T) => void,
-  fields: RDFField<T>[]
 }
 
 export const useRDF = <T>(

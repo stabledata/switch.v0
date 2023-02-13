@@ -2,8 +2,8 @@
   "name": "radix-declarative-form",
   "version": "0.0.1",
   "description": "Query wrappers for  Mintbase JS SDK",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "lib/RDF.js",
+  "types": "lib/RDF.d.ts",
   "scripts": {
     "build": "tsc"
   },
