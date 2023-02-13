@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
-import { RDF } from '../components/RDF';
+import { RDF } from '../rdf/RDF';
 import { options, FormState } from '../form';
-import { useRDF } from '../components/useRDF';
+import { useRDF } from '../rdf/useRDF';
 
 export default function Home() {
   const [data, setData] = useState<any>(null);

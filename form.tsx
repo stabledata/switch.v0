@@ -1,4 +1,4 @@
-import type { RDFField } from './components/useRDF';
+import type { RDFField } from './rdf/useRDF';
 
 export type FormState = {
   simple: string

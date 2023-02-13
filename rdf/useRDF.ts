@@ -44,12 +44,6 @@ export type RDFField<T> = {
   options?: RegisterOptions
 }
 
-export type UseRDFInternalHookReturn<T> =  Partial<UseFormReturn> & {
-  errors?: FieldErrors
-  handleSubmitWithFormData: (data: T) => FormData,
-  changedState: Partial<T>
-}
-
 export type RDFForm<T> = UseFormReturn & {
   onSubmit: (fd: FormData, data?: T) => void,
   fields: RDFField<T>[]
@@ -79,6 +73,12 @@ export const useRDF = <T>(
     onSubmit
    };
 };
+
+export type UseRDFInternalHookReturn<T> =  Partial<UseFormReturn> & {
+  errors?: FieldErrors
+  handleSubmitWithFormData: (data: T) => FormData,
+  changedState: Partial<T>
+}
 
 export const useRDFInternal = <T>(
   form: RDFForm<T>
@@ -127,11 +127,11 @@ export const useRDFInternal = <T>(
       });
 
     // for now, we can just submit to wrapper
-    onSubmit(fd, finalState as T);
-
     // TODO:
     // 1 - options to perform the POST, headers etc as configuration
     // 2 - think about how to handle in flight state on consumer end etc.
+    onSubmit(fd, finalState as T);
+
     return fd;
   };
 
