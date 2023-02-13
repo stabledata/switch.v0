@@ -1,6 +1,6 @@
 {
   "name": "radix-declarative-form",
-  "version": "0.0.2-rc.3",
+  "version": "0.0.2-rc.4",
   "description": "A declarative form built react-hook-from and radix-ui components",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
