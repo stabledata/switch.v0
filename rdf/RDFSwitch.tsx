@@ -1,9 +1,7 @@
-import React from 'react';
 import { Controller } from 'react-hook-form';
 import { Label } from '@radix-ui/react-label';
 import { RDFControlledInputProps, RDFFieldProps } from './RDF';
 import * as Switch from '@radix-ui/react-switch';
-import { CheckIcon } from '@radix-ui/react-icons';
 import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
 
 export type RDFSwitchProps = RDFControlledInputProps & {

@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const RDFHelpText = ({ helper }) => (
   <div className="instructions">
     {typeof helper === 'object'

@@ -1,10 +1,9 @@
-import React from 'react';
 import { Label } from '@radix-ui/react-label';
 import { CameraIcon } from '@radix-ui/react-icons';
 import { RDFControlledInputProps } from './RDF';
 import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
 import { Controller } from 'react-hook-form';
-import prettyBytes from 'pretty-bytes';
+import prettyBytes from './prettyBytes';
 import { useRef, useState } from 'react';
 import { MediaPreviewType } from './useRDF';
 
@@ -40,7 +39,7 @@ export const RDFMedia = ({
   }
 
   const render = ({ field }) => {
-    const handleFileInputChange = (e: unknown) => {
+    const handleFileInputChange = () => {
       // TODO: a lot more
       const [file] = fileInputRef.current.files;
       setPreviewImageUrl(URL.createObjectURL(file));

@@ -1,4 +1,3 @@
-import { format } from 'path';
 import { FieldErrors, useForm } from 'react-hook-form';
 import type {
   UseFormReturn,
@@ -26,7 +25,7 @@ export type MediaPreviewType =
   'hero' |
   'thumb'
 
-export type RDFChoiceOption<T> =
+export type RDFChoiceOption =
   string |
   {
     label: string
@@ -44,7 +43,7 @@ export type RDFField<T> = {
   previewType?: MediaPreviewType // for media uploads
   observe?: boolean
   HelpText?: (state?: Partial<T>) => JSX.Element
-  choices?: RDFChoiceOption<T>[]  | ((state?: Partial<T>) => RDFChoiceOption<T>[])
+  choices?: RDFChoiceOption[]  | ((state?: Partial<T>) => RDFChoiceOption[])
   disabled?: boolean | ((state?: Partial<T>) => boolean)
   hidden?: boolean | ((state?: Partial<T>) => boolean)
   // react hook form options (second argument to register)

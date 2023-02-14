@@ -1,4 +1,3 @@
-import React from 'react';
 import { Label } from '@radix-ui/react-label';
 import { RDFFieldProps } from './RDF';
 import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';

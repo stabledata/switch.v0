@@ -1,4 +1,3 @@
-import React from 'react';
 import { Controller } from 'react-hook-form';
 import { Label } from '@radix-ui/react-label';
 import { RDFControlledInputProps, RDFFieldProps } from './RDF';

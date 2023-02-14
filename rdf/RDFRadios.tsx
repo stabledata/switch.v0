@@ -1,9 +1,7 @@
-import React from 'react';
 import { Controller } from 'react-hook-form';
 import { Label } from '@radix-ui/react-label';
 import { RDFControlledInputProps, RDFFieldProps } from './RDF';
 import * as RadioGroup from '@radix-ui/react-radio-group';
-import { CheckIcon } from '@radix-ui/react-icons';
 import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
 import { RDFTextFieldProps } from './RDFTextField';
 
@@ -47,7 +45,6 @@ export const RDFRadio = ({
           <RDFHelpText helper={helper} />
           <RadixRadioGroup
             field={field}
-            inputClasses={inputClasses}
             id={name}
             choices={choices}
             allDisabled={disabled as boolean}
@@ -67,7 +64,7 @@ export const RDFRadio = ({
   );
 };
 
-const RadixRadioGroup = ({ field, id, choices, allDisabled = false, inputClasses }) => {
+const RadixRadioGroup = ({ field, id, choices, allDisabled = false }) => {
   return (
     <RadioGroup.Root
       defaultValue="default"
