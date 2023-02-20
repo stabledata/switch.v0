@@ -1,6 +1,6 @@
 export const RDFHelpText = ({ helper }) => (
   <div className="instructions">
-    {typeof helper === 'object'
+      {typeof helper === 'object' || typeof helper === 'string'
         ? helper
         : null
       }

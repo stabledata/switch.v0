@@ -36,11 +36,17 @@ export type RDFChoiceOption =
     disabled?: boolean
   }
 
+export type ListConfiguration = {
+  addItemButtonText?: string
+  emptyListText?: string
+
+}
+
 export type RDFField<T> = {
   type: RDFFieldType
   name: string
   label?: string
-  default?: string | boolean
+  default?: string | boolean | any[] // FIXME: pass list config types
   helpText?: string
   placeholder?: string
   previewType?: MediaPreviewType // for media uploads
@@ -52,6 +58,7 @@ export type RDFField<T> = {
   // react hook form options (second argument to register)
   // https://react-hook-form.com/api/useform/register
   options?: RegisterOptions
+  listOptions?: ListConfiguration
 }
 
 export const useRDF = <T>(
@@ -70,6 +77,7 @@ export const useRDF = <T>(
       [name]: value
     }), {});
 
+   // non-string defaults need to be serialized
    const form = useForm({ defaultValues });
 
    return {

@@ -90,6 +90,23 @@ export const options: RDFField<FormState>[] = [
       label: 'Enter an email',
     },
 
+    // list entry (custom to RDF, BETA feature)
+    {
+      type: 'list',
+      name: 'groceries',
+      label: 'What do we need at the store?',
+      helpText: 'Press shift to add new items without submitting the form',
+      default: [
+        'bread',
+        'milk'
+      ],
+      // TODO: future, structured options
+      // default: [
+      //   { name: 'eggs', quantity: 3 },
+      //   { name: 'bread', quantity: 1 }
+      // ]
+    },
+
     // custom validation
     {
       type: 'text',
@@ -179,7 +196,7 @@ export const options: RDFField<FormState>[] = [
         },
       ]
     },
-    // switch (radix)
+    // switches (radix)
     {
       type: 'switch',
       name: 'auto-reply',
@@ -192,6 +209,7 @@ export const options: RDFField<FormState>[] = [
       label: 'Enable cellular data roaming',
       helpText: 'Switches are cool 😎, but data roaming is usually not.'
     },
+
     // checkbox (radix)
     {
       type: 'checkbox',

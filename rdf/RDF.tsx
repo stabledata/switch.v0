@@ -12,6 +12,7 @@ import { RDFSelect } from './RDFSelect';
 import { RDFRadio } from './RDFRadios';
 import { RDFSwitch } from './RDFSwitch';
 import { RDFMedia } from './RDFMedia';
+import { RDFList } from './RDFList';
 
 export type RDFProps<T> = {
   form: RDFForm<T>
@@ -181,9 +182,27 @@ export function RDF<T>({
                   errors={errors}
                 />
               );
+            // list
+            case 'list':
+              return (
+                <RDFList
+                  key={`${field.name}-${index}`}
+                  name={field.name}
+                  label={field.label}
+                  options={field.options}
+                  placeholder={field.placeholder}
+                  helper={field.helpText || field.HelpText}
+                  disabled={field.disabled}
+                  hidden={field.hidden}
+                  control={control}
+                  register={register}
+                  errors={errors}
+                  listOptions={field.listOptions}
+                />
+              );
         }
       })}
-      <button type="submit" className="submit" disabled={isInFlight}>
+      <button type="submit" className="submit button" disabled={isInFlight}>
         {isInFlight ? submitButtonLabelInFlight : submitButtonLabel}
       </button>
     </form>
