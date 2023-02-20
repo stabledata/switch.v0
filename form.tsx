@@ -72,7 +72,7 @@ export const options: RDFField<FormState>[] = [
       disabled: true
     },
 
-    // disabled
+    // number type
     {
       type: 'number',
       name: 'favorite-number',
@@ -81,6 +81,13 @@ export const options: RDFField<FormState>[] = [
        min: 1,
        max: 5,
       }
+    },
+
+    // email type
+    {
+      type: 'email',
+      name: 'email',
+      label: 'Enter an email',
     },
 
     // custom validation

@@ -50,10 +50,10 @@ export const RDFTextField = ({
           : null
         }
 
-        {type === 'text' ? (
+        {type === 'text' || type === 'email' ? (
           <input
               className={inputClasses.join(' ')}
-              type="text"
+              type={type}
               id={name}
               placeholder={placeholder}
               {...register(name, options)}

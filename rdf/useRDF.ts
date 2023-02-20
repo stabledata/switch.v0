@@ -16,11 +16,13 @@ export type RDFFieldType =
   'text' |
   'multiline' |
   'number' |
+  'email' |
   'checkbox' |
   'select' |
   'radio' |
   'switch' |
-  'media'
+  'media' |
+  'list'
 
 export type MediaPreviewType =
   'hero' |

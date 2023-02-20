@@ -80,6 +80,7 @@ export function RDF<T>({
             case 'text':
             case 'multiline':
             case 'number':
+            case 'email':
               return (
                 <RDFTextField
                   key={`${field.name}-${index}`}
