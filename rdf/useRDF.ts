@@ -15,6 +15,7 @@ export type RDFForm<T> = UseFormReturn & {
 export type RDFFieldType =
   'text' |
   'multiline' |
+  'number' |
   'checkbox' |
   'select' |
   'radio' |

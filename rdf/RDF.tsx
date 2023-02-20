@@ -79,14 +79,15 @@ export function RDF<T>({
             // text field
             case 'text':
             case 'multiline':
+            case 'number':
               return (
                 <RDFTextField
                   key={`${field.name}-${index}`}
+                  type={field.type }
                   name={field.name}
                   label={field.label}
                   placeholder={field.placeholder}
                   options={field.options}
-                  multiline={field.type === 'multiline'}
                   helper={field.helpText || field.HelpText}
                   disabled={field.disabled}
                   hidden={field.hidden}

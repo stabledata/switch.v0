@@ -1,10 +1,11 @@
 import { Label } from '@radix-ui/react-label';
 import { RDFFieldProps } from './RDF';
 import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
+import { RDFFieldType } from './useRDF';
 
 export type RDFTextFieldProps = RDFFieldProps & {
   placeholder?: string
-  multiline?: boolean
+  type?: RDFFieldType // used for text/area/line rendering
 }
 
 /**
@@ -14,13 +15,13 @@ export type RDFTextFieldProps = RDFFieldProps & {
  */
 export const RDFTextField = ({
   name,
+  type,
   label,
   placeholder,
   helper,
   options,
   register,
   errors,
-  multiline,
   disabled,
   hidden
 }: RDFTextFieldProps) => {
@@ -37,22 +38,42 @@ export const RDFTextField = ({
       <Label className={labelClasses.join(' ')} htmlFor={name}>
         {label}
       </Label>
-      {multiline
-        ? <textarea
-            className={['input-multiline', ...inputClasses].join(' ')}
-            id={name}
-            placeholder={placeholder}
-            {...register(name, options)}
-            disabled={disabled as boolean}
-          />
-        : <input
-            className={inputClasses.join(' ')}
-            type="text" id={name}
-            placeholder={placeholder}
-            {...register(name, options)}
-            disabled={disabled as boolean}
-          />
-      }
+      {type === 'multiline' ? (
+            <textarea
+              className={['input-multiline', ...inputClasses].join(' ')}
+              id={name}
+              placeholder={placeholder}
+              {...register(name, options)}
+              disabled={disabled as boolean}
+            />
+          )
+          : null
+        }
+
+        {type === 'text' ? (
+          <input
+              className={inputClasses.join(' ')}
+              type="text"
+              id={name}
+              placeholder={placeholder}
+              {...register(name, options)}
+              disabled={disabled as boolean}
+            />
+          ): null
+        }
+
+        {type === 'number' ? (
+          <input
+              className={inputClasses.join(' ')}
+              type="number"
+              id={name}
+              placeholder={placeholder}
+              {...register(name, options)}
+              disabled={disabled as boolean}
+            />
+          ): null
+        }
+
       <RDFErrorMessage error={error} />
       <RDFHelpText helper={helper} />
     </div>

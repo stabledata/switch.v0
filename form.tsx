@@ -72,6 +72,17 @@ export const options: RDFField<FormState>[] = [
       disabled: true
     },
 
+    // disabled
+    {
+      type: 'number',
+      name: 'favorite-number',
+      label: 'A number between one and five, please',
+      options: {
+       min: 1,
+       max: 5,
+      }
+    },
+
     // custom validation
     {
       type: 'text',
