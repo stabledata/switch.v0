@@ -39,7 +39,6 @@ export type RDFChoiceOption =
 export type ListConfiguration = {
   addItemButtonText?: string
   emptyListText?: string
-
 }
 
 export type RDFField<T> = {
@@ -58,7 +57,8 @@ export type RDFField<T> = {
   // react hook form options (second argument to register)
   // https://react-hook-form.com/api/useform/register
   options?: RegisterOptions
-  listOptions?: ListConfiguration
+  // for list item
+  addListItemButtonText?: string
 }
 
 export const useRDF = <T>(

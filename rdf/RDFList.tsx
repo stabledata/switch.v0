@@ -4,12 +4,11 @@ import debounce from 'debounce';
 import { RDFControlledInputProps, RDFFieldProps } from './RDF';
 import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
 import { RDFTextFieldProps } from './RDFTextField';
-import { ListConfiguration } from './useRDF';
-import { useState } from 'react';
+import { ChangeEvent, KeyboardEvent, useState } from 'react';
 
 export type Choice = string | { label: string, value: string }  // for selects
 export type RDFListProps = RDFControlledInputProps & RDFTextFieldProps & {
-  listOptions: ListConfiguration
+  addItemText?: string
 }
 
 /**
@@ -26,7 +25,8 @@ export const RDFList = ({
   errors,
   disabled,
   hidden,
-  listOptions
+  addItemText,
+  placeholder
 }: RDFListProps) => {
   const labelClasses = ['label', `label-${name}`];
   const inputClasses = ['input', `input-${name}`];
@@ -48,6 +48,8 @@ export const RDFList = ({
             field={field}
             name={name}
             inputClasses={inputClasses}
+            placeholder={placeholder}
+            addItemText={addItemText}
           />
           <RDFHelpText helper={helper} />
         </div>
@@ -65,29 +67,28 @@ export const RDFList = ({
   );
 };
 
-const List = ({ field, name, inputClasses }) => {
+const List = ({ field, name, addItemText, placeholder, inputClasses }) => {
   const [listState, setListState] = useState(field.value);
   const [newItemValue, setNewItemValue] = useState('');
 
-  const handleListItemChanges = (value, index) => {
+  const handleListItemChanges = (value: string, index: number) => {
     const newState = listState;
     newState[index] = value;
     setListState(newState);
     field.onChange(newState);
   };
 
-  const handleNewItemValue = (e) => {
+  const handleNewItemValue = (e: any) =>
     setNewItemValue(e.target.value);
-  };
 
-  const handleShiftToAdd = (e) => {
+  const handleShiftToAdd = (e: any)  => {
     e.preventDefault();
     if (e.key === 'Shift' || e.keyCode === 16) {
-      handleAddItem(e);
+      handleAddItem(e as unknown as MouseEvent);
     }
   };
 
-  const handleAddItem = (e) => {
+  const handleAddItem = (e: any) => {
     e.preventDefault();
     setNewItemValue('');
     const newState = listState;
@@ -126,7 +127,7 @@ const List = ({ field, name, inputClasses }) => {
           value={newItemValue}
           onChange={handleNewItemValue}
           className={inputClasses.join(' ')}
-          placeholder='Add a new item...'
+          placeholder={placeholder || 'Add a new item...'}
           onKeyUp={handleShiftToAdd}
         />
       </div>
@@ -135,7 +136,7 @@ const List = ({ field, name, inputClasses }) => {
           className="button add-item-button"
           onClick={handleAddItem}
         >
-          Add Item
+          {addItemText || 'Add Item'}
         </button>
     </div>
   );

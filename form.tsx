@@ -100,12 +100,23 @@ export const options: RDFField<FormState>[] = [
         'bread',
         'milk'
       ],
-      // TODO: future, structured options
-      // default: [
-      //   { name: 'eggs', quantity: 3 },
-      //   { name: 'bread', quantity: 1 }
-      // ]
+      placeholder: 'Add grocery item...',
+      addListItemButtonText: 'Add it!'
     },
+
+    // table entry (custom to RDF, BETA feature)
+    // {
+    //   type: 'list',
+    //   name: 'groceries',
+    //   label: 'What do we need at the store?',
+    //   helpText: 'Press shift to add new items without submitting the form',
+    //   default: [
+    //     'bread',
+    //     'milk'
+    //   ]
+    // },
+
+
 
     // custom validation
     {

@@ -197,7 +197,7 @@ export function RDF<T>({
                   control={control}
                   register={register}
                   errors={errors}
-                  listOptions={field.listOptions}
+                  addItemText={field.addListItemButtonText}
                 />
               );
         }
