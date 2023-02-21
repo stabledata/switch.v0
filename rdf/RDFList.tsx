@@ -4,7 +4,7 @@ import debounce from 'debounce';
 import { RDFControlledInputProps, RDFFieldProps } from './RDF';
 import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
 import { RDFTextFieldProps } from './RDFTextField';
-import { ChangeEvent, KeyboardEvent, useState } from 'react';
+import { useState } from 'react';
 
 export type Choice = string | { label: string, value: string }  // for selects
 export type RDFListProps = RDFControlledInputProps & RDFTextFieldProps & {
