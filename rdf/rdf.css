@@ -22,7 +22,8 @@ form {
 .select-disabled,
 .switch-disabled,
 .text-disabled,
-.list-disabled
+.list-disabled,
+.table-disabled
 {
   opacity: 0.3;
 }
@@ -33,7 +34,9 @@ form {
 .radio-group-hidden,
 .select-hidden,
 .switch-hidden,
-.text-hidden
+.text-hidden,
+.list-hidden,
+.table-hidden
 {
   display: none;
 }
@@ -510,22 +513,41 @@ form {
 }
 
 /* lists */
-.list-item-wrap {
+.list-item-wrap,
+.table-item-wrap {
   display: flex;
 }
 
-.list-item-wrap .input {
+.list-item-wrap .input,
+.table-item-wrap .input  {
   width: calc(100% - 69px);
   margin-right: 10px;
 }
 
-.list-item-wrap button {
+.table-headings {
+  display: flex;
+}
+
+.table-headings span {
+  display: block;
+  width: calc(35% + 30px);
+  font-weight: bold;
+}
+
+.table-item-wrap .input {
+  width: 35%;
+  margin-bottom: 3px;
+}
+
+.list-item-wrap button,
+.table-item-wrap button {
   width: 30px;
   height: 36px;
   flex-basis: 35px;
 }
 
-.list-wrap button {
+.list-wrap button ,
+.table-wrap button {
   font-size: 14px;
   padding: 5px 10px;
 }

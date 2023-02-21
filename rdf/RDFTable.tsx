@@ -1,14 +1,16 @@
 import { Controller } from 'react-hook-form';
 import { Label } from '@radix-ui/react-label';
 import debounce from 'debounce';
+import { useState } from 'react';
 import { RDFControlledInputProps, RDFFieldProps } from './RDF';
 import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
 import { RDFTextFieldProps } from './RDFTextField';
-import { ChangeEvent, KeyboardEvent, useState } from 'react';
+import { TableColumn } from './useRDF';
 
 export type Choice = string | { label: string, value: string }  // for selects
-export type RDFListProps = RDFControlledInputProps & RDFTextFieldProps & {
+export type RDFTableProps = RDFControlledInputProps & RDFTextFieldProps & {
   addItemText?: string
+  columns: TableColumn[]
 }
 
 /**
@@ -16,7 +18,7 @@ export type RDFListProps = RDFControlledInputProps & RDFTextFieldProps & {
  * @props see {@link RDFFieldProps<T>}
  * @returns field with given options
  */
-export const RDFList = ({
+export const RDFTable = ({
   name,
   label,
   helper,
@@ -26,8 +28,8 @@ export const RDFList = ({
   disabled,
   hidden,
   addItemText,
-  placeholder
-}: RDFListProps) => {
+  columns,
+}: RDFTableProps) => {
   const labelClasses = ['label', `label-${name}`];
   const inputClasses = ['input', `input-${name}`];
   const error = errors[name];
@@ -38,18 +40,18 @@ export const RDFList = ({
 
   const render = ({ field }) => {
     return (
-      <div className={`field field-${name} ${disabled ? 'list-disabled' : ''} ${hidden ? 'list-hidden' : ''}`}>
-        <div className="list-wrap">
+      <div className={`field field-${name} ${disabled ? 'table-disabled' : ''} ${hidden ? 'table-hidden' : ''}`}>
+        <div className="table-wrap">
           <Label className={labelClasses.join(' ')} htmlFor={name}>
             {label}
           </Label>
           <RDFErrorMessage error={error} />
-          <List
+          <Table
             field={field}
             name={name}
             inputClasses={inputClasses}
-            placeholder={placeholder}
             addItemText={addItemText}
+            columns={columns}
             disabled={disabled}
           />
           <RDFHelpText helper={helper} />
@@ -68,53 +70,59 @@ export const RDFList = ({
   );
 };
 
-const List = ({ field, name, addItemText, placeholder, inputClasses, disabled }) => {
-  const [listState, setListState] = useState(field.value);
-  const [newItemValue, setNewItemValue] = useState('');
+const Table = ({ field, name, addItemText, columns, inputClasses, disabled }) => {
+  const [tableState, setTableState] = useState(field.value ?? [{}]);
+  const [newItemValue, setNewItemValue] = useState({});
 
-  const handleListItemChanges = (value: string, index: number) => {
-    const newState = listState;
-    newState[index] = value;
-    setListState(newState);
+  const handleTableItemChanges = (
+    objectKey: string,
+    value: string | number,
+    index: number,
+  ) => {
+    const newState = tableState;
+    newState[index][objectKey] = value;
+    setTableState(newState);
     field.onChange(newState);
   };
 
-  const handleNewItemValue = (e: any) =>
-    setNewItemValue(e.target.value);
-
-  const handleShiftToAdd = (e: any)  => {
-    e.preventDefault();
-    if (e.key === 'Shift' || e.keyCode === 16) {
-      handleAddItem(e as unknown as MouseEvent);
-    }
-  };
-
-  const handleAddItem = (e: any) => {
-    e.preventDefault();
-    setNewItemValue('');
-    const newState = listState;
+  const handleAddItem = () => {
+    setNewItemValue({});
+    const newState = tableState;
     newState.push(newItemValue);
-    setListState(newState);
+    setTableState(newState);
     field.onChange(newState);
   };
 
   const handleRemoveItem = (index: number) => {
-    listState.splice(index, 1);
-    field.onChange(listState);
-    setListState(listState);
+    tableState.splice(index, 1);
+    field.onChange(tableState);
+    setTableState(tableState);
   };
 
+
   return (
-    <div className="list-wrap">
-      {listState.map((item: string, i: number) => (
-        <div className="list-item-wrap" key={`${name}-${item}`}>
-          <Input
-            value={item}
-            onChange={debounce(handleListItemChanges, 300)}
-            index={i}
-            inputClasses={inputClasses}
-            disabled={disabled}
-          />
+    <div className="table-wrap">
+      <div className="table-headings">
+        {columns.map(
+          (c: TableColumn) => (<span key={`label-${c.key}`}>{c.label}</span>)
+        )}
+      </div>
+      {tableState.map((item: object, i: number) => (
+        <div className="table-item-wrap" key={`${name}-${item}`}>
+          {columns.map(
+            (c: TableColumn) => (
+              <Input
+                disabled={disabled}
+                value={item[c.key]}
+                key={`${i}-${c.key}`}
+                objectKey={c.key}
+                onChange={debounce(handleTableItemChanges, 300)}
+                index={i}
+                placeholder={c.placeholder}
+                inputClasses={[...inputClasses, `input-key-${c.key}`]}
+              />
+            )
+          )}
           <button
             disabled={disabled}
             type="button"
@@ -125,47 +133,38 @@ const List = ({ field, name, addItemText, placeholder, inputClasses, disabled })
           </button>
         </div>
       ))}
-      <div className="list-item-wrap new-item-wrap">
-        <input
-          value={newItemValue}
-          disabled={disabled}
-          onChange={handleNewItemValue}
-          className={inputClasses.join(' ')}
-          placeholder={placeholder || 'Add a new item...'}
-          onKeyUp={handleShiftToAdd}
-        />
-      </div>
       <button
         disabled={disabled}
         type="button"
         className="button add-item-button"
         onClick={handleAddItem}
       >
-        {addItemText || 'Add Item'}
+        {addItemText || 'Add Row'}
       </button>
     </div>
   );
 };
 
-type ListInputProps = {
+type TableInputProps = {
   disabled?: boolean
+  objectKey?: string
   value?: string
   index: number
   placeholder?: string
   inputClasses?: string[]
-  onChange: (val: any, index: number) => void
+  onChange: (objectKey: string, val: any, index: number) => void
 }
 
-const Input = ({ disabled, value, index, onChange, placeholder, inputClasses }: ListInputProps) => {
+const Input = ({ disabled, objectKey, value, index, onChange, placeholder, inputClasses }: TableInputProps) => {
   const [state, setState] = useState(value);
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setState(e.target.value);
-    onChange(e.target.value, index);
+    onChange(objectKey, e.target.value, index);
   };
   return (
     <input
-      disabled={disabled}
       type="text"
+      disabled={disabled}
       value={state}
       onChange={handleChange}
       className={inputClasses.join(' ')}

@@ -13,6 +13,7 @@ import { RDFRadio } from './RDFRadios';
 import { RDFSwitch } from './RDFSwitch';
 import { RDFMedia } from './RDFMedia';
 import { RDFList } from './RDFList';
+import { RDFTable } from './RDFTable';
 
 export type RDFProps<T> = {
   form: RDFForm<T>
@@ -197,7 +198,26 @@ export function RDF<T>({
                   control={control}
                   register={register}
                   errors={errors}
-                  addItemText={field.addListItemButtonText}
+                  addItemText={field.addItemButtonText}
+                />
+              );
+
+            // table
+            case 'table':
+              return (
+                <RDFTable
+                  key={`${field.name}-${index}`}
+                  name={field.name}
+                  label={field.label}
+                  options={field.options}
+                  helper={field.helpText || field.HelpText}
+                  disabled={field.disabled}
+                  hidden={field.hidden}
+                  control={control}
+                  register={register}
+                  errors={errors}
+                  addItemText={field.addItemButtonText}
+                  columns={field.columns}
                 />
               );
         }

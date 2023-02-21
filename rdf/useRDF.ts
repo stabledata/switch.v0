@@ -22,7 +22,8 @@ export type RDFFieldType =
   'radio' |
   'switch' |
   'media' |
-  'list'
+  'list' |
+  'table'
 
 export type MediaPreviewType =
   'hero' |
@@ -36,9 +37,11 @@ export type RDFChoiceOption =
     disabled?: boolean
   }
 
-export type ListConfiguration = {
-  addItemButtonText?: string
-  emptyListText?: string
+export type TableColumn = {
+  key: string
+  label: string
+  type?: 'number' | 'string' | 'email'
+  placeholder?: string
 }
 
 export type RDFField<T> = {
@@ -57,8 +60,10 @@ export type RDFField<T> = {
   // react hook form options (second argument to register)
   // https://react-hook-form.com/api/useform/register
   options?: RegisterOptions
-  // for list item
-  addListItemButtonText?: string
+  // for list/table items
+  addItemButtonText?: string
+  // for table items
+  columns?: TableColumn[]
 }
 
 export const useRDF = <T>(

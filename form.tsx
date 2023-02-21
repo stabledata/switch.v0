@@ -95,28 +95,35 @@ export const options: RDFField<FormState>[] = [
       type: 'list',
       name: 'groceries',
       label: 'What do we need at the store?',
-      helpText: 'Press shift to add new items without submitting the form',
+      helpText: 'Press SHIFT to add new items without submitting the form',
       default: [
         'bread',
         'milk'
       ],
       placeholder: 'Add grocery item...',
-      addListItemButtonText: 'Add it!'
+      addItemButtonText: 'Add'
     },
 
     // table entry (custom to RDF, BETA feature)
-    // {
-    //   type: 'list',
-    //   name: 'groceries',
-    //   label: 'What do we need at the store?',
-    //   helpText: 'Press shift to add new items without submitting the form',
-    //   default: [
-    //     'bread',
-    //     'milk'
-    //   ]
-    // },
-
-
+    {
+      type: 'table',
+      name: 'seats',
+      label: 'Assign a seat number to each name',
+      columns: [
+        {
+          key: 'seat',
+          label: 'Seat',
+          // optional type: number, email
+          type: 'number',
+          placeholder: 'e.g. 35'
+        },
+        {
+          key: 'name',
+          label: 'Name',
+          placeholder: 'e.g. Fred'
+        },
+      ]
+    },
 
     // custom validation
     {
@@ -141,6 +148,7 @@ export const options: RDFField<FormState>[] = [
       placeholder: 'This is a "multiline" input type',
       helpText: 'If you need some inspiration, read this help text'
     },
+
     // media input
     {
       type: 'media',
@@ -157,6 +165,7 @@ export const options: RDFField<FormState>[] = [
         })
       }
     },
+
     // media input, thumb type
     {
       type: 'media',
@@ -164,6 +173,7 @@ export const options: RDFField<FormState>[] = [
       label: 'Upload a thumbnail preview',
       previewType: 'thumb',
     },
+
     // select (radix)
     {
       type: 'select',
@@ -207,6 +217,7 @@ export const options: RDFField<FormState>[] = [
         },
       ]
     },
+
     // switches (radix)
     {
       type: 'switch',
