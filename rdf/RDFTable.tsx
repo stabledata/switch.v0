@@ -108,7 +108,7 @@ const Table = ({ field, name, addItemText, columns, inputClasses, disabled }) =>
         )}
       </div>
       {tableState.map((item: object, i: number) => (
-        <div className="table-item-wrap" key={`${name}-${item}`}>
+        <div className="table-item-wrap" key={`${name}-${item}-${i}`}>
           {columns.map(
             (c: TableColumn) => (
               <Input
