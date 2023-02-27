@@ -45,6 +45,7 @@ export const RDFTable = ({
           <Label className={labelClasses.join(' ')} htmlFor={name}>
             {label}
           </Label>
+          <RDFHelpText helper={helper} />
           <RDFErrorMessage error={error} />
           <Table
             field={field}
@@ -54,7 +55,6 @@ export const RDFTable = ({
             columns={columns}
             disabled={disabled}
           />
-          <RDFHelpText helper={helper} />
         </div>
       </div>
     );
@@ -104,7 +104,7 @@ const Table = ({ field, name, addItemText, columns, inputClasses, disabled }) =>
     <div className="table-wrap">
       <div className="table-headings">
         {columns.map(
-          (c: TableColumn) => (<span key={`label-${c.key}`}>{c.label}</span>)
+          (c: TableColumn) => (<span key={`label-${c.key}`} className={`label-${c.key}`}>{c.label}</span>)
         )}
       </div>
       {tableState.map((item: object, i: number) => (
@@ -113,7 +113,7 @@ const Table = ({ field, name, addItemText, columns, inputClasses, disabled }) =>
             (c: TableColumn) => (
               <Input
                 disabled={disabled}
-                value={item[c.key]}
+                value={item[c.key] || ''}
                 key={`${i}-${c.key}`}
                 objectKey={c.key}
                 onChange={debounce(handleTableItemChanges, 300)}

@@ -16,7 +16,7 @@ In any React component:
 import { useRDF, RDF } from 'radix-declarative-form';
 import 'radix-declarative-form/rdf.css';
 
-function MyComponent() {
+function Form() {
   const fields = [
     {
       name: 'hello',
@@ -82,13 +82,14 @@ const fields: RDFField<Person>[] = [
     },
 ];
 
-function MyComponent() {
-  const form = useRdf(fields, async function (formData: FormData, formState: Person){
+function Form() {
+  const handleSubmit = async function (formData: FormData, formState: Person){
     console.log(formData)
       // => FormData ready for multipart submit
     console.log(formState)
       // => object of Person type
-  });
+  }
+  const form = useRdf(fields, handleSubmit);
 
   return (<RDF<Person> form={form} />;
 }
