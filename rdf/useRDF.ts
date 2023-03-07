@@ -47,7 +47,7 @@ export type TableColumn = {
 export type RDFField<T> = {
   type: RDFFieldType
   name: string
-  label?: string
+  label: string
   default?: string | boolean | any[] // FIXME: pass list config types
   helpText?: string
   placeholder?: string

@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
+import matter from 'gray-matter';
+import path from 'path';
+import fs from 'fs';
 import { RDF } from '../rdf/RDF';
 import { options, FormState } from '../form';
 import { useRDF } from '../rdf/useRDF';
+import { Footer } from '../components/Footer';
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 
-export default function Home() {
+export default function Home({ content }) {
   const [data, setData] = useState<any>(null);
   const [dataInFlight, setDataInFlight] = useState<boolean>(false);
   const form = useRDF(options, async (
@@ -22,7 +28,7 @@ export default function Home() {
       });
 
       const result = await postRequest.json();
-
+      console.log('response from api:', result);
       setData(state);
       setDataInFlight(false);
     } catch (e) {
@@ -40,26 +46,35 @@ export default function Home() {
       </Head>
 
       <main className="main">
-        <h2 className="title">Radix Declarative Form</h2>
-        <p>
-          A React component that&nbsp;
-          <a href="https://github.com/cif/radix-declarative-form/blob/main/form.tsx">declaratively</a> renders beautiful and customizable forms using <a href="https://www.radix-ui.com/docs/primitives/overview/introduction">RadixUI</a> with <a href="https://github.com/cif/radix-declarative-form/blob/main/styles/rds.css">plain CSS</a> powered by<br /><a href="https://react-hook-form.com/get-started#">react-form-hook</a>.
-        </p>
-
-        <h3>Demo</h3>
-        <RDF<FormState> form={form} isInFlight={dataInFlight} />
-        <div className="preview">
-          {dataInFlight ? <h3>Submitting data..!</h3> : null}
-          <h2>Submitted data:</h2>
-          <pre>
-            {JSON.stringify(data, null, 2)}
-          </pre>
+        <div className="intro"><ReactMarkdown>{content}</ReactMarkdown></div>
+        <Link className="docs-link" href="/docs/start">
+          Documentation
+        </Link>
+        <h3>Live Demo</h3>
+        <div className="demo">
+          <RDF<FormState> form={form} isInFlight={dataInFlight} />
+          <div className="preview">
+            {dataInFlight ? <h3>Submitting data...</h3> : null}
+            <h2>Submitted data:</h2>
+            <pre>
+              {JSON.stringify(data, null, 2)}
+            </pre>
+          </div>
         </div>
       </main>
-
-      <footer className="footer">
-        Just another NextJS app deployed on Vercel.
-      </footer>
+      <Footer />
     </div>
   );
 }
+
+export const getServerSideProps = () => {
+  const slug = 'intro';
+  const filePath = path.resolve(process.cwd(), `./markdown/${slug}.md`);
+  const parsed = matter(fs.readFileSync(filePath).toString());
+  return {
+    props: {
+      content: parsed.content,
+      meta: parsed.data
+    }
+  };
+};

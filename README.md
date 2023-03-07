@@ -28,12 +28,11 @@ function Form() {
       },
     }
   ]
-  const form = useRdf(fields, async function (formData, formState){
-    console.log(formData)
-      // => FormData ready for multipart submit
-    console.log(formState)
-      // => plain object (see typescript example below)
-  });
+  const onSubmit = async (formData, formState) => {
+    console.log(formData) // => FormData ready for multipart submit
+    console.log(formState) // => plain object (see typescript example below)
+  }
+  const form = useRdf(fields, onSubmit);
 
   return (<RDF form={form} />;
 }
@@ -57,7 +56,7 @@ type Person = {
 const fields: RDFField<Person>[] = [
   {
       name: 'firstName',
-      type: 'text,
+      type: 'text',
       label: 'First Name',
       options: {
         required: 'This field is required.',
@@ -65,7 +64,7 @@ const fields: RDFField<Person>[] = [
     },
     {
       name: 'lastName',
-      type: 'text,
+      type: 'text',
       label: 'Last Name',
       options: {
         required: 'This field is required.',
@@ -73,7 +72,7 @@ const fields: RDFField<Person>[] = [
     },
     {
       name: 'employmentStatus',
-      type: 'select,
+      type: 'select',
       label: 'Last Name',
       choices: [
         'Full time', 'part time', 'unemployed'
@@ -108,11 +107,13 @@ function Form() {
   * list (BETA)
   * table (BETA)
 
-## CSS Variables and Defaults
+## CSS Variables with Defaults
+
+Colors can be customized by setting these CSS variables in scope.
 
 ```css
 
---button-color-light: #222;
+  --button-color-light: #222;
   --button-color-hover-light: #666;
   --button-text-light: #fff;
   --button-color-dark: #eee;

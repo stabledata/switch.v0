@@ -34,7 +34,6 @@
   --switch-off-background-light: rgb(148, 148, 148);
   --switch-off-background-dark: rgb(125, 125, 125);
 
-
   --radio-select-indicator-light: #555;
   --radio-select-indicator-dark: #bbb;
 
@@ -117,7 +116,7 @@ a {
 
 .main {
   min-height: 80vh;
-  padding: 4rem 0;
+  padding: 2rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -142,18 +141,22 @@ a {
   flex-grow: 1;
 }
 
-.title a {
-  color: #0070f3;
+.intro p {
+  margin: 1rem 0;
+}
+
+.intro a {
+  color: var(--link-color);
   text-decoration: none;
 }
 
-.title a:hover,
-.title a:focus,
-.title a:active {
+.intro a:hover,
+.intro a:focus,
+.intro a:active {
   text-decoration: underline;
 }
 
-.title {
+.intro h2 {
   width: 100%;
   margin: 0;
   line-height: .8;
@@ -184,4 +187,74 @@ h3 {
   .logo img {
     filter: invert(1);
   }
+}
+
+.demo .switch {
+  background-color: skyblue;
+  -webkit-tap-highlight-color: skyblue;
+}
+
+/* docs */
+.docs-link {
+  margin: 2rem 0;
+  font-size: 20px;
+  padding: 10px 25px;
+  transition: all 230ms ease-out;
+  background-color: var(--button-color-light, #222);
+  color: var(--button-text-light, #fff);
+  border-radius: 5px;
+  border: none;
+}
+
+.docs-layout {
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.docs-layout main {
+  flex: 4;
+  padding: 0 15px;
+}
+
+.docs-layout section {
+  flex: 1;
+  margin: 40px;
+  text-align: right;
+}
+
+.docs-layout .back {
+  display: block;
+  font-size: 13px;
+}
+
+.docs-layout section ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.docs-layout section ul span {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.docs-layout main {
+  margin-top: 20px;
+}
+
+.docs-layout main pre div {
+  padding: 15px;
+}
+.docs-layout main h2 {
+  margin-bottom: -5px;
+}
+.docs-layout main p {
+  margin: 25px 0;
+}
+
+.docs-layout main code {
+  font-size: 14px;
+  padding: 2px;
 }
