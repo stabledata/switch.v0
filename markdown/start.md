@@ -67,7 +67,7 @@ function FavoritesForm () {
   const onSubmit = async (formData, formState) => {
     // noop for now...
   }
-  const form = useRdf(fields, onSubmit);
+  const form = useRDF(fields, onSubmit);
 
   return (
     <div className="favorites-form">
@@ -109,7 +109,7 @@ function FavoritesForm () {
     // do whatever with results
     const result = await postRequest.json();
   }
-  const form = useRdf(fields, onSubmit);
+  const form = useRDF(fields, onSubmit);
 
   return (
     <div className="favorites-form">

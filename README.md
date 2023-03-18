@@ -32,7 +32,7 @@ function Form() {
     console.log(formData) // => FormData ready for multipart submit
     console.log(formState) // => plain object (see typescript example below)
   }
-  const form = useRdf(fields, onSubmit);
+  const form = useRDF(fields, onSubmit);
 
   return (<RDF form={form} />;
 }
@@ -88,7 +88,7 @@ function Form() {
     console.log(formState)
       // => object of Person type
   }
-  const form = useRdf(fields, handleSubmit);
+  const form = useRDF(fields, handleSubmit);
 
   return (<RDF<Person> form={form} />;
 }

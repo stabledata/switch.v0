@@ -9,6 +9,17 @@ import path from 'path';
 import matter from 'gray-matter';
 import { Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import syntaxStyle from 'react-syntax-highlighter/dist/cjs/styles/prism/vs-dark';
+import remarkGfm from 'remark-gfm';
+
+import { TextDemo } from '../../components/TextDemo';
+
+const RenderLiveDemo = ({ demo }) => {
+  if (demo === 'text') {
+    return (
+      <TextDemo />
+    );
+  }
+};
 
 export default function Docs({ content }) {
   return (
@@ -22,25 +33,30 @@ export default function Docs({ content }) {
         <Nav />
         <main>
           <ReactMarkdown
-          components={{
-            code({node, inline, className, children, ...props}) {
-              const match = /language-(\w+)/.exec(className || '');
-              return !inline && match ? (
-                <SyntaxHighlighter
-                  style={syntaxStyle}
-                  language={match[1]}
-                  PreTag="div"
-                  {...props}
-                >
-                  {String(children).replace(/\n$/, '')}
-                </SyntaxHighlighter>
-              ) : (
-                <code className={className} {...props}>
-                  {children}
-                </code>
-              );
-            }
-          }}
+            remarkPlugins={[remarkGfm]}
+            components={{
+              h5: ({ node, ...props }) => {
+                const demo = props.children[0];
+                return (<RenderLiveDemo demo={demo} />);
+              },
+              code({node, inline, className, children, ...props}) {
+                const match = /language-(\w+)/.exec(className || '');
+                return !inline && match ? (
+                  <SyntaxHighlighter
+                    style={syntaxStyle}
+                    language={match[1]}
+                    PreTag="div"
+                    {...props}
+                  >
+                    {String(children).replace(/\n$/, '')}
+                  </SyntaxHighlighter>
+                ) : (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                );
+              }
+            }}
           >
             {content}
           </ReactMarkdown>

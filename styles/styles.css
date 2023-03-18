@@ -194,6 +194,10 @@ h3 {
   -webkit-tap-highlight-color: skyblue;
 }
 
+.demo {
+  width: 100%;
+}
+
 /* docs */
 .docs-link {
   margin: 2rem 0;
@@ -250,11 +254,40 @@ h3 {
 .docs-layout main h2 {
   margin-bottom: -5px;
 }
-.docs-layout main p {
+
+/* .docs-layout main p {
   margin: 25px 0;
-}
+} */
 
 .docs-layout main code {
   font-size: 14px;
   padding: 2px;
+}
+
+.docs-layout table {
+
+}
+
+.docs-layout th {
+  background-color: #555;
+}
+
+.docs-layout tr:nth-child(odd) {
+  background-color: #222;
+}
+
+.docs-layout th, td {
+  text-align: left;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.docs-layout td:nth-child(1),
+.docs-layout td:nth-child(2) {
+  font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
+  color: var(--link-color);
+}
+
+.docs-layout td:nth-child(2) {
+  color: orange;
 }
