@@ -2,15 +2,15 @@
 title: 'Getting Started - RDF Documentation'
 ---
 
-# Getting Started With RDF
+### Getting Started With RDF
 
-## Install
+# Install
 
 ```shell
 npm i radix-declarative-form
 ```
 
-## Import CSS
+# Import CSS
 
 Somewhere in your bundled application, add the CSS import so the default styles are exported
 
@@ -19,7 +19,7 @@ import 'radix-declarative-form/rdf.css';
 ```
 
 
-## Create Form Component
+# Create Form Component
 
 Create a standard react component file
 
@@ -36,7 +36,7 @@ function FavoritesForm () {
 
 ```
 
-## Add Fields array, RDF Hook and Component
+# Add Fields array, RDF Hook and Component
 
 The `fields` array is the structure we use to define our form. It defines all the elements, the schema and behavior of each element.
 
@@ -78,7 +78,7 @@ function FavoritesForm () {
 
 ```
 
-## Handle Submissions
+# Handle Submissions
 
 The example above renders a simple text element and a single choice question element. You
 will also notice in one case we are validating the input has been filled out.
@@ -120,7 +120,7 @@ function FavoritesForm () {
 
 ```
 
-## Get Crazy
+# Go Crazy
 
-More documentation will be created for each type soon.
+More documentation will be created soon!
 
