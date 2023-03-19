@@ -1,6 +1,6 @@
 
 export const Footer = () => (
   <footer className="footer">
-    Just another NextJS app deployed on Vercel.
+    Built by <a href="http://benipsen.com">Ben</a>.
   </footer>
 );

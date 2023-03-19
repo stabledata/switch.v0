@@ -193,6 +193,7 @@ form {
   background-color: var(--switch-off-background-light, rgb(148, 148, 148));
   -webkit-tap-highlight-color: var(--switch-off-background-light, rgb(148, 148, 148));
   border: none;
+  transition: all 230ms ease-out;
 }
 
 .radio {

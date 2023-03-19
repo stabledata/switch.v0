@@ -3,16 +3,16 @@
 
 # It's just CSS.
 
-RDF makes customizations painless as possible. No long class attributes and no inline CSS rendered in JS to override. Grayscale light and dark mode defaults scale each element to 100% of the form container width for out of the box responsiveness and a11y.
+Out of the box, RDF provides a gray scale palate that works in both light and dark mode. Each form element scales to 100% of the form container width.
 
 # Wrap and Go.
 
-Styles in RDF are also "flat", so a namespaced wrapper is all you need without worrying about order or using `!important`.
+Styles in RDF also "flat" so a namespaced wrapper is all you ever need to override defaults.
 
-For example, to make the toggle switch color blue (it is green by default), you could simply wrap the RDF component with `<div className="demo">...</div>` and style it like this:
+For example, to make the toggle switch color blue (it is Apple green by default), you can simply wrap the RDF component with `<div className="demo">...</div>` and style it like this:
 
 ```css
-.demo .switch {
+.demo .switch:not([data-state='unchecked'])  {
   background-color: skyblue;
   -webkit-tap-highlight-color: skyblue;
 }
