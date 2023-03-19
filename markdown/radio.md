@@ -2,7 +2,9 @@
 title: 'Radio Group Field - RDF Documentation'
 ---
 
-# Checkbox
+### Form Field Types
+
+# Radio
 
 The `radio` type is a controlled component provided by [radix-ui](https://www.radix-ui.com/docs/primitives/components/radio-group). Using the `choices` property, you can pass a single array of string values or `{ value, label, disabled? }` values. It is similar to the select option, however all the choices are displayed in a list.
 

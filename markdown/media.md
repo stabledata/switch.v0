@@ -1,45 +1,34 @@
 ---
-title: 'Select Field - RDF Documentation'
+title: 'Media Upload - RDF Documentation'
 ---
 
 ### Form Field Types
 
-# Select
+# Media
 
-The `select` type is a controlled component provided by [radix-ui](https://www.radix-ui.com/docs/primitives/components/select). Using the `choices` property, you can pass a single array of values, array of `{ value, label, disabled? }`
+The `media` type is a controlled component which provides image upload and preview functionality.
+
+Support for non-image file types is coming soon.
 
 ```js
 // note, this is an element in the fields array (see getting started)
 {
-  type: 'select',
-  name: 'shipping',
-  label: 'Select shipping',
-  placeholder: 'Select an option...',
-  helpText: 'Ground deliveries can take up to several millennia.',
-  default: 'FedEx Ground',
-  choices: [
-    '---UPS',
-    { label: 'UPS Ground', value: 'ups-ground-234' },
-    { label: 'UPS Same Day', value: 'ups-sd-234', disabled: true },
-    'UPS Air',
-    '---Fedex',
-    'FedEx Ground',
-    'FedEx Air',
-    '---Erie Canal',
-    { label: 'Barge +Mule Power', value: 'boat-w-sal' },
-    'Barge Only'
-  ],
+  type: 'media',
+  name: 'image',
+  label: 'Upload a banner',
+  helpText: 'Please keep files below 30mb', // not a real config option, yet
+  previewType: 'hero', // can be 'thumb' or 'hero' for full width upload
   options: {
-    required: 'Select a valid shipping option to proceed with order',
-  },
-}
+    required: 'You simply must upload an image!'
+  }
+},
 // ... rest of the fields array
 
 ```
 
 ## Demo
 
-##### select
+##### media
 
 
 ## Properties
@@ -50,8 +39,7 @@ The following documents the full list of properties that alter the field's behav
 |--|--|--|
 | name       | String | The form data/state object property name. |
 | label      | String | The label for the form field. This is typically displayed next to the field to describe what it is for. |
-| default    | String | The default value for the form field. This is used to pre-populate the field with a value when the form is first loaded.                                                                                                                                                          |
-| choices    | RDFChoiceOption[] | An array of string or `{ value: string, label: string, disabled?: boolean }                                                                                                                                             |
+| previewType    | 'hero' &#124; 'thumbnail' | The preview style to use for the image uploader.                                                                                                                                                          |
 | helpText   | String | Additional text that can be displayed below the form field to provide additional information or instructions for the user.                                                                                                                                                                                                                      |
 | HelpText   | ReactElement | To render markup, tooltips and other more advanced help options, a component can be returned from this property.                                                                                                                                                                                              |
 | observe    | Boolean | Determines if the field will be included in stateful updates that can be passed both during validation and changes to form state. *See advanced topics for more detail*                                                                                                                                                                                     |

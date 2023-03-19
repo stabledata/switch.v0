@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { RDF, useRDF } from '../../rdf';
+import { RDF } from '../../rdf/RDF';
+import { useRDF } from '../../rdf/useRDF';
 
 export const Demo = ({ fields }) => {
   const [data, setData] = useState(null);

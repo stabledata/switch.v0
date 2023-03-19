@@ -2,6 +2,8 @@
 title: 'Checkbox - RDF Documentation'
 ---
 
+### Form Field Types
+
 # Checkbox
 
 The `checkbox` type is a controlled component provided by [radix-ui](https://www.radix-ui.com/docs/primitives/components/checkbox).

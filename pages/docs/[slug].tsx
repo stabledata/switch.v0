@@ -16,6 +16,9 @@ import { MultilineDemo } from '../../components/demos/MultilineDemo';
 import { CheckboxDemo } from '../../components/demos/CheckboxDemo';
 import { SelectDemo } from '../../components/demos/SelectDemo';
 import { RadioDemo } from '../../components/demos/RadioDemo';
+import { SwitchDemo } from '../../components/demos/SwitchDemo';
+import { MediaDemo } from '../../components/demos/MediaDemo';
+
 
 const RenderLiveDemo = ({ demo }) => {
   switch (demo) {
@@ -29,6 +32,10 @@ const RenderLiveDemo = ({ demo }) => {
       return <SelectDemo />;
     case 'radio':
       return <RadioDemo />;
+    case 'switch':
+      return <SwitchDemo />;
+    case 'media':
+      return <MediaDemo />;
     default:
       return null;
   }

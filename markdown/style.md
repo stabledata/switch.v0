@@ -1,11 +1,11 @@
 ### Customizing Styles
 
 
-# It's just CSS.
+# It's just css
 
 Out of the box, RDF provides a gray scale palate that works in both light and dark mode. Each form element scales to 100% of the form container width.
 
-# Wrap and Go.
+# Wrap and go
 
 Styles in RDF also "flat" so a namespaced wrapper is all you ever need to override defaults.
 
