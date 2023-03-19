@@ -54,6 +54,8 @@ export const RDFMedia = ({
       field.onChange(null);
     };
 
+    console.log('wooooo');
+
     return (
       <div className={`field field-${name} ${disabled ? 'media-disabled' : ''} ${hidden ? 'media-hidden' : ''}`}>
         <div className="media-wrap">
@@ -87,9 +89,9 @@ export const RDFMedia = ({
             />
           </div>
         </div>
+        <RDFErrorMessage error={error} />
         {previewImageUrl
             ? <div className="media-info">
-                <RDFErrorMessage error={error} />
                 <span className="file-name">{media.name}</span>
                 <span className="file-type">{media.type}</span>
                 <span className="file-size">{prettyBytes(media.size)}</span>
@@ -97,6 +99,7 @@ export const RDFMedia = ({
               </div>
             : null
         }
+
       </div>
     );
   };
