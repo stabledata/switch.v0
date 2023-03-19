@@ -54,8 +54,6 @@ export const RDFMedia = ({
       field.onChange(null);
     };
 
-    console.log('wooooo');
-
     return (
       <div className={`field field-${name} ${disabled ? 'media-disabled' : ''} ${hidden ? 'media-hidden' : ''}`}>
         <div className="media-wrap">
