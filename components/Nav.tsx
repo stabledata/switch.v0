@@ -13,6 +13,7 @@ export const Nav = () => (
       <li><Link href="/docs/multiline">Multiline Field</Link></li>
       <li><Link href="/docs/checkbox">Checkbox</Link></li>
       <li><Link href="/docs/select">Select</Link></li>
+      <li><Link href="/docs/radio">Radio Group</Link></li>
     </ul>
   </section>
 );

@@ -25,7 +25,7 @@ A `multiline` type field is exactly like the `text` type, but renders an textare
 
 ## Properties
 
-The following documents the full list of properties that alter a text field's behavior.
+The following documents the full list of properties that alter the field's behavior.
 
 | Property   | Type | Description |
 |--|--|--|

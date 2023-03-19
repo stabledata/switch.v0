@@ -1,23 +1,23 @@
 ---
-title: 'Checkbox - RDF Documentation'
+title: 'Radio Group Field - RDF Documentation'
 ---
 
 # Checkbox
 
-The `checkbox` type is a controlled component provided by [radix-ui](https://www.radix-ui.com/docs/primitives/components/checkbox).
-
-When a box is **not checked**, the name property will **not be defined** in the state object vs a defined property with value of `false`
+The `radio` type is a controlled component provided by [radix-ui](https://www.radix-ui.com/docs/primitives/components/radio-group). Using the `choices` property, you can pass a single array of string values or `{ value, label, disabled? }` values. It is similar to the select option, however all the choices are displayed in a list.
 
 ```js
 // note, this is an element in the fields array (see getting started)
 {
-  type: 'checkbox',
-  name: 'accept-terms', // note, this will not be defined in state when box is not checked
-  label: 'I accept the terms of the agreement',
-  HelpText: () => (<div>To continue, you must accept the <a href="#">terms</a></div>),
-  options: {
-    required: 'You must accept the terms!',
-  }
+  type: 'radio',
+  name: 'dinner-choice',
+  label: 'Dinner choice',
+  helpText: 'Note, the vegetarian option is vegan.',
+  choices:[
+    { label: 'Chicken', value: 'chicken' },
+    { label: 'Fish', value: 'fish' },
+    'Vegetarian',
+  ]
 }
 // ... rest of the fields array
 
@@ -25,18 +25,19 @@ When a box is **not checked**, the name property will **not be defined** in the 
 
 ## Demo
 
-##### checkbox
+##### radio
 
 
 ## Properties
 
-The following documents the full list of properties that alter the field's behavior.
+The following documents the full list of properties that alter a text field's behavior.
 
 | Property   | Type | Description |
 |--|--|--|
 | name       | String | The form data/state object property name. |
 | label      | String | The label for the form field. This is typically displayed next to the field to describe what it is for. |
 | default    | String | The default value for the form field. This is used to pre-populate the field with a value when the form is first loaded.                                                                                                                                                          |
+| choices    | RDFChoiceOption[] | An array of string or `{ value: string, label: string, disabled?: boolean }. Note that a combination of types may be used if desired.                                                                                                                                             |
 | helpText   | String | Additional text that can be displayed below the form field to provide additional information or instructions for the user.                                                                                                                                                                                                                      |
 | HelpText   | ReactElement | To render markup, tooltips and other more advanced help options, a component can be returned from this property.                                                                                                                                                                                              |
 | observe    | Boolean | Determines if the field will be included in stateful updates that can be passed both during validation and changes to form state. *See advanced topics for more detail*                                                                                                                                                                                     |

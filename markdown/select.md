@@ -42,7 +42,7 @@ The `select` type is a controlled component provided by [radix-ui](https://www.r
 
 ## Properties
 
-The following documents the full list of properties that alter a text field's behavior.
+The following documents the full list of properties that alter the field's behavior.
 
 | Property   | Type | Description |
 |--|--|--|

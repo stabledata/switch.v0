@@ -15,28 +15,22 @@ import { TextDemo } from '../../components/demos/TextDemo';
 import { MultilineDemo } from '../../components/demos/MultilineDemo';
 import { CheckboxDemo } from '../../components/demos/CheckboxDemo';
 import { SelectDemo } from '../../components/demos/SelectDemo';
+import { RadioDemo } from '../../components/demos/RadioDemo';
 
 const RenderLiveDemo = ({ demo }) => {
-  if (demo === 'text') {
-    return (
-      <TextDemo />
-    );
-  }
-  if (demo === 'multiline') {
-    return (
-      <MultilineDemo />
-    );
-  }
-
-  if (demo === 'checkbox') {
-    return (
-      <CheckboxDemo />
-    );
-  }
-  if (demo === 'select') {
-    return (
-      <SelectDemo />
-    );
+  switch (demo) {
+    case 'text':
+      return <TextDemo />;
+    case 'multiline':
+      return <MultilineDemo />;
+    case 'checkbox':
+      return <CheckboxDemo />;
+    case 'select':
+      return <SelectDemo />;
+    case 'radio':
+      return <RadioDemo />;
+    default:
+      return null;
   }
 };
 
