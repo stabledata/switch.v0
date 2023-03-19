@@ -242,4 +242,10 @@ export const options: RDFField<FormState>[] = [
         required: 'You must accept the terms!',
       }
     },
+    {
+      type: 'checkbox',
+      name: 'already-checked',
+      label: 'This one is checked for you',
+      default: true,
+    },
   ];

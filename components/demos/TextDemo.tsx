@@ -1,4 +1,5 @@
-import { RDF, useRDF } from '../rdf';
+import { RDF, useRDF } from '../../rdf/lib/esm';
+import { Demo } from './Demo';
 
 export const TextDemo = () => {
   const fields: any = [
@@ -21,14 +22,5 @@ export const TextDemo = () => {
     }
   ];
 
-  const onSubmit = async (formData, formState) => {
-    // noop for now...
-  };
-  const form = useRDF(fields, onSubmit);
-
-  return (
-    <div className="favorites-form">
-      <RDF form={form} />
-    </div>
-  );
+  return <Demo fields={fields} />;
 };

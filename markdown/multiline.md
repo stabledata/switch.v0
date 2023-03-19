@@ -1,22 +1,19 @@
 ---
-title: 'Text Field - RDF Documentation'
+title: 'Multiline Input - RDF Documentation'
 ---
 
-# Text Field
+# Multiline Field
 
-The `text` type field has the basic options you would expect. `number` and `email` may also be passed as type which will render the semantic HTML input type attribute accordingly.
+A `multiline` type field is exactly like the `text` type, but renders an textarea tag instead of an input.
 
 ```js
-// this is an element in the fields array (see getting started)
+// note, this is an element in the fields array (see getting started)
 {
-  type: 'text', // specifies this should render as a text field
-  name: 'fullName',
-  placeholder: 'Enter your name',
-  helpText: 'Your full name is required so that we know who you are.',
-  label: 'Your Full Name',
-  options: {
-    required: 'This field is required.',
-  },
+  type: 'multiline', // specifies this should render as multiline field
+  name: 'message',
+  placeholder: 'Enter a message',
+  helpText: 'If you need inspiration, look inward.',
+  label: 'Your Message'
 }
 // ... rest of the fields array
 
@@ -24,7 +21,8 @@ The `text` type field has the basic options you would expect. `number` and `emai
 
 ## Demo
 
-##### text
+##### multiline
+
 ## Properties
 
 The following documents the full list of properties that alter a text field's behavior.

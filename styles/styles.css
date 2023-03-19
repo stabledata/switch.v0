@@ -264,16 +264,12 @@ h3 {
   padding: 2px;
 }
 
-.docs-layout table {
-
-}
-
 .docs-layout th {
-  background-color: #555;
+  background-color: #ddd;
 }
 
 .docs-layout tr:nth-child(odd) {
-  background-color: #222;
+  background-color: #eee;
 }
 
 .docs-layout th, td {
@@ -290,4 +286,22 @@ h3 {
 
 .docs-layout td:nth-child(2) {
   color: orange;
+}
+
+.docs-layout .demo {
+  margin-top: 15px;
+  padding: 15px 35px 35px 35px;
+  background-color: #eee;
+  border-radius: 5px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .docs-layout th {
+    background-color: #555;
+  }
+
+  .docs-layout tr:nth-child(odd),
+  .docs-layout .demo {
+    background-color: #222;
+  }
 }

@@ -1,6 +1,6 @@
 # Radix Declarative Form
 
-Renders form elements with controlled components connected via redux-hook-form based on a single configuration.
+Renders form elements as controlled components connected via redux-hook-form based using a single fields configuration.
 
 ## Basic Usage
 

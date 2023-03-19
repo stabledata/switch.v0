@@ -10,8 +10,11 @@ import matter from 'gray-matter';
 import { Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import syntaxStyle from 'react-syntax-highlighter/dist/cjs/styles/prism/vs-dark';
 import remarkGfm from 'remark-gfm';
-
-import { TextDemo } from '../../components/TextDemo';
+// demo components
+import { TextDemo } from '../../components/demos/TextDemo';
+import { MultilineDemo } from '../../components/demos/MultilineDemo';
+import { CheckboxDemo } from '../../components/demos/CheckboxDemo';
+import { SelectDemo } from '../../components/demos/SelectDemo';
 
 const RenderLiveDemo = ({ demo }) => {
   if (demo === 'text') {
@@ -19,14 +22,30 @@ const RenderLiveDemo = ({ demo }) => {
       <TextDemo />
     );
   }
+  if (demo === 'multiline') {
+    return (
+      <MultilineDemo />
+    );
+  }
+
+  if (demo === 'checkbox') {
+    return (
+      <CheckboxDemo />
+    );
+  }
+  if (demo === 'select') {
+    return (
+      <SelectDemo />
+    );
+  }
 };
 
-export default function Docs({ content }) {
+export default function Docs({ content, meta }) {
   return (
     <div className="container">
       <Head>
-        <title>Radix Declarative Form (RDF) Docs</title>
-        <meta name="description" content="Declaratively render form templates with RadixUI, react-hook-from with vanilla CCS" />
+        <title>{meta.title || 'Radix Declarative Form (RDF) Docs'}</title>
+        <meta name="description" content="Declarative form template library with Radix-UI, react-hook-from. Styled with vanilla CCS" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="docs-layout">
@@ -37,7 +56,11 @@ export default function Docs({ content }) {
             components={{
               h5: ({ node, ...props }) => {
                 const demo = props.children[0];
-                return (<RenderLiveDemo demo={demo} />);
+                return (
+                  <div className="demo">
+                    <RenderLiveDemo demo={demo} />
+                  </div>
+                );
               },
               code({node, inline, className, children, ...props}) {
                 const match = /language-(\w+)/.exec(className || '');
