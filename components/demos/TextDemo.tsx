@@ -1,4 +1,3 @@
-import { RDF, useRDF } from '../../rdf/lib/esm';
 import { Demo } from './Demo';
 
 export const TextDemo = () => {
