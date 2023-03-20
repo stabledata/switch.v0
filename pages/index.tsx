@@ -55,10 +55,15 @@ export default function Home({ content }) {
           <RDF<FormState> form={form} isInFlight={dataInFlight} />
           <div className="preview">
             {dataInFlight ? <h3>Submitting data...</h3> : null}
-            <h2>Submitted data:</h2>
-            <pre>
-              {JSON.stringify(data, null, 2)}
-            </pre>
+            {data ?
+              <div>
+                <h2>Submitted data:</h2>
+                <pre>
+                  {JSON.stringify(data, null, 2)}
+                </pre>
+              </div>
+            : null
+            }
           </div>
         </div>
       </main>
