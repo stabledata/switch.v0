@@ -166,6 +166,29 @@ a {
   text-align: left;
 }
 
+.cta-buttons {
+  display: flex;
+}
+
+.cta-buttons svg {
+  position: relative;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.cta-buttons a {
+  margin: 10px;
+  font-size: 20px;
+  padding: 8px 25px;
+  transition: all 230ms ease-out;
+  background-color: var(--button-color-light, #222);
+  color: var(--button-text-light, #fff);
+  border-radius: 5px;
+  border: none;
+}
+
 h3 {
   width: 100%;
   margin: 15px 0 0 0;
@@ -203,17 +226,6 @@ h3 {
 }
 
 /* docs */
-.docs-link {
-  margin: 2rem 0;
-  font-size: 20px;
-  padding: 10px 25px;
-  transition: all 230ms ease-out;
-  background-color: var(--button-color-light, #222);
-  color: var(--button-text-light, #fff);
-  border-radius: 5px;
-  border: none;
-}
-
 .docs-layout {
   display: flex;
   max-width: 1100px;
