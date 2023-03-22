@@ -235,17 +235,17 @@ export const options: RDFField<FormState>[] = [
     // checkbox (radix)
     {
       type: 'checkbox',
+      name: 'send-spam',
+      label: 'YES! Send me tons of spam and fomo inducing content',
+      default: true,
+    },
+    {
+      type: 'checkbox',
       name: 'accept-terms',
       label: 'I accept the terms of the agreement',
       HelpText: () => (<div>To continue, you must accept the <a href="#">terms</a></div>),
       options: {
         required: 'You must accept the terms!',
       }
-    },
-    {
-      type: 'checkbox',
-      name: 'already-checked',
-      label: 'This one is checked for you',
-      default: true,
     },
   ];
