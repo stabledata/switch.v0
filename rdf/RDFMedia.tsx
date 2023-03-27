@@ -1,5 +1,5 @@
 import { Label } from '@radix-ui/react-label';
-import { CameraIcon } from '@radix-ui/react-icons/dist/CameraIcon';
+import { CameraIcon } from '@radix-ui/react-icons';
 import { RDFControlledInputProps } from './RDF';
 import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
 import { Controller } from 'react-hook-form';

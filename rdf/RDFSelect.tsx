@@ -3,9 +3,7 @@ import { Controller } from 'react-hook-form';
 import { Label } from '@radix-ui/react-label';
 import { RDFControlledInputProps, RDFFieldProps } from './RDF';
 import * as Select from '@radix-ui/react-select';
-import { CheckIcon } from '@radix-ui/react-icons/dist/CheckIcon';
-import { ChevronDownIcon } from '@radix-ui/react-icons/dist/ChevronDownIcon';
-import { ChevronUpIcon } from '@radix-ui/react-icons/dist/ChevronUpIcon';
+import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
 import { RDFTextFieldProps } from './RDFTextField';
 
