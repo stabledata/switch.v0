@@ -2,7 +2,7 @@ import { Controller } from 'react-hook-form';
 import { Label } from '@radix-ui/react-label';
 import { RDFControlledInputProps, RDFFieldProps } from './RDF';
 import * as Checkbox from '@radix-ui/react-checkbox';
-import { CheckIcon } from '@radix-ui/react-icons';
+import { CheckIcon } from '@radix-ui/react-icons/dist/CheckIcon';
 import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
 
 export type RDFCheckboxProps = RDFControlledInputProps & {}
