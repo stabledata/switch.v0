@@ -3,7 +3,6 @@ import { Controller } from 'react-hook-form';
 import { Label } from '@radix-ui/react-label';
 import { RDFControlledInputProps, RDFFieldProps } from './RDF';
 import * as Select from '@radix-ui/react-select';
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
 import { RDFTextFieldProps } from './RDFTextField';
 
@@ -67,6 +66,24 @@ export const RDFSelect = ({
     />
   );
 };
+
+const ChevronDownIcon = () => (
+  <svg className="icon down-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+  </svg>
+);
+
+const ChevronUpIcon = () => (
+  <svg className="icon up-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+  </svg>
+);
+
+export const CheckIcon = () => (
+  <svg className="icon down-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+  </svg>
+);
 
 const RadixSelect = ({ field, choices, placeholder, disabled, inputClasses }) => {
   return (

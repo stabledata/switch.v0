@@ -380,6 +380,11 @@ form {
   color: var(--input-text-color-light, #333);
 }
 
+.select-content .icon {
+  display: block;
+  max-width: 15px;
+}
+
 @media (prefers-color-scheme: dark) {
   .select-trigger {
     background-color: var(--input-background-dark, #333);

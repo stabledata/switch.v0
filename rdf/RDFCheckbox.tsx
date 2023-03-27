@@ -2,7 +2,6 @@ import { Controller } from 'react-hook-form';
 import { Label } from '@radix-ui/react-label';
 import { RDFControlledInputProps, RDFFieldProps } from './RDF';
 import * as Checkbox from '@radix-ui/react-checkbox';
-import { CheckIcon } from '@radix-ui/react-icons';
 import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
 
 export type RDFCheckboxProps = RDFControlledInputProps & {}
@@ -59,6 +58,12 @@ export const RDFCheckbox = ({
     />
   );
 };
+
+export const CheckIcon = () => (
+  <svg className="icon down-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+  </svg>
+);
 
 const RadixCheckbox = ({ field, id, disabled, inputClasses }) => {
   return (
