@@ -17,8 +17,8 @@ import { RDFTable } from './RDFTable';
 
 export type RDFProps<T> = {
   form: RDFForm<T>
-  submitButtonLabel?: string
-  submitButtonLabelInFlight?: string
+  submitButtonLabel?: string | React.ReactNode
+  submitButtonLabelInFlight?: string | React.ReactNode
   isInFlight?: boolean
 }
 
@@ -223,7 +223,7 @@ export function RDF<T>({
               );
         }
       })}
-      <button type="submit" className="submit button" disabled={isInFlight}>
+      <button type="submit" className="submit" disabled={isInFlight}>
         {isInFlight ? submitButtonLabelInFlight : submitButtonLabel}
       </button>
     </form>

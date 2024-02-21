@@ -20,12 +20,13 @@ For example, to make the toggle switch color blue (it is Apple green by default)
 
 ## Color Variables
 
-Any of the following variables can be defined in your custom CSS which will change the colors of the elements:
+Any of the following variables can be defined in your custom CSS to change colors of the elements:
 
 ```css
 --button-color-light: #222;
 --button-color-hover-light: #666;
 --button-text-light: #fff;
+--button-text-dark: #222;
 
 --button-color-dark: #eee;
 --button-color-hover-dark: #fff;

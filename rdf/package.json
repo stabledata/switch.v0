@@ -1,6 +1,6 @@
 {
   "name": "react-declarative-components",
-  "version": "0.0.11",
+  "version": "0.0.13",
   "description": "A declarative form built react-hook-from and radix-ui components",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",

@@ -116,6 +116,7 @@ Colors can be customized by setting these CSS variables in scope.
   --button-color-light: #222;
   --button-color-hover-light: #666;
   --button-text-light: #fff;
+  --button-text-dark: #333;
   --button-color-dark: #eee;
   --button-color-hover-dark: #fff;
   --button-text-dark: #222;

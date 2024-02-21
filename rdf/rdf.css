@@ -52,7 +52,7 @@ form {
   border: none;
 }
 
-.submit :hover, .submit :focus {
+.submit:hover, .submit:focus {
   background-color: var(--button-color-hover-light, #666);
   box-shadow: 0 0 5px 0px var(--input-focused-shadow-light, #888);
   outline: none;
@@ -61,9 +61,9 @@ form {
 @media (prefers-color-scheme: dark) {
   .submit  {
     background-color: var(--button-color-dark, #eee);
-    color: var(--button-text-dark);
+    color: var(--button-text-dark, #222);
   }
-  .submit :hover, .submit :focus {
+  .submit:hover, .submit:focus {
     background-color: var(--button-color-hover-dark, #fff);
     box-shadow: 0 0 5px 0px var(--input-focused-shadow-dark, #999);
   }
