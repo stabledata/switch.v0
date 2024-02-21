@@ -5,7 +5,7 @@ import matter from 'gray-matter';
 import path from 'path';
 import fs from 'fs';
 import { RDF } from '../rdf/RDF';
-import { options, FormState } from '../form';
+import { options as formDescription, FormState } from '../form';
 import { useRDF } from '../rdf/useRDF';
 import { Footer } from '../components/Footer';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
@@ -13,7 +13,7 @@ import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 export default function Home({ content }) {
   const [data, setData] = useState<any>(null);
   const [dataInFlight, setDataInFlight] = useState<boolean>(false);
-  const form = useRDF(options, async (
+  const form = useRDF(formDescription, async (
     fd: FormData,  // useful for actually sending info later
     state: FormState
   ): Promise<void> => {

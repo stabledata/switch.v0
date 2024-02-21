@@ -38,6 +38,16 @@ export const options: RDFField<FormState>[] = [
       },
       observe: true
     },
+    {
+      type: 'password',
+      name: 'Passphrase',
+      label: 'A password value',
+      options: {
+        required: 'This field is required, fill it out!'
+      },
+      observe: true
+    },
+    
 
     // max len, code validation
     {
@@ -57,8 +67,8 @@ export const options: RDFField<FormState>[] = [
     // hidden code field (stateful logic)
     {
       type: 'switch',
-      name: 'secret-switch',
-      label: 'Activate super secret code',
+      name: 'password-switch',
+      label: 'Activate super password code',
       hidden: (observableState: Partial<FormState>) => {
         return observableState.code !== '123';
       }

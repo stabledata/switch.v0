@@ -5,7 +5,7 @@ title: 'Text Field - RDF Documentation'
 ### Form Field Types
 # Text Field
 
-The `text` type field has the basic options you would expect. `number` and `email` may also be passed as type which will render the semantic HTML input type attribute accordingly.
+The `text` type field has the basic options you would expect. `number`, `email` and `password` may also be passed as type which will render the semantic HTML input type attribute accordingly.
 
 ```js
 // this is an element in the fields array (see getting started)

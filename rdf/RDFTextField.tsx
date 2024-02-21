@@ -50,7 +50,7 @@ export const RDFTextField = ({
           : null
         }
 
-        {type === 'text' || type === 'email' ? (
+        {type === 'text' || type === 'email' || type === 'password' ? (
           <input
               className={inputClasses.join(' ')}
               type={type}

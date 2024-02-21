@@ -14,6 +14,7 @@ export type RDFForm<T> = UseFormReturn & {
 
 export type RDFFieldType =
   'text' |
+  'password' |
   'multiline' |
   'number' |
   'email' |
