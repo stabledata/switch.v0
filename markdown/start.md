@@ -7,7 +7,7 @@ title: 'Getting Started - RDF Documentation'
 # Install
 
 ```shell
-npm i radix-declarative-form
+npm i react-declarative-components
 ```
 
 # Import CSS
@@ -15,7 +15,7 @@ npm i radix-declarative-form
 Somewhere in your bundled application, add the CSS import so the default styles are exported
 
 ```js
-import 'radix-declarative-form/rdf.css';
+import 'react-declarative-components/rdf.css';
 ```
 
 
@@ -42,8 +42,8 @@ The `fields` array is the structure we use to define our form. It defines all th
 
 ```jsx
 import React from 'react';
-import { useRDF, RDF } from 'radix-declarative-form';
-import 'radix-declarative-form/rdf.css';
+import { useRDF, RDF } from 'react-declarative-components';
+import 'react-declarative-components/rdf.css';
 
 function FavoritesForm () {
   const fields = [
@@ -90,8 +90,8 @@ Here's an example sending a POST using multipart/form-data (FormData) directly.
 
 ```jsx
 import React from 'react';
-import { useRDF, RDF } from 'radix-declarative-form';
-import 'radix-declarative-form/rdf.css';
+import { useRDF, RDF } from 'react-declarative-components';
+import 'react-declarative-components/rdf.css';
 import fields from './fields'; // note: we moved fields to a new file
 
 function FavoritesForm () {

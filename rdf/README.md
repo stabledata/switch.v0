@@ -1,4 +1,4 @@
-# Radix Declarative Form
+# React Declarative Form
 
 Declaratively render beautiful forms in react.
 

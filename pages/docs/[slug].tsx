@@ -45,8 +45,8 @@ export default function Docs({ content, meta }) {
   return (
     <div className="container">
       <Head>
-        <title>{meta.title || 'Radix Declarative Form (RDF) Docs'}</title>
-        <meta name="description" content="Declarative form template library with Radix-UI, react-hook-from. Styled with vanilla CCS" />
+        <title>{meta.title || 'React Declarative Form (RDF) Docs'}</title>
+        <meta name="description" content="Declarative form template library with React-UI, react-hook-from. Styled with vanilla CCS" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="docs-layout">

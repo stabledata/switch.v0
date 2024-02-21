@@ -1,4 +1,4 @@
-# Radix Declarative Form
+# React Declarative Form
 
 Renders form elements as controlled components connected via redux-hook-form based using a single fields configuration.
 
@@ -7,14 +7,14 @@ Renders form elements as controlled components connected via redux-hook-form bas
 Install:
 
 ```
-npm i radix-declarative-form
+npm i react-declarative-components
 ```
 
 In any React component:
 
 ```
-import { useRDF, RDF } from 'radix-declarative-form';
-import 'radix-declarative-form/rdf.css';
+import { useRDF, RDF } from 'react-declarative-components';
+import 'react-declarative-components/rdf.css';
 
 function Form() {
   const fields = [
@@ -43,9 +43,9 @@ function Form() {
 With typescript, you can create a type around your form data and pass to RDF via generics.
 
 ```
-import { useRDF, RDF } from 'radix-declarative-form';
-import type { RDFField } from 'radix-declarative-form';
-import 'radix-declarative-form/rdf.css';
+import { useRDF, RDF } from 'react-declarative-components';
+import type { RDFField } from 'react-declarative-components';
+import 'react-declarative-components/rdf.css';
 
 type Person = {
   firstName: string
