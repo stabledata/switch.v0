@@ -40,7 +40,7 @@ export default function Home({ content }) {
   return (
     <div className="container">
       <Head>
-        <title>React Declarative Form</title>
+        <title>React Declarative Components</title>
         <meta name="description" content="Declaratively render form templates with RadixUI, react-hook-from with vanilla CCS" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
