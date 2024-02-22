@@ -1,6 +1,6 @@
 import { Controller } from 'react-hook-form';
 import { Label } from '@radix-ui/react-label';
-import { RDFControlledInputProps, RDFFieldProps } from './RDF';
+import { RDFControlledInputProps } from './RDF';
 import * as Switch from '@radix-ui/react-switch';
 import { RDFErrorMessage, RDFHelpText } from './RDFHelpers';
 
@@ -10,7 +10,7 @@ export type RDFSwitchProps = RDFControlledInputProps & {
 
 /**
  *
- * @props see {@link RDFFieldProps}
+ * @props see {@link RDFSwitchProps}
  * @returns field with given options
  */
 export const RDFSwitch = ({
@@ -36,7 +36,7 @@ export const RDFSwitch = ({
     return (
       <div className={`field field-${name} ${disabled ? 'switch-disabled' : ''} ${hidden ? 'switch-hidden' : ''}`}>
         <div className="switch-wrap">
-        <Label className={labelClasses.join(' ')} htmlFor={name}>
+          <Label className={labelClasses.join(' ')} htmlFor={name}>
             {label}
           </Label>
           <RadixSwitch

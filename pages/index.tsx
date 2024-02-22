@@ -73,7 +73,7 @@ export default function Home({ content }) {
                   {JSON.stringify(data, null, 2)}
                 </pre>
               </div>
-            : null
+              : null
             }
           </div>
         </div>

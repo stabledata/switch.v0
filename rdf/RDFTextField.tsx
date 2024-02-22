@@ -39,40 +39,40 @@ export const RDFTextField = ({
         {label}
       </Label>
       {type === 'multiline' ? (
-            <textarea
-              className={['input-multiline', ...inputClasses].join(' ')}
-              id={name}
-              placeholder={placeholder}
-              {...register(name, options)}
-              disabled={disabled as boolean}
-            />
-          )
-          : null
-        }
+        <textarea
+          className={['input-multiline', ...inputClasses].join(' ')}
+          id={name}
+          placeholder={placeholder}
+          {...register(name, options)}
+          disabled={disabled as boolean}
+        />
+      )
+        : null
+      }
 
-        {type === 'text' || type === 'email' || type === 'password' ? (
-          <input
-              className={inputClasses.join(' ')}
-              type={type}
-              id={name}
-              placeholder={placeholder}
-              {...register(name, options)}
-              disabled={disabled as boolean}
-            />
-          ): null
-        }
+      {type === 'text' || type === 'email' || type === 'password' ? (
+        <input
+          className={inputClasses.join(' ')}
+          type={type}
+          id={name}
+          placeholder={placeholder}
+          {...register(name, options)}
+          disabled={disabled as boolean}
+        />
+      ): null
+      }
 
-        {type === 'number' ? (
-          <input
-              className={inputClasses.join(' ')}
-              type="number"
-              id={name}
-              placeholder={placeholder}
-              {...register(name, options)}
-              disabled={disabled as boolean}
-            />
-          ): null
-        }
+      {type === 'number' ? (
+        <input
+          className={inputClasses.join(' ')}
+          type="number"
+          id={name}
+          placeholder={placeholder}
+          {...register(name, options)}
+          disabled={disabled as boolean}
+        />
+      ): null
+      }
 
       <RDFErrorMessage error={error} />
       <RDFHelpText helper={helper} />

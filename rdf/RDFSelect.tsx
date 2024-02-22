@@ -101,27 +101,27 @@ const RadixSelect = ({ field, choices, placeholder, disabled, inputClasses }) =>
           </Select.ScrollUpButton>
           <Select.Viewport className="select-viewport">
             <Select.Group>
-            {choices.map((choice: string, index: number) => {
-              const { label, value, disabled } = typeof choice === 'object'
-              ? choice
-              : { label: choice, value: choice, disabled: false };
+              {choices.map((choice: string, index: number) => {
+                const { label, value, disabled } = typeof choice === 'object'
+                  ? choice
+                  : { label: choice, value: choice, disabled: false };
 
-              if (value.indexOf('---') === 0) {
-                return <Select.Label
-                  key={`${choice}-${index}`}
-                  className="select-label">{choice.substring(3)}
-                </Select.Label>;
-              }
+                if (value.indexOf('---') === 0) {
+                  return <Select.Label
+                    key={`${choice}-${index}`}
+                    className="select-label">{choice.substring(3)}
+                  </Select.Label>;
+                }
 
-              return <SelectItem
-                key={`${value}-${index}`}
-                value={value}
-                disabled={disabled}
-              >
-                {label}
-              </SelectItem>;
+                return <SelectItem
+                  key={`${value}-${index}`}
+                  value={value}
+                  disabled={disabled}
+                >
+                  {label}
+                </SelectItem>;
 
-            })}
+              })}
             </Select.Group>
           </Select.Viewport>
           <Select.ScrollDownButton className="select-scroll-button">
@@ -129,8 +129,8 @@ const RadixSelect = ({ field, choices, placeholder, disabled, inputClasses }) =>
           </Select.ScrollDownButton>
         </Select.Content>
       </Select.Portal>
-  </Select.Root>
-);};
+    </Select.Root>
+  );};
 
 type SelectItemProps = {
   value: string

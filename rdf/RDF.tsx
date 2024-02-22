@@ -14,6 +14,7 @@ import { RDFSwitch } from './RDFSwitch';
 import { RDFMedia } from './RDFMedia';
 import { RDFList } from './RDFList';
 import { RDFTable } from './RDFTable';
+import { RDFDatePicker } from './RDFDatePicker';
 
 export type RDFProps<T> = {
   form: RDFForm<T>
@@ -78,151 +79,169 @@ export function RDF<T>({
         })
         .map((field: RDFField<T>, index) => {
           switch (field.type) {
+          // text field
+          case 'text':
+          case 'multiline':
+          case 'number':
+          case 'email':
+          case 'password':
+            return (
+              <RDFTextField
+                key={`${field.name}-${index}`}
+                type={field.type }
+                name={field.name}
+                label={field.label}
+                placeholder={field.placeholder}
+                options={field.options}
+                helper={field.helpText || field.HelpText}
+                disabled={field.disabled}
+                hidden={field.hidden}
+                register={register}
+                errors={errors}
+              />
+            );
             // text field
-            case 'text':
-            case 'multiline':
-            case 'number':
-            case 'email':
-            case 'password':
-              return (
-                <RDFTextField
-                  key={`${field.name}-${index}`}
-                  type={field.type }
-                  name={field.name}
-                  label={field.label}
-                  placeholder={field.placeholder}
-                  options={field.options}
-                  helper={field.helpText || field.HelpText}
-                  disabled={field.disabled}
-                  hidden={field.hidden}
-                  register={register}
-                  errors={errors}
-                />
-              );
-            // text field
-            case 'media':
-              return (
-                <RDFMedia
-                  key={`${field.name}-${index}`}
-                  name={field.name}
-                  label={field.label}
-                  options={field.options}
-                  helper={field.helpText || field.HelpText}
-                  previewType={field.previewType}
-                  disabled={field.disabled}
-                  hidden={field.hidden}
-                  control={control}
-                  errors={errors}
-                />
-              );
+          case 'media':
+            return (
+              <RDFMedia
+                key={`${field.name}-${index}`}
+                name={field.name}
+                label={field.label}
+                options={field.options}
+                helper={field.helpText || field.HelpText}
+                previewType={field.previewType}
+                disabled={field.disabled}
+                hidden={field.hidden}
+                control={control}
+                errors={errors}
+              />
+            );
             // checkbox
-            case 'checkbox':
-              return (
-                <RDFCheckbox
-                  key={`${field.name}-${index}`}
-                  name={field.name}
-                  label={field.label}
-                  options={field.options}
-                  disabled={field.disabled}
-                  hidden={field.hidden}
-                  helper={field.helpText || field.HelpText}
-                  control={control}
-                  register={register}
-                  errors={errors}
-                />
-              );
+          case 'checkbox':
+            return (
+              <RDFCheckbox
+                key={`${field.name}-${index}`}
+                name={field.name}
+                label={field.label}
+                options={field.options}
+                disabled={field.disabled}
+                hidden={field.hidden}
+                helper={field.helpText || field.HelpText}
+                control={control}
+                register={register}
+                errors={errors}
+              />
+            );
             // switch
-            case 'switch':
-              return (
-                <RDFSwitch
-                  key={`${field.name}-${index}`}
-                  name={field.name}
-                  label={field.label}
-                  options={field.options}
-                  helper={field.helpText || field.HelpText}
-                  disabled={field.disabled}
-                  hidden={field.hidden}
-                  defaultValue={field.default as boolean}
-                  control={control}
-                  register={register}
-                  errors={errors}
-                />
-              );
+          case 'switch':
+            return (
+              <RDFSwitch
+                key={`${field.name}-${index}`}
+                name={field.name}
+                label={field.label}
+                options={field.options}
+                helper={field.helpText || field.HelpText}
+                disabled={field.disabled}
+                hidden={field.hidden}
+                defaultValue={field.default as boolean}
+                control={control}
+                register={register}
+                errors={errors}
+              />
+            );
             // select
-            case 'select':
-              return (
-                <RDFSelect
-                  key={`${field.name}-${index}`}
-                  name={field.name}
-                  label={field.label}
-                  options={field.options}
-                  choices={field.choices as RDFChoiceOption[]}
-                  placeholder={field.placeholder}
-                  helper={field.helpText || field.HelpText}
-                  disabled={field.disabled}
-                  hidden={field.hidden}
-                  control={control}
-                  register={register}
-                  errors={errors}
-                />
-              );
+          case 'select':
+            return (
+              <RDFSelect
+                key={`${field.name}-${index}`}
+                name={field.name}
+                label={field.label}
+                options={field.options}
+                choices={field.choices as RDFChoiceOption[]}
+                placeholder={field.placeholder}
+                helper={field.helpText || field.HelpText}
+                disabled={field.disabled}
+                hidden={field.hidden}
+                control={control}
+                register={register}
+                errors={errors}
+              />
+            );
             // radio
-            case 'radio':
-              return (
-                <RDFRadio
-                  key={`${field.name}-${index}`}
-                  name={field.name}
-                  label={field.label}
-                  options={field.options}
-                  choices={field.choices as RDFChoiceOption[]}
-                  placeholder={field.placeholder}
-                  helper={field.helpText || field.HelpText}
-                  disabled={field.disabled}
-                  hidden={field.hidden}
-                  control={control}
-                  register={register}
-                  errors={errors}
-                />
-              );
+          case 'radio':
+            return (
+              <RDFRadio
+                key={`${field.name}-${index}`}
+                name={field.name}
+                label={field.label}
+                options={field.options}
+                choices={field.choices as RDFChoiceOption[]}
+                placeholder={field.placeholder}
+                helper={field.helpText || field.HelpText}
+                disabled={field.disabled}
+                hidden={field.hidden}
+                control={control}
+                register={register}
+                errors={errors}
+              />
+            );
             // list
-            case 'list':
-              return (
-                <RDFList
-                  key={`${field.name}-${index}`}
-                  name={field.name}
-                  label={field.label}
-                  options={field.options}
-                  placeholder={field.placeholder}
-                  helper={field.helpText || field.HelpText}
-                  disabled={field.disabled}
-                  hidden={field.hidden}
-                  control={control}
-                  register={register}
-                  errors={errors}
-                  addItemText={field.addItemButtonText}
-                />
-              );
+          case 'list':
+            return (
+              <RDFList
+                key={`${field.name}-${index}`}
+                name={field.name}
+                label={field.label}
+                options={field.options}
+                placeholder={field.placeholder}
+                helper={field.helpText || field.HelpText}
+                disabled={field.disabled}
+                hidden={field.hidden}
+                control={control}
+                register={register}
+                errors={errors}
+                addItemText={field.addItemButtonText}
+              />
+            );
 
+            // date picker:
+          case 'date':
+          case 'datetime':
+            return (
+              <RDFDatePicker
+                key={`${field.name}-${index}`}
+                name={field.name}
+                label={field.label}
+                options={field.options}
+                helper={field.helpText || field.HelpText}
+                disabled={field.disabled}
+                hidden={field.hidden}
+                control={control}
+                register={register}
+                errors={errors} 
+                showTimeSelect={field.type === 'datetime'}
+              />
+            );
             // table
-            case 'table':
-              return (
-                <RDFTable
-                  key={`${field.name}-${index}`}
-                  name={field.name}
-                  label={field.label}
-                  options={field.options}
-                  helper={field.helpText || field.HelpText}
-                  disabled={field.disabled}
-                  hidden={field.hidden}
-                  control={control}
-                  register={register}
-                  errors={errors}
-                  addItemText={field.addItemButtonText}
-                  columns={field.columns}
-                />
-              );
-        }
-      })}
+          case 'table':
+            return (
+              <RDFTable
+                key={`${field.name}-${index}`}
+                name={field.name}
+                label={field.label}
+                options={field.options}
+                helper={field.helpText || field.HelpText}
+                disabled={field.disabled}
+                hidden={field.hidden}
+                control={control}
+                register={register}
+                errors={errors}
+                addItemText={field.addItemButtonText}
+                columns={field.columns}
+              />
+            );
+          }
+        })}
       <button type="submit" className="submit" disabled={isInFlight}>
         {isInFlight ? submitButtonLabelInFlight : submitButtonLabel}
       </button>

@@ -24,7 +24,9 @@ export type RDFFieldType =
   'switch' |
   'media' |
   'list' |
-  'table'
+  'table' |
+  'date' |
+  'datetime'
 
 export type MediaPreviewType =
   'hero' |
@@ -83,14 +85,14 @@ export const useRDF = <T>(
       [name]: value
     }), {});
 
-   // non-string defaults need to be serialized
-   const form = useForm({ defaultValues });
+  // non-string defaults need to be serialized
+  const form = useForm({ defaultValues });
 
-   return {
+  return {
     ...form,
     fields,
     onSubmit
-   };
+  };
 };
 
 export type UseRDFInternalHookReturn<T> =  Partial<UseFormReturn> & {

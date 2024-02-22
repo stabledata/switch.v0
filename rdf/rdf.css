@@ -23,7 +23,8 @@ form {
 .switch-disabled,
 .text-disabled,
 .list-disabled,
-.table-disabled
+.table-disabled,
+.date-picker-disabled
 {
   opacity: 0.3;
 }
@@ -36,7 +37,8 @@ form {
 .switch-hidden,
 .text-hidden,
 .list-hidden,
-.table-hidden
+.table-hidden,
+.date-picker-hidden
 {
   display: none;
 }
@@ -95,7 +97,7 @@ form {
 }
 
 /* text inputs */
-.input, .input-multiline {
+.input, .input-multiline, .react-datepicker__input-container input {
   width: calc(100% - 20px);
   border-radius: 4px;
   padding: 0 10px;
@@ -107,8 +109,8 @@ form {
   background-color: var(--input-background-light, #fff);
   transition: all 230ms ease-out;
 }
-.input:focus, .input-multiline:focus {
-  box-shadow: 0 0 2px 0px var(--input-focused-shadow-light, #888);
+.input:focus, .input-multiline:focus, .react-datepicker__input-container input:focus {
+  box-shadow: 0 0 3px 0px var(--input-focused-shadow-light, #888);
   outline: none;
 }
 .input-multiline {
@@ -134,12 +136,12 @@ form {
 }
 
 @media (prefers-color-scheme: dark) {
-  .input, .input-multiline {
+  .input, .input-multiline, .react-datepicker__input-container input {
     color: var(--input-text-color-dark, '#fff');
     background-color: var(--input-background-dark, #333);
     border: 1px solid var(--input-border-dark, #444);
   }
-  .input:focus, .input-multiline:focus {
+  .input:focus, .input-multiline:focus, .react-datepicker__input-container input {
     box-shadow: 0 0 2px 2px var(--input-focused-shadow-dark, #999);
   }
   .input-has-error {
@@ -556,3 +558,14 @@ form {
   font-size: 14px;
   padding: 5px 10px;
 }
+
+/* date picker hacks */
+.date-picker .input {
+  width: 100%;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+  height:35px;
+}
+
